@@ -1,781 +1,471 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>NetworkX &#8212; Scientific Computing with Python</title>
-    
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
-    
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '05_graphs/networkx';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Spectral Graph Theory" href="spectral.html" />
-    <link rel="prev" title="Graphs" href="graphs.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
     
-        <div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
-      
-      
-      
-      <h1 class="site-logo" id="site-title">Scientific Computing with Python</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../introduction.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Scientific Computing with Python</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../introduction.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
         <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../introduction.html">
-   Introduction
-  </a>
- </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../00_python/python.html">Python</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/using_python.html">Using Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/basics.html">Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/bitsbytes.html">Bits, Bytes, and Numbers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/basic_packages.html">Basic Containers and Packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/functions.html">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/classes.html">Object-Oriented Programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/modules.html">Modules and Packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/decorators.html">Decorators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/iterators.html">Iterators and Generators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/pyplot.html">Matlotlib &amp; PyPlot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/misc.html">Miscellaneous</a></li>
 </ul>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../00_python/python.html">
-   Python
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../00_python/using_python.html">
-     Using Python
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../00_python/basics.html">
-     Basics
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../00_python/bitsbytes.html">
-     Bits, Bytes, and Numbers
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../00_python/basic_packages.html">
-     Basic Containers and Packages
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../00_python/functions.html">
-     Functions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../00_python/classes.html">
-     Object-Oriented Programming
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../00_python/modules.html">
-     Modules and Packages
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../00_python/decorators.html">
-     Decorators
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../00_python/iterators.html">
-     Iterators and Generators
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../00_python/pyplot.html">
-     Matlotlib &amp; PyPlot
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../00_python/misc.html">
-     Miscellaneous
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../01_analysis/analysis.html">
-   Analysis of Algorithms
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../01_analysis/asymptotic_notation.html">
-     Asymptotic Notation
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../01_analysis/recursion.html">
-     Recursion
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../01_analysis/convergence.html">
-     Convergence of Algorithms
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../01_analysis/average_case.html">
-     Average Case Analysis
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../02_linear_algebra/linear_algebra.html">
-   Linear Algebra
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../02_linear_algebra/memory.html">
-     Memory and Performance
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../02_linear_algebra/numpy_scipy_linalg.html">
-     Dense Linear Algebra in NumPy and SciPy
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../02_linear_algebra/blas_lapack.html">
-     BLAS and LAPACK
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../02_linear_algebra/sparse.html">
-     Sparse Matrices
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../02_linear_algebra/linearoperators.html">
-     Linear Operators
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../02_linear_algebra/sparse_linalg.html">
-     Sparse Linear Algebra
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../02_linear_algebra/pytorch.html">
-     Linear Algebra in PyTorch
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../02_linear_algebra/convolutions.html">
-     Convolutions and Fourier Transforms
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../02_linear_algebra/fft.html">
-     The Fast Fourier Transform
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../03_optimization/optimization.html">
-   Optimization
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../03_optimization/scipy_opt.html">
-     Optimization in SciPy
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../04_functions/functions.html">
-   Functions
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../04_functions/sympy.html">
-     Symbolic Computing
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../04_functions/roots.html">
-     Root Finding
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../04_functions/ode_initial.html">
-     Initial Value Problems
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../04_functions/interpolation.html">
-     Interpolation
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../04_functions/integration.html">
-     Integration &amp; Quadrature
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../04_functions/bvp.html">
-     Boundary Value Problems
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="graphs.html">
-   Graphs
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     NetworkX
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="spectral.html">
-     Spectral Graph Theory
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../06_probability_statistics/prob_stat.html">
-   Probability and Statistics
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../06_probability_statistics/generating_random.html">
-     Generating Random Numbers
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../06_probability_statistics/scipy_stats.html">
-     Scipy
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       stats
-      </span>
-     </code>
-     package
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../07_data/data.html">
-   Data
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-  <label for="toctree-checkbox-8">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../07_data/pandas.html">
-     Pandas
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../07_data/sklearn.html">
-     SciKit Learn
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../07_data/dimension_reduction.html">
-     Dimension Reduction and Data Visualization
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../07_data/pytorch.html">
-     PyTorch Neural Networks
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../08_geometry/geometry.html">
-   Geometry
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
-  <label for="toctree-checkbox-9">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../08_geometry/distances.html">
-     Distances
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../08_geometry/nearestneighbor.html">
-     Nearest Neighbors
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../09_computing/computing.html">
-   Computing
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../09_computing/basic_bash.html">
-     Basic Bash
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../09_computing/git.html">
-     Git Version Control
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../09_computing/unittest.html">
-     Unit Testing
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../09_computing/packages.html">
-     Packages and Setup
-    </a>
-   </li>
-   <li class="toctree-l2 has-children">
-    <a class="reference internal" href="../09_computing/performance/performance.html">
-     Performance
-    </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
-    <label for="toctree-checkbox-11">
-     <i class="fas fa-chevron-down">
-     </i>
-    </label>
-    <ul>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../09_computing/performance/ipython.html">
-       Measuring Performance in Python
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../09_computing/performance/numpy_ufuncs.html">
-       Vectorization, Numpy Universal Functions
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../09_computing/environments.html">
-     Environments
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../09_computing/agent_based_models.html">
-     Agent Based Models
-    </a>
-   </li>
-  </ul>
- </li>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01_analysis/analysis.html">Analysis of Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01_analysis/asymptotic_notation.html">Asymptotic Notation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_analysis/recursion.html">Recursion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_analysis/convergence.html">Convergence of Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_analysis/average_case.html">Average Case Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../09_computing/computing.html">Computing</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../09_computing/basic_bash.html">Basic Bash</a></li>
+</ul>
+</li>
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/05_graphs/networkx.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+</nav></div>
     </div>
-</div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
 
-            <!-- Source interaction buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/caam37830/book"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/caam37830/book/issues/new?title=Issue%20on%20page%20%2F05_graphs/networkx.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+      </div>
+      
+      <main id="main-content" class="bd-main">
         
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
     </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/UChi-ComPy23/notes/master?urlpath=tree/05_graphs/networkx.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/UChi-ComPy23/notes/blob/master/05_graphs/networkx.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
 </div>
 
-            <!-- Full screen (wrap in <a> to have style consistency -->
 
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
 
-            <!-- Launch buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/caam37830/book/master?urlpath=tree/05_graphs/networkx.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        <a class="colab-button" href="https://colab.research.google.com/github/caam37830/book/blob/master/05_graphs/networkx.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
-                    src="../_static/images/logo_colab.png"
-                    alt="Interact on Colab">Colab</button></a>
-        
-        
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/UChi-ComPy23/notes" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/UChi-ComPy23/notes/issues/new?title=Issue%20on%20page%20%2F05_graphs/networkx.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/05_graphs/networkx.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
     </div>
+  
 </div>
+</div>
+              
+              
 
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>NetworkX</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div>
+                <h2> Contents </h2>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
+            <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#generating-graphs">
-   Generating Graphs
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#random-graphs">
-     Random Graphs
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#erdos-renyi-graphs">
-       Erdos-Renyi Graphs
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#stochastic-block-models">
-       Stochastic Block Models
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#visualization">
-   Visualization
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#layouts">
-     Layouts
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#algorithms">
-   Algorithms
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#shortest-paths">
-     Shortest Paths
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercise">
-     Exercise
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#spanning-trees">
-     Spanning Trees
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id1">
-     Exercise
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#bipartite-graphs">
-     Bipartite Graphs
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#other-graph-algorithms">
-     Other Graph Algorithms
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#reading-graphs">
-   Reading Graphs
-  </a>
- </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generating-graphs">Generating Graphs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-graphs">Random Graphs</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#erdos-renyi-graphs">Erdos-Renyi Graphs</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#stochastic-block-models">Stochastic Block Models</a></li>
 </ul>
-
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization">Visualization</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#layouts">Layouts</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithms">Algorithms</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#shortest-paths">Shortest Paths</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spanning-trees">Spanning Trees</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Exercise</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bipartite-graphs">Bipartite Graphs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-graph-algorithms">Other Graph Algorithms</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-graphs">Reading Graphs</a></li>
+</ul>
             </nav>
         </div>
     </div>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>NetworkX</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#generating-graphs">
-   Generating Graphs
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#random-graphs">
-     Random Graphs
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#erdos-renyi-graphs">
-       Erdos-Renyi Graphs
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#stochastic-block-models">
-       Stochastic Block Models
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#visualization">
-   Visualization
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#layouts">
-     Layouts
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#algorithms">
-   Algorithms
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#shortest-paths">
-     Shortest Paths
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercise">
-     Exercise
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#spanning-trees">
-     Spanning Trees
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id1">
-     Exercise
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#bipartite-graphs">
-     Bipartite Graphs
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#other-graph-algorithms">
-     Other Graph Algorithms
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#reading-graphs">
-   Reading Graphs
-  </a>
- </li>
-</ul>
 
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            
-              <div>
+              
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="networkx">
-<h1>NetworkX<a class="headerlink" href="#networkx" title="Permalink to this headline">¶</a></h1>
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="networkx">
+<h1>NetworkX<a class="headerlink" href="#networkx" title="Permalink to this heading">#</a></h1>
 <p><a class="reference external" href="https://networkx.org/">NetworkX</a> is a Python package for dealing with complex networks (graphs).  It provides Graph classes, graph algorithms, and visualization tools.</p>
 <p>You may need to</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>pycourse<span class="o">)</span> conda install networkx
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>pycourse<span class="o">)</span><span class="w"> </span>conda<span class="w"> </span>install<span class="w"> </span>networkx
 </pre></div>
 </div>
 <div class="cell docutils container">
@@ -788,7 +478,15 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;2.5&#39;
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">nx</span><span class="o">.</span><span class="n">__version__</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;networkx&#39;
 </pre></div>
 </div>
 </div>
@@ -814,7 +512,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/networkx_4_0.png" src="../_images/networkx_4_0.png" />
+<img alt="../_images/87665d96fbf866dfb3ccc2a2321f9ce4aaeb108179237442f393a6157fc4612a.png" src="../_images/87665d96fbf866dfb3ccc2a2321f9ce4aaeb108179237442f393a6157fc4612a.png" />
 </div>
 </div>
 <p>Graph nodes can be any hashable object, which covers many things you might use</p>
@@ -836,7 +534,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/networkx_6_0.png" src="../_images/networkx_6_0.png" />
+<img alt="../_images/c03663a85703c63dbea3a68c5ca4c85fa81d924413205c2c958f932669e5f32f.png" src="../_images/c03663a85703c63dbea3a68c5ca4c85fa81d924413205c2c958f932669e5f32f.png" />
 </div>
 </div>
 <p>You can also associate arbitrary data with each node and edge by passing in keyword arguments</p>
@@ -858,7 +556,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/networkx_8_0.png" src="../_images/networkx_8_0.png" />
+<img alt="../_images/fbedafd9dbd6bf74422cadfc7ec4b0a350af2d120439f5225c8b3c77e6dfc451.png" src="../_images/fbedafd9dbd6bf74422cadfc7ec4b0a350af2d120439f5225c8b3c77e6dfc451.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -911,13 +609,13 @@
 </div>
 </div>
 </div>
-<div class="section" id="generating-graphs">
-<h2>Generating Graphs<a class="headerlink" href="#generating-graphs" title="Permalink to this headline">¶</a></h2>
+<section id="generating-graphs">
+<h2>Generating Graphs<a class="headerlink" href="#generating-graphs" title="Permalink to this heading">#</a></h2>
 <p>NetworkX provides <a class="reference external" href="https://networkx.github.io/documentation/stable/reference/generators.html">Graph generators</a> to generate a variety of random graphs.</p>
-<div class="section" id="random-graphs">
-<h3>Random Graphs<a class="headerlink" href="#random-graphs" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="erdos-renyi-graphs">
-<h4>Erdos-Renyi Graphs<a class="headerlink" href="#erdos-renyi-graphs" title="Permalink to this headline">¶</a></h4>
+<section id="random-graphs">
+<h3>Random Graphs<a class="headerlink" href="#random-graphs" title="Permalink to this heading">#</a></h3>
+<section id="erdos-renyi-graphs">
+<h4>Erdos-Renyi Graphs<a class="headerlink" href="#erdos-renyi-graphs" title="Permalink to this heading">#</a></h4>
 <p>An Erdos-Renyi random graph <span class="math notranslate nohighlight">\(G_{n,p}\)</span> is a graph on <span class="math notranslate nohighlight">\(n\)</span> nodes, where the probability of an edge <span class="math notranslate nohighlight">\((i,j)\)</span> existing is <span class="math notranslate nohighlight">\(p\)</span>.  In NetworkX, this is called a <code class="docutils literal notranslate"><span class="pre">gnp</span></code> graph.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -931,12 +629,12 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/networkx_14_0.png" src="../_images/networkx_14_0.png" />
+<img alt="../_images/95d3b5f36078c3b61fa0e2523307bfab3f18e4478a5a630248b320fc49ab7bbd.png" src="../_images/95d3b5f36078c3b61fa0e2523307bfab3f18e4478a5a630248b320fc49ab7bbd.png" />
 </div>
 </div>
-</div>
-<div class="section" id="stochastic-block-models">
-<h4>Stochastic Block Models<a class="headerlink" href="#stochastic-block-models" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="stochastic-block-models">
+<h4>Stochastic Block Models<a class="headerlink" href="#stochastic-block-models" title="Permalink to this heading">#</a></h4>
 <p>A Graph generated from a stochastic block model (SBM) has <span class="math notranslate nohighlight">\(k\)</span> clusters, and a <span class="math notranslate nohighlight">\(k\times k\)</span> (symmetric) matrix <span class="math notranslate nohighlight">\(P\)</span> of probabilities, where <span class="math notranslate nohighlight">\(P_{i,j}\)</span> is the probability that a pair of nodes <span class="math notranslate nohighlight">\((a,b)\)</span> will be joined by an edge if <span class="math notranslate nohighlight">\(a\)</span> is in cluster <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(b\)</span> is in cluster <span class="math notranslate nohighlight">\(j\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -949,18 +647,18 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/networkx_16_0.png" src="../_images/networkx_16_0.png" />
+<img alt="../_images/564f15e8dbcdc341504f7aa5c55eb15a18e1aa673a9fdfb68934213cb6941c85.png" src="../_images/564f15e8dbcdc341504f7aa5c55eb15a18e1aa673a9fdfb68934213cb6941c85.png" />
 </div>
 </div>
-</div>
-</div>
-</div>
-<div class="section" id="visualization">
-<h2>Visualization<a class="headerlink" href="#visualization" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+</section>
+<section id="visualization">
+<h2>Visualization<a class="headerlink" href="#visualization" title="Permalink to this heading">#</a></h2>
 <p>Visualizing graphs is often a great way to see and understand information.</p>
 <p>Unless there is some “ground truth” way to lay out nodes (meaning each node has an associated coordinate), we must choose some way to place nodes in our visualization.  There are a variety of methods for this.</p>
-<div class="section" id="layouts">
-<h3>Layouts<a class="headerlink" href="#layouts" title="Permalink to this headline">¶</a></h3>
+<section id="layouts">
+<h3>Layouts<a class="headerlink" href="#layouts" title="Permalink to this heading">#</a></h3>
 <p>There are several layout methods you might use, which are good for certain applications.</p>
 <p><strong>Spectral Embeddings</strong> are good for partitioning the graph into clusters.</p>
 <div class="cell docutils container">
@@ -971,7 +669,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/networkx_18_0.png" src="../_images/networkx_18_0.png" />
+<img alt="../_images/fea2d1b51316ae5c83bff694f6fd515478cadd333fd232e4db0eb1bd1afe656f.png" src="../_images/fea2d1b51316ae5c83bff694f6fd515478cadd333fd232e4db0eb1bd1afe656f.png" />
 </div>
 </div>
 <p><strong>Spring layouts</strong> tend to do a good job of separating nodes, which can be nice for visualization</p>
@@ -983,7 +681,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/networkx_20_0.png" src="../_images/networkx_20_0.png" />
+<img alt="../_images/3944294a4fcfb0dc425e7c6d30059ab9404814f62640b2259fe944c22902861e.png" src="../_images/3944294a4fcfb0dc425e7c6d30059ab9404814f62640b2259fe944c22902861e.png" />
 </div>
 </div>
 <p>the <a class="reference external" href="https://www-sciencedirect-com.proxy.uchicago.edu/science/article/pii/0020019089901026?via%3Dihub">Kamada-Kawai algorithm</a> also gives visually pleasing results.</p>
@@ -995,7 +693,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/networkx_22_0.png" src="../_images/networkx_22_0.png" />
+<img alt="../_images/e8f6af0fae8d4ee2901b194b03c728293760bebc1bcf40f6d1f22bc4547fa2e5.png" src="../_images/e8f6af0fae8d4ee2901b194b03c728293760bebc1bcf40f6d1f22bc4547fa2e5.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1006,81 +704,81 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{0: array([0.55848456, 0.28631111]),
- 1: array([0.2723952 , 0.06022474]),
- 2: array([0.29600044, 0.42521603]),
- 3: array([0.14204467, 0.50618183]),
- 4: array([ 0.13569054, -0.00391481]),
- 5: array([0.36586802, 0.14155925]),
- 6: array([0.58235413, 0.40263966]),
- 7: array([0.22701682, 0.4735505 ]),
- 8: array([0.20471613, 0.2449802 ]),
- 9: array([0.04167401, 0.45013743]),
- 10: array([-0.02230495,  0.36050668]),
- 11: array([0.26310646, 0.55601801]),
- 12: array([0.09507921, 0.2511831 ]),
- 13: array([-0.01296102,  0.15589922]),
- 14: array([0.29740876, 0.25122146]),
- 15: array([0.30338164, 0.3425249 ]),
- 16: array([0.46148538, 0.34601535]),
- 17: array([-0.04543286,  0.24141499]),
- 18: array([0.04895396, 0.03792357]),
- 19: array([0.48120167, 0.46254991]),
- 20: array([0.24102299, 0.16557828]),
- 21: array([0.10568134, 0.16036921]),
- 22: array([0.16803906, 0.37395204]),
- 23: array([-0.12459958,  0.24998575]),
- 24: array([0.52080826, 0.12520194]),
- 25: array([-0.83509014,  0.29632483]),
- 26: array([-0.7970804 ,  0.09993388]),
- 27: array([-0.3340208 , -0.40362148]),
- 28: array([-0.85562945,  0.43181013]),
- 29: array([-0.60377777,  0.20106874]),
- 30: array([-0.59737155, -0.05315006]),
- 31: array([-0.65431893,  0.06491301]),
- 32: array([-0.46842143,  0.53144003]),
- 33: array([-0.59851362,  0.64011876]),
- 34: array([-0.65732526,  0.22843393]),
- 35: array([-0.36024348,  0.23178491]),
- 36: array([-0.30253631,  0.02616656]),
- 37: array([-0.49436719,  0.444842  ]),
- 38: array([-0.2693406 ,  0.58999807]),
- 39: array([-0.63188034,  0.35842707]),
- 40: array([-0.73433804, -0.15805037]),
- 41: array([-0.76823287, -0.0704386 ]),
- 42: array([-0.42971896, -0.13705016]),
- 43: array([-1.        ,  0.22030478]),
- 44: array([-0.89866356,  0.00399537]),
- 45: array([-0.59349463, -0.25297497]),
- 46: array([-0.46461129,  0.13242792]),
- 47: array([-0.54012952,  0.31147695]),
- 48: array([-0.51027701,  0.01206457]),
- 49: array([-0.63818229,  0.44121927]),
- 50: array([ 0.25449128, -0.6329606 ]),
- 51: array([ 0.41765881, -0.74847725]),
- 52: array([ 0.4427453 , -0.20906612]),
- 53: array([ 0.20804549, -0.55597445]),
- 54: array([ 0.04027806, -0.64605528]),
- 55: array([ 0.37076363, -0.41763146]),
- 56: array([ 0.57373344, -0.6693159 ]),
- 57: array([ 0.58391881, -0.31600168]),
- 58: array([ 0.37674834, -0.48387407]),
- 59: array([ 0.47358989, -0.40345153]),
- 60: array([ 0.34410606, -0.59696046]),
- 61: array([ 0.15019332, -0.47281503]),
- 62: array([ 0.71101042, -0.29324512]),
- 63: array([ 0.23374494, -0.2948483 ]),
- 64: array([ 0.6000465 , -0.42802762]),
- 65: array([ 0.17297465, -0.2675781 ]),
- 66: array([ 0.45073499, -0.61345329]),
- 67: array([-0.01417495, -0.47971352]),
- 68: array([ 0.354409  , -0.24604809]),
- 69: array([ 0.5229518 , -0.36106347]),
- 70: array([ 0.23368975, -0.10406808]),
- 71: array([ 0.481575  , -0.08849365]),
- 72: array([ 0.61958812, -0.60681014]),
- 73: array([ 0.72421881, -0.56604564]),
- 74: array([ 0.10340916, -0.75671666])}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{0: array([0.17110579, 0.96050409]),
+ 1: array([-0.07340844,  0.39883311]),
+ 2: array([-0.1636278 ,  0.80843733]),
+ 3: array([0.6557681 , 0.34205121]),
+ 4: array([0.24983722, 0.66262339]),
+ 5: array([0.66428275, 0.46626272]),
+ 6: array([0.18279235, 0.50528361]),
+ 7: array([-0.00311155,  0.72496871]),
+ 8: array([0.45659536, 0.03043568]),
+ 9: array([0.37525956, 0.70189348]),
+ 10: array([-0.21879532,  0.62791278]),
+ 11: array([0.37069697, 0.98009284]),
+ 12: array([0.25848514, 0.27074475]),
+ 13: array([0.50460278, 0.66928933]),
+ 14: array([0.71199042, 0.66230768]),
+ 15: array([0.58155124, 0.10662501]),
+ 16: array([0.27799907, 0.49193621]),
+ 17: array([0.32311994, 0.2392366 ]),
+ 18: array([0.04597729, 0.34867528]),
+ 19: array([0.40591381, 0.39122102]),
+ 20: array([0.1402521 , 0.72953965]),
+ 21: array([0.70020601, 0.03658417]),
+ 22: array([0.52709292, 0.5576614 ]),
+ 23: array([0.52252782, 0.82177566]),
+ 24: array([0.82134001, 0.30528987]),
+ 25: array([-0.53368525, -0.0098704 ]),
+ 26: array([-0.42096579,  0.10067772]),
+ 27: array([-0.52358375, -0.16721761]),
+ 28: array([-1.        ,  0.12538073]),
+ 29: array([-0.3029243 , -0.21589201]),
+ 30: array([-0.23421812,  0.01156078]),
+ 31: array([-0.64818868, -0.13952288]),
+ 32: array([-0.75698617,  0.08511158]),
+ 33: array([-0.78690368, -0.06417558]),
+ 34: array([-0.74399632, -0.42400335]),
+ 35: array([-0.82684009, -0.12782017]),
+ 36: array([-0.94601317, -0.03558783]),
+ 37: array([-0.83281379, -0.27244581]),
+ 38: array([-0.3253795 ,  0.51545033]),
+ 39: array([-0.66515324, -0.25529943]),
+ 40: array([-0.4672691 ,  0.17548859]),
+ 41: array([-0.57359166,  0.42224945]),
+ 42: array([-0.9949458 ,  0.44866723]),
+ 43: array([-0.534468  ,  0.30539691]),
+ 44: array([-0.85281079,  0.18976326]),
+ 45: array([-0.56340319, -0.48409942]),
+ 46: array([-0.40202583, -0.38023752]),
+ 47: array([-0.59452747,  0.15958976]),
+ 48: array([-0.70329683,  0.29878521]),
+ 49: array([-0.70492806,  0.41489023]),
+ 50: array([ 0.72031485, -0.29968256]),
+ 51: array([ 0.11775694, -0.70402689]),
+ 52: array([ 0.33153675, -0.81225537]),
+ 53: array([ 0.04177474, -0.33137769]),
+ 54: array([ 0.56143996, -0.36084002]),
+ 55: array([ 0.23535027, -0.53712185]),
+ 56: array([ 0.25423092, -0.77793624]),
+ 57: array([ 0.06792596, -0.81830562]),
+ 58: array([ 0.57662783, -0.64210137]),
+ 59: array([-0.15580042, -0.60891649]),
+ 60: array([ 0.11649154, -0.3834705 ]),
+ 61: array([ 0.40544559, -0.33738613]),
+ 62: array([ 0.30263416, -0.16734182]),
+ 63: array([ 0.94344243, -0.61761507]),
+ 64: array([-0.06727787, -0.51977745]),
+ 65: array([ 0.40420223, -0.69517689]),
+ 66: array([ 0.39064416, -0.26508681]),
+ 67: array([ 0.70705537, -0.59435424]),
+ 68: array([ 0.37151636, -0.51377755]),
+ 69: array([ 0.00633673, -0.93301984]),
+ 70: array([-0.06702971, -0.69029724]),
+ 71: array([ 0.45015611, -0.76124617]),
+ 72: array([ 0.51211408, -0.47872145]),
+ 73: array([ 0.06006509, -0.46173277]),
+ 74: array([ 0.16351096, -0.20545729])}
 </pre></div>
 </div>
 </div>
@@ -1092,16 +790,16 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/networkx_24_0.png" src="../_images/networkx_24_0.png" />
+<img alt="../_images/0063b18fb5e6ed1acfe480a839170df1ea2097789954fc73efd045559897a0e2.png" src="../_images/0063b18fb5e6ed1acfe480a839170df1ea2097789954fc73efd045559897a0e2.png" />
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="algorithms">
-<h2>Algorithms<a class="headerlink" href="#algorithms" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="algorithms">
+<h2>Algorithms<a class="headerlink" href="#algorithms" title="Permalink to this heading">#</a></h2>
 <p>NetworkX implements a variety of graph algorithms.</p>
-<div class="section" id="shortest-paths">
-<h3>Shortest Paths<a class="headerlink" href="#shortest-paths" title="Permalink to this headline">¶</a></h3>
+<section id="shortest-paths">
+<h3>Shortest Paths<a class="headerlink" href="#shortest-paths" title="Permalink to this heading">#</a></h3>
 <p>A path between nodes <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> is a sequence of edges where the target of an edge is the source of the next edge.
 \begin{equation}
 (x, v_0), (v_0, v_1), \dots, (v_k, y)
@@ -1117,7 +815,7 @@ The length of the path is the number of edges in the sequence.  A shortest path 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/networkx_26_0.png" src="../_images/networkx_26_0.png" />
+<img alt="../_images/4564ba5fc35cf45ee71ddbd87c8e2838a9fae9334a219531b01e22c465ddfe05.png" src="../_images/4564ba5fc35cf45ee71ddbd87c8e2838a9fae9334a219531b01e22c465ddfe05.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1128,7 +826,7 @@ The length of the path is the number of edges in the sequence.  A shortest path 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/networkx_27_0.png" src="../_images/networkx_27_0.png" />
+<img alt="../_images/ba47a95af90f8fe1590dda9ee764004745c9953c11b1f7a093eda45c0d9ec4c0.png" src="../_images/ba47a95af90f8fe1590dda9ee764004745c9953c11b1f7a093eda45c0d9ec4c0.png" />
 </div>
 </div>
 <p>The nodes of this 2D grid are indexed by coordinates <span class="math notranslate nohighlight">\((i,j)\)</span>.</p>
@@ -1143,7 +841,7 @@ The length of the path is the number of edges in the sequence.  A shortest path 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/networkx_29_0.png" src="../_images/networkx_29_0.png" />
+<img alt="../_images/293fa8fa7aa2ff3eb7b87a69c37980b06e521ff880cd3a0670f21dbb73f6972f.png" src="../_images/293fa8fa7aa2ff3eb7b87a69c37980b06e521ff880cd3a0670f21dbb73f6972f.png" />
 </div>
 </div>
 <p>The length of the shortest path between any two nodes in a graph <span class="math notranslate nohighlight">\(G\)</span> defines a metric on the vertex set (this is analagous to the geodesic metric on a manifold).</p>
@@ -1155,9 +853,9 @@ The length of the path is the number of edges in the sequence.  A shortest path 
 </div>
 </div>
 <p>This creates an iterator over shortest path lengths for each node</p>
-</div>
-<div class="section" id="exercise">
-<h3>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="exercise">
+<h3>Exercise<a class="headerlink" href="#exercise" title="Permalink to this heading">#</a></h3>
 <p>Write a function which returns a distance matrix for the shortest path length.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1166,9 +864,9 @@ The length of the path is the number of edges in the sequence.  A shortest path 
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="spanning-trees">
-<h3>Spanning Trees<a class="headerlink" href="#spanning-trees" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="spanning-trees">
+<h3>Spanning Trees<a class="headerlink" href="#spanning-trees" title="Permalink to this heading">#</a></h3>
 <p>A tree is a connected graph with no cycles.  If the graph has <span class="math notranslate nohighlight">\(n\)</span> nodes, it must have <span class="math notranslate nohighlight">\(m = n-1\)</span> edges to be a tree.</p>
 <p>A spanning tree of a graph <span class="math notranslate nohighlight">\(G\)</span> is a sub-graph with the same set of nodes, and a subset of edges that forms a tree.  A minimum spanning tree (MST) is a spanning tree with minimum weight (you can weight edges using a <code class="docutils literal notranslate"><span class="pre">'weight'</span></code> attribute).</p>
 <p>You can compute a spanning tree of a graph using <code class="docutils literal notranslate"><span class="pre">nx.tree.minimum_spanning_tree</span></code>, or <code class="docutils literal notranslate"><span class="pre">nx.tree.minimum_spanning_edges</span></code>.  Other tree algorithms are provided <a class="reference external" href="https://networkx.org/documentation/stable/reference/algorithms/tree.html">as well</a>.</p>
@@ -1183,7 +881,7 @@ The length of the path is the number of edges in the sequence.  A shortest path 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/networkx_36_0.png" src="../_images/networkx_36_0.png" />
+<img alt="../_images/f734985302298fd48e63f018e4928eebdb57e5200d1dc5e528fceced3a4f9b3e.png" src="../_images/f734985302298fd48e63f018e4928eebdb57e5200d1dc5e528fceced3a4f9b3e.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1202,12 +900,12 @@ The length of the path is the number of edges in the sequence.  A shortest path 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/networkx_37_0.png" src="../_images/networkx_37_0.png" />
+<img alt="../_images/11cc2fc116c6a09b9a6fc2ce55c79fd6d4b1996e1fded83fe1f1012a4900feb2.png" src="../_images/11cc2fc116c6a09b9a6fc2ce55c79fd6d4b1996e1fded83fe1f1012a4900feb2.png" />
 </div>
 </div>
-</div>
-<div class="section" id="id1">
-<h3>Exercise<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id1">
+<h3>Exercise<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
 <p>Create a function that generates a maze on a 2-dimensional <span class="math notranslate nohighlight">\(m \times n\)</span> grid using <code class="docutils literal notranslate"><span class="pre">nx.grid_2d_graph</span></code> and a randomly weighted MST.  Place the start and end points at <span class="math notranslate nohighlight">\((0,0)\)</span> and <span class="math notranslate nohighlight">\((m-1, n-1)\)</span> respectively.</p>
 <p>Create a function that solves a maze by computing the shortest path between the start and end points.</p>
 <div class="cell docutils container">
@@ -1217,9 +915,9 @@ The length of the path is the number of edges in the sequence.  A shortest path 
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="bipartite-graphs">
-<h3>Bipartite Graphs<a class="headerlink" href="#bipartite-graphs" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="bipartite-graphs">
+<h3>Bipartite Graphs<a class="headerlink" href="#bipartite-graphs" title="Permalink to this heading">#</a></h3>
 <p>A <a class="reference external" href="https://en.wikipedia.org/wiki/Bipartite_graph">bipartite graph</a> is a graph where nodes are separated into two sets <span class="math notranslate nohighlight">\(U, V\)</span>, and where edges are of the form <span class="math notranslate nohighlight">\((u,v)\)</span> with <span class="math notranslate nohighlight">\(u\in U\)</span>, and <span class="math notranslate nohighlight">\(v\in V\)</span> (there are no edges between two points in <span class="math notranslate nohighlight">\(U\)</span> or two points in <span class="math notranslate nohighlight">\(V\)</span>).</p>
 <p>Bipartite graphs are often used to encode matching problems.  For example, dating websites might match romantic partners, and ride apps such as Uber and Lyft might match riders with drivers.</p>
 <p>NetworkX functionality for biparite graphs is in <a class="reference external" href="https://networkx.org/documentation/stable/reference/algorithms/bipartite.html"><code class="docutils literal notranslate"><span class="pre">nx.algorithms.bipartite</span></code></a></p>
@@ -1234,7 +932,7 @@ The length of the path is the number of edges in the sequence.  A shortest path 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/networkx_41_0.png" src="../_images/networkx_41_0.png" />
+<img alt="../_images/892f629c97061cd76bfbe7ea25049ccb1106b3dea55ea7b153818e3b4cc7fde9.png" src="../_images/892f629c97061cd76bfbe7ea25049ccb1106b3dea55ea7b153818e3b4cc7fde9.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1265,7 +963,7 @@ The length of the path is the number of edges in the sequence.  A shortest path 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/networkx_44_0.png" src="../_images/networkx_44_0.png" />
+<img alt="../_images/8be735e727b20ce1bbd9c5b7b069ffd60a0fc94fc6f49d27e5ded4d79580ba20.png" src="../_images/8be735e727b20ce1bbd9c5b7b069ffd60a0fc94fc6f49d27e5ded4d79580ba20.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1281,19 +979,19 @@ The length of the path is the number of edges in the sequence.  A shortest path 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/networkx_45_0.png" src="../_images/networkx_45_0.png" />
+<img alt="../_images/dac400c9dcab20c1e82310eb58f5433a20179dc7410ce852d015540785d50368.png" src="../_images/dac400c9dcab20c1e82310eb58f5433a20179dc7410ce852d015540785d50368.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># compute maximum matching</span>
 <span class="n">match</span> <span class="o">=</span> <span class="n">bipartite</span><span class="o">.</span><span class="n">maximum_matching</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
-<span class="n">match</span>
+<span class="k">match</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{0: 7, 1: 5, 2: 6, 3: 8, 4: 11, 5: 1, 6: 2, 7: 0, 8: 3, 11: 4}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{0: 5, 1: 10, 2: 6, 3: 7, 4: 8, 5: 0, 6: 2, 7: 3, 8: 4, 10: 1}
 </pre></div>
 </div>
 </div>
@@ -1309,17 +1007,17 @@ The length of the path is the number of edges in the sequence.  A shortest path 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/networkx_47_0.png" src="../_images/networkx_47_0.png" />
+<img alt="../_images/577580925cbe7b6c77b98e48a8595e69f70cc42f64970c366cc98a266b221887.png" src="../_images/577580925cbe7b6c77b98e48a8595e69f70cc42f64970c366cc98a266b221887.png" />
 </div>
 </div>
-</div>
-<div class="section" id="other-graph-algorithms">
-<h3>Other Graph Algorithms<a class="headerlink" href="#other-graph-algorithms" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="other-graph-algorithms">
+<h3>Other Graph Algorithms<a class="headerlink" href="#other-graph-algorithms" title="Permalink to this heading">#</a></h3>
 <p>There are many interesting applications of graphs and many graph algorithms that you might consider using.  See the <a class="reference external" href="https://networkx.org/documentation/stable/reference/algorithms/index.html">NetworkX algorithms documentation</a> to see what some of the possibilities are.</p>
-</div>
-</div>
-<div class="section" id="reading-graphs">
-<h2>Reading Graphs<a class="headerlink" href="#reading-graphs" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="reading-graphs">
+<h2>Reading Graphs<a class="headerlink" href="#reading-graphs" title="Permalink to this heading">#</a></h2>
 <p>In scientific computing, you’ll typically get a graph from some sort of data.  Often these graphs are referred to as “complex networks”.  One good source of data is the <a class="reference external" href="http://snap.stanford.edu/data/index.html">Stanford Large Network Dataset Collection</a></p>
 <p>Graphs can be stored in a variety of formats.  You can find documentation for NetworkX’s read/write capabilities <a class="reference external" href="https://networkx.org/documentation/stable/reference/readwrite/index.html">here</a>.</p>
 <p>There are also some built-in example graphs in NetworkX. One example graph is the <a class="reference external" href="https://networkx.org/documentation/stable/auto_examples/graph/plot_karate_club.html">Zachary Karate Club Graph</a>, which encodes friendships between individuals in a Karate club.  There are some other example <a class="reference external" href="https://networkx.org/documentation/stable/reference/generators.html#module-networkx.generators.social">social network graphs</a></p>
@@ -1331,7 +1029,7 @@ The length of the path is the number of edges in the sequence.  A shortest path 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/networkx_50_0.png" src="../_images/networkx_50_0.png" />
+<img alt="../_images/ab6314cd228bc5d7112e50c2241c89bcd11d185b8f756dab68ddff103f921566.png" src="../_images/ab6314cd228bc5d7112e50c2241c89bcd11d185b8f756dab68ddff103f921566.png" />
 </div>
 </div>
 <p>Here’s an example of reading and writing a graph as an edgelist:</p>
@@ -1350,8 +1048,8 @@ The length of the path is the number of edges in the sequence.  A shortest path 
 </div>
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1365,7 +1063,7 @@ The length of the path is the number of edges in the sequence.  A shortest path 
             mode: "pycourse"
         },
         kernelOptions: {
-            kernelName: "pycourse",
+            name: "pycourse",
             path: "./05_graphs"
         },
         predefinedOutput: true
@@ -1373,44 +1071,104 @@ The length of the path is the number of edges in the sequence.  A shortest path 
     </script>
     <script>kernelName = 'pycourse'</script>
 
-              </div>
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generating-graphs">Generating Graphs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-graphs">Random Graphs</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#erdos-renyi-graphs">Erdos-Renyi Graphs</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#stochastic-block-models">Stochastic Block Models</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization">Visualization</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#layouts">Layouts</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithms">Algorithms</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#shortest-paths">Shortest Paths</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spanning-trees">Spanning Trees</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Exercise</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bipartite-graphs">Bipartite Graphs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-graph-algorithms">Other Graph Algorithms</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-graphs">Reading Graphs</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="graphs.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Graphs</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="spectral.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Spectral Graph Theory</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
-</div>
+          </div>
+          <footer class="bd-footer-content">
             
-        </div>
-    </div>
-    <footer class="footer">
-  <p>
-    
-      By Brad Nelson<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
-</main>
-
-
-      </div>
-    </div>
+<div class="bd-footer-content__inner container">
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <div class="footer-item">
+    
+<p class="component-author">
+By Brad Nelson
+</p>
 
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

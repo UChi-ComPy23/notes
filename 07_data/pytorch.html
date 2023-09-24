@@ -1,729 +1,461 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>PyTorch Neural Networks &#8212; Scientific Computing with Python</title>
-    
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
-    
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '07_data/pytorch';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Geometry" href="../08_geometry/geometry.html" />
-    <link rel="prev" title="Dimension Reduction and Data Visualization" href="dimension_reduction.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
     
-        <div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
-      
-      
-      
-      <h1 class="site-logo" id="site-title">Scientific Computing with Python</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../introduction.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Scientific Computing with Python</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../introduction.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
         <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../introduction.html">
-   Introduction
-  </a>
- </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../00_python/python.html">Python</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/using_python.html">Using Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/basics.html">Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/bitsbytes.html">Bits, Bytes, and Numbers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/basic_packages.html">Basic Containers and Packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/functions.html">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/classes.html">Object-Oriented Programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/modules.html">Modules and Packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/decorators.html">Decorators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/iterators.html">Iterators and Generators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/pyplot.html">Matlotlib &amp; PyPlot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/misc.html">Miscellaneous</a></li>
 </ul>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../00_python/python.html">
-   Python
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../00_python/using_python.html">
-     Using Python
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../00_python/basics.html">
-     Basics
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../00_python/bitsbytes.html">
-     Bits, Bytes, and Numbers
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../00_python/basic_packages.html">
-     Basic Containers and Packages
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../00_python/functions.html">
-     Functions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../00_python/classes.html">
-     Object-Oriented Programming
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../00_python/modules.html">
-     Modules and Packages
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../00_python/decorators.html">
-     Decorators
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../00_python/iterators.html">
-     Iterators and Generators
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../00_python/pyplot.html">
-     Matlotlib &amp; PyPlot
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../00_python/misc.html">
-     Miscellaneous
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../01_analysis/analysis.html">
-   Analysis of Algorithms
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../01_analysis/asymptotic_notation.html">
-     Asymptotic Notation
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../01_analysis/recursion.html">
-     Recursion
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../01_analysis/convergence.html">
-     Convergence of Algorithms
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../01_analysis/average_case.html">
-     Average Case Analysis
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../02_linear_algebra/linear_algebra.html">
-   Linear Algebra
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../02_linear_algebra/memory.html">
-     Memory and Performance
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../02_linear_algebra/numpy_scipy_linalg.html">
-     Dense Linear Algebra in NumPy and SciPy
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../02_linear_algebra/blas_lapack.html">
-     BLAS and LAPACK
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../02_linear_algebra/sparse.html">
-     Sparse Matrices
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../02_linear_algebra/linearoperators.html">
-     Linear Operators
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../02_linear_algebra/sparse_linalg.html">
-     Sparse Linear Algebra
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../02_linear_algebra/pytorch.html">
-     Linear Algebra in PyTorch
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../02_linear_algebra/convolutions.html">
-     Convolutions and Fourier Transforms
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../02_linear_algebra/fft.html">
-     The Fast Fourier Transform
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../03_optimization/optimization.html">
-   Optimization
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../03_optimization/scipy_opt.html">
-     Optimization in SciPy
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../04_functions/functions.html">
-   Functions
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../04_functions/sympy.html">
-     Symbolic Computing
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../04_functions/roots.html">
-     Root Finding
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../04_functions/differentiation.html">
-     Differentiation
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../04_functions/ode_initial.html">
-     Initial Value Problems
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../04_functions/interpolation.html">
-     Interpolation
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../04_functions/integration.html">
-     Integration &amp; Quadrature
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../04_functions/bvp.html">
-     Boundary Value Problems
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../05_graphs/graphs.html">
-   Graphs
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../05_graphs/networkx.html">
-     NetworkX
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../05_graphs/spectral.html">
-     Spectral Graph Theory
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../06_probability_statistics/prob_stat.html">
-   Probability and Statistics
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../06_probability_statistics/generating_random.html">
-     Generating Random Numbers
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../06_probability_statistics/scipy_stats.html">
-     Scipy
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       stats
-      </span>
-     </code>
-     package
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="data.html">
-   Data
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-  <label for="toctree-checkbox-8">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="pandas.html">
-     Pandas
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="sklearn.html">
-     SciKit Learn
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="dimension_reduction.html">
-     Dimension Reduction and Data Visualization
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     PyTorch Neural Networks
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../08_geometry/geometry.html">
-   Geometry
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
-  <label for="toctree-checkbox-9">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../08_geometry/distances.html">
-     Distances
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../08_geometry/nearestneighbor.html">
-     Nearest Neighbors
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../09_computing/computing.html">
-   Computing
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../09_computing/basic_bash.html">
-     Basic Bash
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../09_computing/git.html">
-     Git Version Control
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../09_computing/unittest.html">
-     Unit Testing
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../09_computing/packages.html">
-     Packages and Setup
-    </a>
-   </li>
-   <li class="toctree-l2 has-children">
-    <a class="reference internal" href="../09_computing/performance/performance.html">
-     Performance
-    </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
-    <label for="toctree-checkbox-11">
-     <i class="fas fa-chevron-down">
-     </i>
-    </label>
-    <ul>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../09_computing/performance/ipython.html">
-       Measuring Performance in Python
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../09_computing/performance/numpy_ufuncs.html">
-       Vectorization, Numpy Universal Functions
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../09_computing/environments.html">
-     Environments
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../09_computing/agent_based_models.html">
-     Agent Based Models
-    </a>
-   </li>
-  </ul>
- </li>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01_analysis/analysis.html">Analysis of Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01_analysis/asymptotic_notation.html">Asymptotic Notation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_analysis/recursion.html">Recursion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_analysis/convergence.html">Convergence of Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_analysis/average_case.html">Average Case Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../09_computing/computing.html">Computing</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../09_computing/basic_bash.html">Basic Bash</a></li>
+</ul>
+</li>
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/07_data/pytorch.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+</nav></div>
     </div>
-</div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
 
-            <!-- Source interaction buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/caam37830/book"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/caam37830/book/issues/new?title=Issue%20on%20page%20%2F07_data/pytorch.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+      </div>
+      
+      <main id="main-content" class="bd-main">
         
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
     </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/UChi-ComPy23/notes/master?urlpath=tree/07_data/pytorch.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/UChi-ComPy23/notes/blob/master/07_data/pytorch.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
 </div>
 
-            <!-- Full screen (wrap in <a> to have style consistency -->
 
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
 
-            <!-- Launch buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/caam37830/book/master?urlpath=tree/07_data/pytorch.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        <a class="colab-button" href="https://colab.research.google.com/github/caam37830/book/blob/master/07_data/pytorch.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
-                    src="../_static/images/logo_colab.png"
-                    alt="Interact on Colab">Colab</button></a>
-        
-        
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/UChi-ComPy23/notes" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/UChi-ComPy23/notes/issues/new?title=Issue%20on%20page%20%2F07_data/pytorch.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/07_data/pytorch.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
     </div>
+  
 </div>
+</div>
+              
+              
 
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>PyTorch Neural Networks</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div>
+                <h2> Contents </h2>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
+            <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#deep-learning-libraries">
-   Deep Learning Libraries
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#main-features-that-any-deep-learning-library-should-provide">
-     Main features that any deep learning library should provide
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#pytorch">
-     PyTorch
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#automatic-differentiation">
-   Automatic Differentiation
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#making-it-more-compact">
-     Making it more compact
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#using-library-functions">
-   Using Library functions
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#mnist-example">
-   MNIST Example
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#mnist-training">
-     MNIST Training
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#credits">
-     Credits
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deep-learning-libraries">Deep Learning Libraries</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#main-features-that-any-deep-learning-library-should-provide">Main features that any deep learning library should provide</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pytorch">PyTorch</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#automatic-differentiation">Automatic Differentiation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#making-it-more-compact">Making it more compact</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-library-functions">Using Library functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mnist-example">MNIST Example</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mnist-training">MNIST Training</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#credits">Credits</a></li>
+</ul>
+</li>
+</ul>
             </nav>
         </div>
     </div>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>PyTorch Neural Networks</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#deep-learning-libraries">
-   Deep Learning Libraries
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#main-features-that-any-deep-learning-library-should-provide">
-     Main features that any deep learning library should provide
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#pytorch">
-     PyTorch
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#automatic-differentiation">
-   Automatic Differentiation
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#making-it-more-compact">
-     Making it more compact
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#using-library-functions">
-   Using Library functions
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#mnist-example">
-   MNIST Example
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#mnist-training">
-     MNIST Training
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#credits">
-     Credits
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
 
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            
-              <div>
+              
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="pytorch-neural-networks">
-<h1>PyTorch Neural Networks<a class="headerlink" href="#pytorch-neural-networks" title="Permalink to this headline">¶</a></h1>
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="pytorch-neural-networks">
+<h1>PyTorch Neural Networks<a class="headerlink" href="#pytorch-neural-networks" title="Permalink to this heading">#</a></h1>
 <p><a class="reference external" href="https://pytorch.org/">PyTorch</a> is a Python package for defining and training neural networks.  Neural networks and deep learning have been a hot topic for several years, and are the tools underlying many state-of-the art machine learning tasks.  There are many industrial applications (e.g. at your favorite or least favorite companies in Silicon Valley), but also many scientific applications including</p>
 <ul class="simple">
 <li><p>Processing data in particle detectors</p></li>
@@ -747,8 +479,8 @@ x &amp; x &gt; 0\
 \end{cases}
 \end{equation}</p>
 <p>If you take the composition of several functions like this, you have a multilayer perceptron (MLP).</p>
-<div class="section" id="deep-learning-libraries">
-<h2>Deep Learning Libraries<a class="headerlink" href="#deep-learning-libraries" title="Permalink to this headline">¶</a></h2>
+<section id="deep-learning-libraries">
+<h2>Deep Learning Libraries<a class="headerlink" href="#deep-learning-libraries" title="Permalink to this heading">#</a></h2>
 <p>There are many deep learning libraries available, the most common ones for python are</p>
 <ul class="simple">
 <li><p>TensorFlow, Keras</p></li>
@@ -756,17 +488,17 @@ x &amp; x &gt; 0\
 </ul>
 <p>Working with tensorflow requires going into lot of details of the contruction of the computation graph, whereas Keras is a higher level interface for tensorflow. Tensorflow is very popular in the industry and good for production code.</p>
 <p>PyTorch can be used as low level interface, but is much more user-friendly than tensorflow, but it also has a higher level interface. Pytorch is more popular in the research community.</p>
-<div class="section" id="main-features-that-any-deep-learning-library-should-provide">
-<h3>Main features that any deep learning library should provide<a class="headerlink" href="#main-features-that-any-deep-learning-library-should-provide" title="Permalink to this headline">¶</a></h3>
+<section id="main-features-that-any-deep-learning-library-should-provide">
+<h3>Main features that any deep learning library should provide<a class="headerlink" href="#main-features-that-any-deep-learning-library-should-provide" title="Permalink to this heading">#</a></h3>
 <p>No matter what library or language you use, the main features provided by a deep learning library are</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Use the GPU to speed up computation</p></li>
 <li><p>Ability to do automatic differentiation</p></li>
 <li><p>Useful library functions for common architectures and optimization algorithms</p></li>
 </ol>
-</div>
-<div class="section" id="pytorch">
-<h3>PyTorch<a class="headerlink" href="#pytorch" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="pytorch">
+<h3>PyTorch<a class="headerlink" href="#pytorch" title="Permalink to this heading">#</a></h3>
 <p>We will look at all of the above in pytorch.
 The best way to think about pytorch is that its numpy + GPU + autograd.</p>
 <p>You can install it with</p>
@@ -782,15 +514,22 @@ The best way to think about pytorch is that its numpy + GPU + autograd.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;1.7.0&#39;
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">torch</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;torch&#39;
 </pre></div>
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="automatic-differentiation">
-<h2>Automatic Differentiation<a class="headerlink" href="#automatic-differentiation" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="automatic-differentiation">
+<h2>Automatic Differentiation<a class="headerlink" href="#automatic-differentiation" title="Permalink to this heading">#</a></h2>
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/Automatic_differentiation">Automatic differentiation</a> is different from numerical differentiation, which requires a choice of step size, and symbolic differentiation which creates a single expression for a derivative.  Instead it performs chain rule repeatedly.</p>
 <p>PyTorch uses dynamic computation graphs to compute the gradients of the parameters.</p>
 <div class="cell docutils container">
@@ -955,8 +694,8 @@ The best way to think about pytorch is that its numpy + GPU + autograd.</p>
 </div>
 </div>
 </div>
-<div class="section" id="making-it-more-compact">
-<h3>Making it more compact<a class="headerlink" href="#making-it-more-compact" title="Permalink to this headline">¶</a></h3>
+<section id="making-it-more-compact">
+<h3>Making it more compact<a class="headerlink" href="#making-it-more-compact" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">model_fn</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">c</span><span class="p">):</span>
@@ -1034,115 +773,115 @@ The best way to think about pytorch is that its numpy + GPU + autograd.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>loss = 124.58647155761719
-loss = 100.0760726928711
-loss = 76.15535736083984
-loss = 53.43391036987305
-loss = 33.741756439208984
-loss = 22.521928787231445
-loss = 21.386093139648438
-loss = 21.377168655395508
-loss = 21.376569747924805
-loss = 21.37651824951172
-loss = 21.376510620117188
-loss = 21.376516342163086
-loss = 21.37651252746582
-loss = 21.376514434814453
-loss = 21.376508712768555
-loss = 21.376506805419922
-loss = 21.376508712768555
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
-loss = 21.376510620117188
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>loss = 123.2157211303711
+loss = 99.48639678955078
+loss = 76.33134460449219
+loss = 54.369239807128906
+loss = 35.38062286376953
+loss = 24.25409507751465
+loss = 22.751705169677734
+loss = 22.747961044311523
+loss = 22.747936248779297
+loss = 22.747936248779297
+loss = 22.747936248779297
+loss = 22.747936248779297
+loss = 22.74793243408203
+loss = 22.747934341430664
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
+loss = 22.74793243408203
 </pre></div>
 </div>
-<img alt="../_images/pytorch_27_1.png" src="../_images/pytorch_27_1.png" />
+<img alt="../_images/17dfd0f7cd33710f9214ee9aa5b3fface8261addd67775be71fc1b3f76134abf.png" src="../_images/17dfd0f7cd33710f9214ee9aa5b3fface8261addd67775be71fc1b3f76134abf.png" />
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="using-library-functions">
-<h2>Using Library functions<a class="headerlink" href="#using-library-functions" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="using-library-functions">
+<h2>Using Library functions<a class="headerlink" href="#using-library-functions" title="Permalink to this heading">#</a></h2>
 <p>The subpackage <code class="docutils literal notranslate"><span class="pre">torch.nn</span></code> provides an object-oriented library of functions that can be composed together.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1163,21 +902,21 @@ loss = 21.376510620117188
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Parameter containing:
- tensor([[ 0.0149,  0.3121,  0.2289,  0.3779, -0.3541],
-         [ 0.2562, -0.3695, -0.3553, -0.1636, -0.2496],
-         [-0.2948,  0.3897, -0.3160, -0.0184,  0.0073],
-         [ 0.0915, -0.3623, -0.4183, -0.1774,  0.0796],
-         [ 0.0279, -0.4043, -0.3383,  0.1285,  0.4144]], requires_grad=True),
+ tensor([[ 0.3316,  0.1522,  0.2492, -0.2992,  0.4102],
+         [-0.3598,  0.1222, -0.3902, -0.2934, -0.3457],
+         [-0.2198,  0.2152,  0.3994, -0.3181, -0.0516],
+         [-0.2023,  0.0867,  0.3717,  0.1664, -0.2102],
+         [ 0.4042, -0.3993, -0.3191, -0.2141, -0.2772]], requires_grad=True),
  Parameter containing:
- tensor([-0.3120,  0.1994, -0.4026,  0.0500,  0.3989], requires_grad=True),
+ tensor([-0.4013,  0.2950,  0.1151, -0.2628,  0.2941], requires_grad=True),
  Parameter containing:
- tensor([[-0.2343, -0.1922,  0.2610, -0.3042, -0.0153],
-         [-0.2047, -0.3752,  0.1721, -0.3577, -0.3788],
-         [ 0.0965, -0.1811,  0.0690, -0.3732,  0.3016],
-         [-0.1894,  0.0812, -0.1556, -0.0575, -0.4400],
-         [-0.2093,  0.0431,  0.1603,  0.1434, -0.1087]], requires_grad=True),
+ tensor([[-0.3463,  0.3572,  0.3492, -0.3008, -0.2829],
+         [ 0.2310, -0.4222,  0.3614, -0.2791, -0.0441],
+         [ 0.3478,  0.1490, -0.2911,  0.3047, -0.2649],
+         [-0.1012,  0.0829, -0.4061,  0.2447,  0.3126],
+         [ 0.2993,  0.0131,  0.1135, -0.3588,  0.2828]], requires_grad=True),
  Parameter containing:
- tensor([-0.0123,  0.3197, -0.4355,  0.1170,  0.3940], requires_grad=True)]
+ tensor([-0.2317, -0.3994,  0.1748,  0.2988, -0.1613], requires_grad=True)]
 </pre></div>
 </div>
 </div>
@@ -1225,118 +964,114 @@ loss = 21.376510620117188
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>loss = 597.9461669921875
-loss = 574.3831787109375
-loss = 560.9655151367188
-loss = 552.7423095703125
-loss = 547.044677734375
-loss = 542.5809326171875
-loss = 538.9766845703125
-loss = 535.6971435546875
-loss = 532.70849609375
-loss = 529.9525146484375
-loss = 527.230224609375
-loss = 524.8335571289062
-loss = 522.7387084960938
-loss = 520.8978271484375
-loss = 519.1264038085938
-loss = 517.4871826171875
-loss = 515.9583740234375
-loss = 514.5322265625
-loss = 513.0758666992188
-loss = 511.7215576171875
-loss = 510.4723205566406
-loss = 509.22216796875
-loss = 508.0721740722656
-loss = 507.1442565917969
-loss = 506.3977966308594
-loss = 505.76324462890625
-loss = 505.0520935058594
-loss = 504.23699951171875
-loss = 503.42218017578125
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>loss = 432.11285400390625
+loss = 432.1269226074219
+loss = 432.1133728027344
+loss = 432.1142578125
+loss = 432.1257019042969
+loss = 432.1229248046875
+loss = 432.13800048828125
+loss = 432.10772705078125
+loss = 432.1046447753906
+loss = 432.154541015625
+loss = 432.12225341796875
+loss = 432.10784912109375
+loss = 432.1551513671875
+loss = 432.1158142089844
+loss = 432.1353454589844
+loss = 432.1211242675781
+loss = 432.1257019042969
+loss = 432.11083984375
+loss = 432.12322998046875
+loss = 432.0851745605469
+loss = 432.0941162109375
+loss = 432.1318054199219
+loss = 432.1329345703125
+loss = 432.130859375
+loss = 432.1982116699219
+loss = 432.1083679199219
+loss = 432.2474060058594
+loss = 432.24249267578125
+loss = 432.15167236328125
+loss = 432.2353515625
+loss = 432.1801452636719
+loss = 432.15069580078125
+loss = 432.195068359375
+loss = 432.19140625
+loss = 432.1322021484375
+loss = 432.28363037109375
+loss = 432.14068603515625
+loss = 432.22784423828125
+loss = 432.1725769042969
+loss = 432.1201171875
+loss = 432.16229248046875
+loss = 432.13134765625
+loss = 432.1106872558594
+loss = 432.1211242675781
+loss = 432.1227111816406
+loss = 432.13153076171875
+loss = 432.1420593261719
+loss = 432.125732421875
+loss = 432.1514587402344
+loss = 432.11346435546875
+loss = 432.14105224609375
+loss = 432.1415710449219
+loss = 432.11651611328125
+loss = 432.12127685546875
+loss = 432.1683349609375
+loss = 432.10308837890625
+loss = 432.13079833984375
+loss = 432.0877990722656
+loss = 432.15673828125
+loss = 432.17340087890625
+loss = 432.1541748046875
+loss = 432.11273193359375
+loss = 432.15594482421875
+loss = 432.1427917480469
+loss = 432.1169128417969
+loss = 432.10809326171875
+loss = 432.1319885253906
+loss = 432.1121520996094
+loss = 432.1141357421875
+loss = 432.1002197265625
+loss = 432.09686279296875
+loss = 432.155029296875
+loss = 432.1081848144531
+loss = 432.1214599609375
+loss = 432.11688232421875
+loss = 432.1337585449219
+loss = 432.13427734375
+loss = 432.1278076171875
+loss = 432.18560791015625
+loss = 432.2113952636719
+loss = 432.0914611816406
+loss = 432.1741027832031
+loss = 432.17205810546875
+loss = 432.1813049316406
+loss = 432.166748046875
+loss = 432.22247314453125
+loss = 432.14013671875
+loss = 432.1714172363281
+loss = 432.14459228515625
+loss = 432.1617431640625
+loss = 432.11053466796875
+loss = 432.1317443847656
+loss = 432.16522216796875
+loss = 432.1226501464844
+loss = 432.1714782714844
+loss = 432.15087890625
+loss = 432.13763427734375
+loss = 432.167236328125
+loss = 432.12109375
+loss = 432.1177062988281
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>loss = 502.65570068359375
-loss = 501.8807373046875
-loss = 501.22955322265625
-loss = 500.6920166015625
-loss = 500.2988586425781
-loss = 499.9666748046875
-loss = 499.5892639160156
-loss = 499.18121337890625
-loss = 498.6595458984375
-loss = 498.08392333984375
-loss = 497.55181884765625
-loss = 497.0421142578125
-loss = 496.69696044921875
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>loss = 496.461669921875
-loss = 496.1409606933594
-loss = 495.70648193359375
-loss = 495.125
-loss = 494.5040283203125
-loss = 493.8422546386719
-loss = 492.9754333496094
-loss = 492.11651611328125
-loss = 491.59033203125
-loss = 491.2809143066406
-loss = 490.9151916503906
-loss = 490.73663330078125
-loss = 490.4977722167969
-loss = 490.1248779296875
-loss = 489.64532470703125
-loss = 488.96630859375
-loss = 488.28997802734375
-loss = 487.94036865234375
-loss = 487.5657653808594
-loss = 487.0981140136719
-loss = 486.5963134765625
-loss = 486.2052917480469
-loss = 485.85565185546875
-loss = 485.5244140625
-loss = 485.2522888183594
-loss = 484.9501037597656
-loss = 484.6748962402344
-loss = 484.4850158691406
-loss = 484.23541259765625
-loss = 484.03240966796875
-loss = 483.9110107421875
-loss = 483.74169921875
-loss = 483.5115051269531
-loss = 483.3094482421875
-loss = 483.09991455078125
-loss = 482.889892578125
-loss = 482.68017578125
-loss = 482.531982421875
-loss = 482.34814453125
-loss = 482.1547546386719
-loss = 481.9912109375
-loss = 481.884521484375
-loss = 481.7872314453125
-loss = 481.70562744140625
-loss = 481.52581787109375
-loss = 481.36749267578125
-loss = 481.2004089355469
-loss = 481.10504150390625
-loss = 480.96807861328125
-loss = 480.7559509277344
-loss = 480.4117431640625
-loss = 480.0869140625
-loss = 479.7966613769531
-loss = 479.5823059082031
-loss = 479.4156494140625
-loss = 479.1708068847656
-loss = 478.93817138671875
-loss = 478.64166259765625
-</pre></div>
-</div>
-<img alt="../_images/pytorch_36_3.png" src="../_images/pytorch_36_3.png" />
+<img alt="../_images/6835fad184b0f65f83f02687694752c0a9567a99faa617adee972ccdfe705470.png" src="../_images/6835fad184b0f65f83f02687694752c0a9567a99faa617adee972ccdfe705470.png" />
 </div>
 </div>
-</div>
-<div class="section" id="mnist-example">
-<h2>MNIST Example<a class="headerlink" href="#mnist-example" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="mnist-example">
+<h2>MNIST Example<a class="headerlink" href="#mnist-example" title="Permalink to this heading">#</a></h2>
 <p>First, you’ll want to install the <code class="docutils literal notranslate"><span class="pre">torchvision</span></code> package - this is a package for PyTorch that provides a variety of computer vision functionality.</p>
 <p>The <a class="reference external" href="http://yann.lecun.com/exdb/mnist/">MNIST data set</a> consists of a collection of handwritten digits (0-9).  Our goal is to train a neural net which will classify the image of each digit as the correct digit</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="n">torchvision</span> <span class="o">-</span><span class="n">c</span> <span class="n">pytorch</span>
@@ -1385,10 +1120,10 @@ loss = 478.64166259765625
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
 </pre></div>
 </div>
-<img alt="../_images/pytorch_42_1.png" src="../_images/pytorch_42_1.png" />
+<img alt="../_images/96d0b7c1ea0443f72ce564923517bcdbc403a6d88cba95735e7991cfa0b991e8.png" src="../_images/96d0b7c1ea0443f72ce564923517bcdbc403a6d88cba95735e7991cfa0b991e8.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1423,8 +1158,8 @@ loss = 478.64166259765625
 </div>
 </div>
 </div>
-<div class="section" id="mnist-training">
-<h3>MNIST Training<a class="headerlink" href="#mnist-training" title="Permalink to this headline">¶</a></h3>
+<section id="mnist-training">
+<h3>MNIST Training<a class="headerlink" href="#mnist-training" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
@@ -1496,7 +1231,7 @@ loss = 478.64166259765625
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/pytorch_51_0.png" src="../_images/pytorch_51_0.png" />
+<img alt="../_images/6244caa3d4d3823cc653db6592d4acc5e3b8d15d82c7c6faaaab9c5b8f10ce61.png" src="../_images/6244caa3d4d3823cc653db6592d4acc5e3b8d15d82c7c6faaaab9c5b8f10ce61.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1522,18 +1257,18 @@ loss = 478.64166259765625
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy =  0.979
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy =  0.978
 </pre></div>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="credits">
-<h3>Credits<a class="headerlink" href="#credits" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="credits">
+<h3>Credits<a class="headerlink" href="#credits" title="Permalink to this heading">#</a></h3>
 <p>This notebook was adapted from a notebook from <a class="reference external" href="https://github.com/icme/cme193">CME 193 at Stanford</a></p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1547,7 +1282,7 @@ loss = 478.64166259765625
             mode: "pycourse"
         },
         kernelOptions: {
-            kernelName: "pycourse",
+            name: "pycourse",
             path: "./07_data"
         },
         predefinedOutput: true
@@ -1555,44 +1290,97 @@ loss = 478.64166259765625
     </script>
     <script>kernelName = 'pycourse'</script>
 
-              </div>
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deep-learning-libraries">Deep Learning Libraries</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#main-features-that-any-deep-learning-library-should-provide">Main features that any deep learning library should provide</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pytorch">PyTorch</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#automatic-differentiation">Automatic Differentiation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#making-it-more-compact">Making it more compact</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-library-functions">Using Library functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mnist-example">MNIST Example</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mnist-training">MNIST Training</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#credits">Credits</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="dimension_reduction.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Dimension Reduction and Data Visualization</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="../08_geometry/geometry.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Geometry</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
-</div>
+          </div>
+          <footer class="bd-footer-content">
             
-        </div>
-    </div>
-    <footer class="footer">
-  <p>
-    
-      By Brad Nelson<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
-</main>
-
-
-      </div>
-    </div>
+<div class="bd-footer-content__inner container">
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <div class="footer-item">
+    
+<p class="component-author">
+By Brad Nelson
+</p>
 
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

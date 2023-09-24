@@ -1,825 +1,479 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>Dense Linear Algebra in NumPy and SciPy &#8212; Scientific Computing with Python</title>
-    
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
-    
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '02_linear_algebra/numpy_scipy_linalg';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="BLAS and LAPACK" href="blas_lapack.html" />
-    <link rel="prev" title="Memory and Performance" href="memory.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
     
-        <div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
-      
-      
-      
-      <h1 class="site-logo" id="site-title">Scientific Computing with Python</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../introduction.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Scientific Computing with Python</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../introduction.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
         <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../introduction.html">
-   Introduction
-  </a>
- </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../00_python/python.html">Python</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/using_python.html">Using Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/basics.html">Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/bitsbytes.html">Bits, Bytes, and Numbers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/basic_packages.html">Basic Containers and Packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/functions.html">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/classes.html">Object-Oriented Programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/modules.html">Modules and Packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/decorators.html">Decorators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/iterators.html">Iterators and Generators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/pyplot.html">Matlotlib &amp; PyPlot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/misc.html">Miscellaneous</a></li>
 </ul>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../00_python/python.html">
-   Python
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../00_python/using_python.html">
-     Using Python
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../00_python/basics.html">
-     Basics
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../00_python/bitsbytes.html">
-     Bits, Bytes, and Numbers
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../00_python/basic_packages.html">
-     Basic Containers and Packages
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../00_python/functions.html">
-     Functions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../00_python/classes.html">
-     Object-Oriented Programming
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../00_python/modules.html">
-     Modules and Packages
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../00_python/decorators.html">
-     Decorators
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../00_python/iterators.html">
-     Iterators and Generators
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../00_python/pyplot.html">
-     Matlotlib &amp; PyPlot
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../00_python/misc.html">
-     Miscellaneous
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../01_analysis/analysis.html">
-   Analysis of Algorithms
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../01_analysis/asymptotic_notation.html">
-     Asymptotic Notation
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../01_analysis/recursion.html">
-     Recursion
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../01_analysis/convergence.html">
-     Convergence of Algorithms
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../01_analysis/average_case.html">
-     Average Case Analysis
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="linear_algebra.html">
-   Linear Algebra
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="memory.html">
-     Memory and Performance
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Dense Linear Algebra in NumPy and SciPy
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="blas_lapack.html">
-     BLAS and LAPACK
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="sparse.html">
-     Sparse Matrices
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="linearoperators.html">
-     Linear Operators
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="sparse_linalg.html">
-     Sparse Linear Algebra
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="pytorch.html">
-     Linear Algebra in PyTorch
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="convolutions.html">
-     Convolutions and Fourier Transforms
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="fft.html">
-     The Fast Fourier Transform
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../03_optimization/optimization.html">
-   Optimization
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../03_optimization/scipy_opt.html">
-     Optimization in SciPy
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../04_functions/functions.html">
-   Functions
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../04_functions/sympy.html">
-     Symbolic Computing
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../04_functions/roots.html">
-     Root Finding
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../04_functions/ode_initial.html">
-     Initial Value Problems
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../04_functions/interpolation.html">
-     Interpolation
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../04_functions/integration.html">
-     Integration &amp; Quadrature
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../04_functions/bvp.html">
-     Boundary Value Problems
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../05_graphs/graphs.html">
-   Graphs
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../05_graphs/networkx.html">
-     NetworkX
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../05_graphs/spectral.html">
-     Spectral Graph Theory
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../06_probability_statistics/prob_stat.html">
-   Probability and Statistics
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../06_probability_statistics/generating_random.html">
-     Generating Random Numbers
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../06_probability_statistics/scipy_stats.html">
-     Scipy
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       stats
-      </span>
-     </code>
-     package
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../07_data/data.html">
-   Data
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-  <label for="toctree-checkbox-8">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../07_data/pandas.html">
-     Pandas
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../07_data/sklearn.html">
-     SciKit Learn
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../07_data/dimension_reduction.html">
-     Dimension Reduction and Data Visualization
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../07_data/pytorch.html">
-     PyTorch Neural Networks
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../08_geometry/geometry.html">
-   Geometry
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
-  <label for="toctree-checkbox-9">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../08_geometry/distances.html">
-     Distances
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../08_geometry/nearestneighbor.html">
-     Nearest Neighbors
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../09_computing/computing.html">
-   Computing
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../09_computing/basic_bash.html">
-     Basic Bash
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../09_computing/git.html">
-     Git Version Control
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../09_computing/unittest.html">
-     Unit Testing
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../09_computing/packages.html">
-     Packages and Setup
-    </a>
-   </li>
-   <li class="toctree-l2 has-children">
-    <a class="reference internal" href="../09_computing/performance/performance.html">
-     Performance
-    </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
-    <label for="toctree-checkbox-11">
-     <i class="fas fa-chevron-down">
-     </i>
-    </label>
-    <ul>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../09_computing/performance/ipython.html">
-       Measuring Performance in Python
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../09_computing/performance/numpy_ufuncs.html">
-       Vectorization, Numpy Universal Functions
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../09_computing/environments.html">
-     Environments
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../09_computing/agent_based_models.html">
-     Agent Based Models
-    </a>
-   </li>
-  </ul>
- </li>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01_analysis/analysis.html">Analysis of Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01_analysis/asymptotic_notation.html">Asymptotic Notation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_analysis/recursion.html">Recursion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_analysis/convergence.html">Convergence of Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_analysis/average_case.html">Average Case Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../09_computing/computing.html">Computing</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../09_computing/basic_bash.html">Basic Bash</a></li>
+</ul>
+</li>
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/02_linear_algebra/numpy_scipy_linalg.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+</nav></div>
     </div>
-</div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
 
-            <!-- Source interaction buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/caam37830/book"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/caam37830/book/issues/new?title=Issue%20on%20page%20%2F02_linear_algebra/numpy_scipy_linalg.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+      </div>
+      
+      <main id="main-content" class="bd-main">
         
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
     </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/UChi-ComPy23/notes/master?urlpath=tree/02_linear_algebra/numpy_scipy_linalg.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/UChi-ComPy23/notes/blob/master/02_linear_algebra/numpy_scipy_linalg.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
 </div>
 
-            <!-- Full screen (wrap in <a> to have style consistency -->
 
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
 
-            <!-- Launch buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/caam37830/book/master?urlpath=tree/02_linear_algebra/numpy_scipy_linalg.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        <a class="colab-button" href="https://colab.research.google.com/github/caam37830/book/blob/master/02_linear_algebra/numpy_scipy_linalg.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
-                    src="../_static/images/logo_colab.png"
-                    alt="Interact on Colab">Colab</button></a>
-        
-        
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/UChi-ComPy23/notes" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/UChi-ComPy23/notes/issues/new?title=Issue%20on%20page%20%2F02_linear_algebra/numpy_scipy_linalg.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/02_linear_algebra/numpy_scipy_linalg.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
     </div>
+  
 </div>
+</div>
+              
+              
 
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Dense Linear Algebra in NumPy and SciPy</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div>
+                <h2> Contents </h2>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
+            <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#linear-algebra">
-   Linear Algebra
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#householder-notation">
-     Householder Notation
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#what-do-we-compute">
-     What Do we Compute?
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#some-places-where-linear-algebra-appears">
-   Some Places where Linear Algebra Appears
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#example-diffusion">
-     Example: Diffusion
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#linear-algebra-in-numpy">
-   Linear Algebra In NumPy
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#basic-operations">
-     Basic Operations
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#solving-linear-systems">
-     Solving Linear Systems
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#scipy-linear-algebra">
-   SciPy Linear Algebra
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#matrix-factorizations">
-   Matrix Factorizations
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#lu-decomposition">
-     LU decomposition
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercise">
-     Exercise
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#qr-decomposition">
-     QR decomposition
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#excercise">
-     Excercise
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#eigenvalue-decompositions">
-     Eigenvalue Decompositions
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercises">
-     Exercises
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#svd">
-     SVD
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id1">
-     Exercises
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-algebra">Linear Algebra</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#householder-notation">Householder Notation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-do-we-compute">What Do we Compute?</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#some-places-where-linear-algebra-appears">Some Places where Linear Algebra Appears</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-diffusion">Example: Diffusion</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-algebra-in-numpy">Linear Algebra In NumPy</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-operations">Basic Operations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-linear-systems">Solving Linear Systems</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scipy-linear-algebra">SciPy Linear Algebra</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-factorizations">Matrix Factorizations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lu-decomposition">LU decomposition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#qr-decomposition">QR decomposition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#excercise">Excercise</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalue-decompositions">Eigenvalue Decompositions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#svd">SVD</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Exercises</a></li>
+</ul>
+</li>
+</ul>
             </nav>
         </div>
     </div>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Dense Linear Algebra in NumPy and SciPy</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#linear-algebra">
-   Linear Algebra
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#householder-notation">
-     Householder Notation
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#what-do-we-compute">
-     What Do we Compute?
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#some-places-where-linear-algebra-appears">
-   Some Places where Linear Algebra Appears
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#example-diffusion">
-     Example: Diffusion
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#linear-algebra-in-numpy">
-   Linear Algebra In NumPy
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#basic-operations">
-     Basic Operations
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#solving-linear-systems">
-     Solving Linear Systems
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#scipy-linear-algebra">
-   SciPy Linear Algebra
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#matrix-factorizations">
-   Matrix Factorizations
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#lu-decomposition">
-     LU decomposition
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercise">
-     Exercise
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#qr-decomposition">
-     QR decomposition
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#excercise">
-     Excercise
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#eigenvalue-decompositions">
-     Eigenvalue Decompositions
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercises">
-     Exercises
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#svd">
-     SVD
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id1">
-     Exercises
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
 
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            
-              <div>
+              
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="dense-linear-algebra-in-numpy-and-scipy">
-<h1>Dense Linear Algebra in NumPy and SciPy<a class="headerlink" href="#dense-linear-algebra-in-numpy-and-scipy" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="linear-algebra">
-<h2>Linear Algebra<a class="headerlink" href="#linear-algebra" title="Permalink to this headline">¶</a></h2>
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="dense-linear-algebra-in-numpy-and-scipy">
+<h1>Dense Linear Algebra in NumPy and SciPy<a class="headerlink" href="#dense-linear-algebra-in-numpy-and-scipy" title="Permalink to this heading">#</a></h1>
+<section id="linear-algebra">
+<h2>Linear Algebra<a class="headerlink" href="#linear-algebra" title="Permalink to this heading">#</a></h2>
 <p>Linear Algebra is <em>the</em> fundamental building block in scientific computing.  Why?  Even if we are dealing with complicated functions, we can always deal with approximations.  If we want to understand a function near a point (sample), the simplest approximation is the <em>constant</em> function, which says the function is the same everywhere.  This isn’t very interesting.  The next level of approximation is a <em>linear</em> approximation, where we model the rate of change near that point. This is <em>much</em> more useful, even if it isn’t exact, and opens up the possibility of saying all kinds of things about the system that we’re studying.</p>
 <p>In other words, you can do a lot with degree-1 Taylor series.</p>
 <p>Let’s first recall some definitions from your mathematics classes:</p>
 <p>A <strong>vector space</strong> <span class="math notranslate nohighlight">\(V\)</span> over a field <span class="math notranslate nohighlight">\(\mathbb{F}\)</span> consists of a set of vectors which are related by addition and scalar multiplication</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p><span class="math notranslate nohighlight">\(v, w\in V\)</span> implies <span class="math notranslate nohighlight">\(v + w \in V\)</span> (addition)</p></li>
 <li><p><span class="math notranslate nohighlight">\(v \in V, \alpha \in \mathbb{F}\)</span> implies <span class="math notranslate nohighlight">\(\alpha v \in V\)</span></p></li>
 </ol>
@@ -829,8 +483,8 @@
 <p>Matrices encode a linear map when we have chosen bases for both <span class="math notranslate nohighlight">\(V\)</span> and <span class="math notranslate nohighlight">\(W\)</span>.</p>
 <p>In scientific computing the field <span class="math notranslate nohighlight">\(\mathbb{F}\)</span> is typically either the real numbers <span class="math notranslate nohighlight">\(\mathbb{R}\)</span> or complex numbers <span class="math notranslate nohighlight">\(\mathbb{C}\)</span> (but remember we use floating point arithmetic)</p>
 <p>We will also deal with finite dimensional vector spaces. Sometimes these are explicitly vectors in Euclidean space (e.g. in computational geometry), but more often are some sort of function space.</p>
-<div class="section" id="householder-notation">
-<h3>Householder Notation<a class="headerlink" href="#householder-notation" title="Permalink to this headline">¶</a></h3>
+<section id="householder-notation">
+<h3>Householder Notation<a class="headerlink" href="#householder-notation" title="Permalink to this heading">#</a></h3>
 <p>Householder notations is standard in numerical linear algebra:</p>
 <ul class="simple">
 <li><p>scalars (elements of <span class="math notranslate nohighlight">\(\mathbb{F}\)</span>) are denoted with lower-case Greek letters <span class="math notranslate nohighlight">\(\alpha, \beta, \dots\)</span></p></li>
@@ -838,19 +492,19 @@
 <li><p>matrices are denoted with capital letters (Latin or Greek), such as <span class="math notranslate nohighlight">\(A, B, \dots\)</span></p></li>
 </ul>
 <p>This was introduced by Householder (see his book “Theory of Matrices in Numerical Analysis”, or the modern text “Matrix Computations” by Golub and Van Loan).</p>
-</div>
-<div class="section" id="what-do-we-compute">
-<h3>What Do we Compute?<a class="headerlink" href="#what-do-we-compute" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="what-do-we-compute">
+<h3>What Do we Compute?<a class="headerlink" href="#what-do-we-compute" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>basic operations</strong> - e.g. compute <span class="math notranslate nohighlight">\(y\)</span> where <span class="math notranslate nohighlight">\(y = Ax\)</span></p></li>
 <li><p><strong>solving linear systems</strong> - find <span class="math notranslate nohighlight">\(x\)</span> where <span class="math notranslate nohighlight">\(Ax = b\)</span>.</p></li>
 <li><p><strong>matrix analysis</strong> - understand the action of the matrix <span class="math notranslate nohighlight">\(A\)</span> via eigenvalues, SVD, etc.</p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="some-places-where-linear-algebra-appears">
-<h2>Some Places where Linear Algebra Appears<a class="headerlink" href="#some-places-where-linear-algebra-appears" title="Permalink to this headline">¶</a></h2>
-<ol class="simple">
+</section>
+</section>
+<section id="some-places-where-linear-algebra-appears">
+<h2>Some Places where Linear Algebra Appears<a class="headerlink" href="#some-places-where-linear-algebra-appears" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
 <li><p>Linear regression (example of linear system)</p></li>
 <li><p>Principal components analysis (example of matrix analysis)</p></li>
 <li><p>Solving ODE/PDE (depending on details, involves basic operations and solving linear systems)</p></li>
@@ -859,10 +513,10 @@
 <li><p>Imaging - (basic operations, solving systems, some matrix analysis)</p></li>
 </ol>
 <p>And the list goes on.</p>
-<div class="section" id="example-diffusion">
-<h3>Example: Diffusion<a class="headerlink" href="#example-diffusion" title="Permalink to this headline">¶</a></h3>
+<section id="example-diffusion">
+<h3>Example: Diffusion<a class="headerlink" href="#example-diffusion" title="Permalink to this heading">#</a></h3>
 <p>One example where linear algebra appears is in measuring the strength of a signal at several sources from receivers.  Consider a simplified problem where we have several points that emit some pollutant.  We aren’t able to measure this pollutant directly at the sources.  This can happen for a variety of reasons, such as:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>The pollutant is completely inaccessible (e.g. far underwater)</p></li>
 <li><p>We’re not able to get close for political reasons (people responsible won’t cooperate)</p></li>
 <li><p>It is much cheaper to measure from other locations where we already have equipment</p></li>
@@ -875,7 +529,8 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Populating the interactive namespace from numpy and matplotlib
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>%pylab is deprecated, use %matplotlib inline and import the required libraries.
+Populating the interactive namespace from numpy and matplotlib
 </pre></div>
 </div>
 </div>
@@ -895,7 +550,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/numpy_scipy_linalg_4_0.png" src="../_images/numpy_scipy_linalg_4_0.png" />
+<img alt="../_images/595e0098ce021366026d8edc6620a1fa9006dc061820d2ab039b8c6bdddee5ed.png" src="../_images/595e0098ce021366026d8edc6620a1fa9006dc061820d2ab039b8c6bdddee5ed.png" />
 </div>
 </div>
 <p>Each source emits the pollutant at rate <span class="math notranslate nohighlight">\(f\)</span>.  We represent this with a vector, where <code class="docutils literal notranslate"><span class="pre">f[i]</span></code> is the pollutant emitted by source <code class="docutils literal notranslate"><span class="pre">i</span></code>.</p>
@@ -928,9 +583,26 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.2493779 , 0.10068884, 0.18840228],
-       [0.15224308, 0.14768804, 0.26461807],
-       [0.22302595, 0.08119219, 0.15141249]])
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+Cell In[4], line 1
+----&gt; 1 G = np.empty((ny, nx), dtype=np.float)
+      2 for i in range(nx):
+      3     for j in range(ny):
+
+File ~/miniconda3/envs/pycourse_test/lib/python3.11/site-packages/numpy/__init__.py:319, in __getattr__(attr)
+    314     warnings.warn(
+    315         f&quot;In the future `np.{attr}` will be defined as the &quot;
+    316         &quot;corresponding NumPy scalar.&quot;, FutureWarning, stacklevel=2)
+    318 if attr in __former_attrs__:
+--&gt; 319     raise AttributeError(__former_attrs__[attr])
+    321 if attr == &#39;testing&#39;:
+    322     import numpy.testing as testing
+
+AttributeError: module &#39;numpy&#39; has no attribute &#39;float&#39;.
+`np.float` was a deprecated alias for the builtin `float`. To avoid this error in existing code, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
+The aliases was originally deprecated in NumPy 1.20; for more details and guidance see the original release note at:
+    https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
 </pre></div>
 </div>
 </div>
@@ -978,12 +650,12 @@
 </div>
 <p>We see that the vector we solved for (<code class="docutils literal notranslate"><span class="pre">f2</span></code>) is very close to the true solution of <code class="docutils literal notranslate"><span class="pre">f</span></code>, and is close to machine precision.</p>
 <p>We are able to accurately obtain the rates at which the sources release pollution based on measurements from some randomly placed sensors.</p>
-</div>
-</div>
-<div class="section" id="linear-algebra-in-numpy">
-<h2>Linear Algebra In NumPy<a class="headerlink" href="#linear-algebra-in-numpy" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="basic-operations">
-<h3>Basic Operations<a class="headerlink" href="#basic-operations" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="linear-algebra-in-numpy">
+<h2>Linear Algebra In NumPy<a class="headerlink" href="#linear-algebra-in-numpy" title="Permalink to this heading">#</a></h2>
+<section id="basic-operations">
+<h3>Basic Operations<a class="headerlink" href="#basic-operations" title="Permalink to this heading">#</a></h3>
 <p>Vectors and matrices in NumPy are represented using <code class="docutils literal notranslate"><span class="pre">np.ndarray</span></code>, which we have seen already.  Here is a review:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1053,14 +725,14 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-9.71445147e-17,  0.00000000e+00, -2.22044605e-16])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 1.11022302e-16,  2.22044605e-16, -2.22044605e-16])
 </pre></div>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="solving-linear-systems">
-<h3>Solving Linear Systems<a class="headerlink" href="#solving-linear-systems" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="solving-linear-systems">
+<h3>Solving Linear Systems<a class="headerlink" href="#solving-linear-systems" title="Permalink to this heading">#</a></h3>
 <p>Recall from our example that for numerical reasons, you should never invert a matrix to solve a linear system. Let’s see an example where we solve <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">&#64;</span> <span class="pre">x</span> <span class="pre">=</span> <span class="pre">b</span></code> for <code class="docutils literal notranslate"><span class="pre">x</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1092,10 +764,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.08504891395568848 sec.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.11638689041137695 sec.
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.4804090830990304e-11
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.700651763187572e-11
 </pre></div>
 </div>
 </div>
@@ -1111,10 +783,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.023474693298339844 sec.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.026604413986206055 sec.
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.6248541274337918e-12
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7.913077098404492e-12
 </pre></div>
 </div>
 </div>
@@ -1131,7 +803,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.4290020694403317e-12
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.79910147578442e-12
 </pre></div>
 </div>
 </div>
@@ -1151,7 +823,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.634515912304845e-14
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.954860379710892e-14
 </pre></div>
 </div>
 </div>
@@ -1171,16 +843,16 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12.784556981877794
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12.959849113533133
 </pre></div>
 </div>
 </div>
 </div>
 <p>in the above case, there are many possiblities for <code class="docutils literal notranslate"><span class="pre">x</span></code> where <code class="docutils literal notranslate"><span class="pre">A*x</span> <span class="pre">=</span> <span class="pre">b</span></code>, so we find the smallest-norm solution</p>
-</div>
-</div>
-<div class="section" id="scipy-linear-algebra">
-<h2>SciPy Linear Algebra<a class="headerlink" href="#scipy-linear-algebra" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="scipy-linear-algebra">
+<h2>SciPy Linear Algebra<a class="headerlink" href="#scipy-linear-algebra" title="Permalink to this heading">#</a></h2>
 <p>We’re now going to switch gears and start using <code class="docutils literal notranslate"><span class="pre">scipy.linalg</span></code> instead of <code class="docutils literal notranslate"><span class="pre">numpy.linalg</span></code>.  From the user’s point of view, there isn’t really any difference, except <code class="docutils literal notranslate"><span class="pre">scipy.linalg</span></code> has all the same functions as <code class="docutils literal notranslate"><span class="pre">numpy.linalg</span></code> as well as additional functions.  The call signatures are essentially the same, but there are sometimes different implementations under the hood.</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/routines.linalg.html">NumPy linear algebra documentation</a></p></li>
@@ -1217,9 +889,9 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="matrix-factorizations">
-<h2>Matrix Factorizations<a class="headerlink" href="#matrix-factorizations" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="matrix-factorizations">
+<h2>Matrix Factorizations<a class="headerlink" href="#matrix-factorizations" title="Permalink to this heading">#</a></h2>
 <p>A <strong>matrix factorization</strong> or <strong>matrix decomposition</strong> writes a matrix <span class="math notranslate nohighlight">\(A\)</span> as the product of matrices <span class="math notranslate nohighlight">\(A = BCD\dots\)</span>, where the matrices in the product typically have some special structure.</p>
 <p>Here are some examples:</p>
 <ul class="simple">
@@ -1230,8 +902,8 @@
 </ul>
 <p>Most of the matrix factorizations we will see run in <span class="math notranslate nohighlight">\(O(n^3)\)</span> time for a <span class="math notranslate nohighlight">\(n\times n\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span>, or <span class="math notranslate nohighlight">\(O(\min(m,n)^2 \max(m,n))\)</span> for a <span class="math notranslate nohighlight">\(m\times n\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span>.</p>
 <p>If you want to get really in-depth into how to compute matrix factorizations, take a numerical linear algebra course.  We’ll get them treating scipy as a black box (meaning we don’t look inside).</p>
-<div class="section" id="lu-decomposition">
-<h3>LU decomposition<a class="headerlink" href="#lu-decomposition" title="Permalink to this headline">¶</a></h3>
+<section id="lu-decomposition">
+<h3>LU decomposition<a class="headerlink" href="#lu-decomposition" title="Permalink to this heading">#</a></h3>
 <p>The first type of factorization we’ll look at is a <span class="math notranslate nohighlight">\(LU\)</span> decomposition, where <span class="math notranslate nohighlight">\(L\)</span> is lower-triangular and <span class="math notranslate nohighlight">\(U\)</span> is upper triangular.  For numerical stability, this is often computed with a <em>pivoting</em> strategy, which means there is also row or column permutation matrix <span class="math notranslate nohighlight">\(P\)</span>.
 $<span class="math notranslate nohighlight">\( A = PLU\)</span>$</p>
 <div class="cell docutils container">
@@ -1253,7 +925,7 @@ $<span class="math notranslate nohighlight">\( A = PLU\)</span>$</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.71100842029916e-12
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.800469442732169e-12
 </pre></div>
 </div>
 </div>
@@ -1268,7 +940,7 @@ $<span class="math notranslate nohighlight">\( A = PLU\)</span>$</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9.432085149145724e-13
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.1925409285384606e-12
 </pre></div>
 </div>
 </div>
@@ -1278,7 +950,7 @@ $<span class="math notranslate nohighlight">\(A^{-1} = U^{-1} L^{-1} P^T\)</span
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">my_solve</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    solve A * x = b for x</span>
 <span class="sd">    </span>
 <span class="sd">    use LU decomposition</span>
@@ -1307,15 +979,15 @@ $<span class="math notranslate nohighlight">\(A^{-1} = U^{-1} L^{-1} P^T\)</span
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9.292467134909439e-12
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.6729625547045684e-11
 </pre></div>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="exercise">
-<h3>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h3>
-<ol class="simple">
+</section>
+<section id="exercise">
+<h3>Exercise<a class="headerlink" href="#exercise" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
 <li><p>Use the <code class="docutils literal notranslate"><span class="pre">time</span></code> module to perform an experiment to verify that <code class="docutils literal notranslate"><span class="pre">solve_triangular</span></code> takes <span class="math notranslate nohighlight">\(O(n^2)\)</span> time.  Hint: take LU decompositions of random matrices to get triangular factors of different sizes.</p></li>
 </ol>
 <div class="cell docutils container">
@@ -1326,6 +998,11 @@ $<span class="math notranslate nohighlight">\(A^{-1} = U^{-1} L^{-1} P^T\)</span
 </div>
 </div>
 <div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span> 
 <span class="n">tlist</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
@@ -1355,16 +1032,17 @@ $<span class="math notranslate nohighlight">\(A^{-1} = U^{-1} L^{-1} P^T\)</span
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/numpy_scipy_linalg_47_0.png" src="../_images/numpy_scipy_linalg_47_0.png" />
+<img alt="../_images/3ba8d0abd9f23ea64c5688a11ab7c7deada2459eff1ca1ccc630935d34eca818.png" src="../_images/3ba8d0abd9f23ea64c5688a11ab7c7deada2459eff1ca1ccc630935d34eca818.png" />
 </div>
+</details>
 </div>
-<ol class="simple">
+<ol class="arabic simple" start="2">
 <li><p>Suppose <span class="math notranslate nohighlight">\(A\)</span> is <span class="math notranslate nohighlight">\(n\times n\)</span>, so the <span class="math notranslate nohighlight">\(LU\)</span> factorization above takes <span class="math notranslate nohighlight">\(O(n^3)\)</span> time.  What is a big-O expression for the time to run <code class="docutils literal notranslate"><span class="pre">my_solve</span></code> on <span class="math notranslate nohighlight">\(A\)</span>?</p></li>
 </ol>
 <p>The big-O expression for the time to run my_solve on A is O(n^3) + O(n^2). LU factorization takes O(n^3) and each inverse of a triangular matrix takes O(n^2), but two triangular matrices are still O(n^2), and then we sum them up since there is an order performing the algorithm not composed.</p>
-</div>
-<div class="section" id="qr-decomposition">
-<h3>QR decomposition<a class="headerlink" href="#qr-decomposition" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="qr-decomposition">
+<h3>QR decomposition<a class="headerlink" href="#qr-decomposition" title="Permalink to this heading">#</a></h3>
 <p>The <span class="math notranslate nohighlight">\(QR\)</span> decomposition, <span class="math notranslate nohighlight">\(A = QR\)</span>, contains a matrix <span class="math notranslate nohighlight">\(Q\)</span> with orthonormal columns, and an upper triangular matrix <span class="math notranslate nohighlight">\(R\)</span>.  For stability reasons, column pivoting is often used which means there is often a permutation matrix <span class="math notranslate nohighlight">\(P\)</span> and <span class="math notranslate nohighlight">\(A = QRP\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1378,7 +1056,7 @@ $<span class="math notranslate nohighlight">\(A^{-1} = U^{-1} L^{-1} P^T\)</span
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.931440984490618e-13
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.918636792825306e-13
 </pre></div>
 </div>
 </div>
@@ -1403,7 +1081,7 @@ $<span class="math notranslate nohighlight">\(A^{-1} = U^{-1} L^{-1} P^T\)</span
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.33915547848351e-13
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.322728506564255e-13
 </pre></div>
 </div>
 </div>
@@ -1412,7 +1090,7 @@ $<span class="math notranslate nohighlight">\(A^{-1} = U^{-1} L^{-1} P^T\)</span
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">my_lstsq</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    least squares solution ||b - A*x||</span>
 <span class="sd">    </span>
 <span class="sd">    Uses QR decomposition</span>
@@ -1436,19 +1114,19 @@ $<span class="math notranslate nohighlight">\(A^{-1} = U^{-1} L^{-1} P^T\)</span
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.560807461225405e-14
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.967335210592819e-14
 </pre></div>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="excercise">
-<h3>Excercise<a class="headerlink" href="#excercise" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="excercise">
+<h3>Excercise<a class="headerlink" href="#excercise" title="Permalink to this heading">#</a></h3>
 <p>Suppose <span class="math notranslate nohighlight">\(A\)</span> is a <span class="math notranslate nohighlight">\(n\times n\)</span> matrix, and that the <span class="math notranslate nohighlight">\(QR\)</span> factorization takes <span class="math notranslate nohighlight">\(O(n^3)\)</span> time.  What is the time to run <code class="docutils literal notranslate"><span class="pre">my_lstsq</span></code> using <span class="math notranslate nohighlight">\(A\)</span> in big-O notation?</p>
 <p>The computational complexity of QR factorization is <span class="math notranslate nohighlight">\(O(n^3)\)</span>, and the matirx-vector multiplication “<span class="math notranslate nohighlight">\( Q^{T} b\)</span>” costs <span class="math notranslate nohighlight">\( O (n^2)\)</span>. Then solving <span class="math notranslate nohighlight">\( Rx = Q^{T}b\)</span> has the cost of solving a triangular system <span class="math notranslate nohighlight">\( O (n^2) \)</span>. Thus, the overall computational complexity of <code class="docutils literal notranslate"><span class="pre">my_lstsq</span></code> is (<span class="math notranslate nohighlight">\(O(n^3) + O (n^2)\)</span>) or just <span class="math notranslate nohighlight">\( O(n^3)\)</span> (because we usually omit the lower orders).</p>
-</div>
-<div class="section" id="eigenvalue-decompositions">
-<h3>Eigenvalue Decompositions<a class="headerlink" href="#eigenvalue-decompositions" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="eigenvalue-decompositions">
+<h3>Eigenvalue Decompositions<a class="headerlink" href="#eigenvalue-decompositions" title="Permalink to this heading">#</a></h3>
 <p>A vector <span class="math notranslate nohighlight">\(x\)</span> is an eigenvector of <span class="math notranslate nohighlight">\(A\)</span> with eigenvalue <span class="math notranslate nohighlight">\(\lambda\)</span> if <span class="math notranslate nohighlight">\(Ax = x \lambda\)</span>.  An eigenvalue decomposition is a decomposition <span class="math notranslate nohighlight">\(A = X \Lambda X^{-1}\)</span> where <span class="math notranslate nohighlight">\(\Lambda\)</span> is a diagonal matrix.  We can compute such a decomposition using <code class="docutils literal notranslate"><span class="pre">eig</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1468,7 +1146,7 @@ $<span class="math notranslate nohighlight">\(A^{-1} = U^{-1} L^{-1} P^T\)</span
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.0280803094050757e-13
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.7783244209694767e-13
 </pre></div>
 </div>
 </div>
@@ -1491,7 +1169,7 @@ $<span class="math notranslate nohighlight">\(A^{-1} = U^{-1} L^{-1} P^T\)</span
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.2896827912901233e-13
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.7824289548299113e-13
 </pre></div>
 </div>
 </div>
@@ -1503,20 +1181,20 @@ $<span class="math notranslate nohighlight">\(A^{-1} = U^{-1} L^{-1} P^T\)</span
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.888115434370349e-12
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.5408759552077597e-12
 </pre></div>
 </div>
 </div>
 </div>
 <p>Computing eigenvector decompositions takes <span class="math notranslate nohighlight">\(O(n^3)\)</span> time for a <span class="math notranslate nohighlight">\(n\times n\)</span> matrix.</p>
-</div>
-<div class="section" id="exercises">
-<h3>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h3>
-<ol class="simple">
+</section>
+<section id="exercises">
+<h3>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
 <li><p>Both <code class="docutils literal notranslate"><span class="pre">eig</span></code> and <code class="docutils literal notranslate"><span class="pre">eigh</span></code> take <span class="math notranslate nohighlight">\(O(n^3)\)</span> time.  Which is faster in practice on a symmetric matrix?  Do they produce the same answer on the same symmetric matrix?</p></li>
 </ol>
 <p>As shown in the figure, <code class="docutils literal notranslate"><span class="pre">eigh</span></code> is much faster than <code class="docutils literal notranslate"><span class="pre">eig</span></code> in practice. We checked the eigenvalues produced by both methods (eigenvalues of <code class="docutils literal notranslate"><span class="pre">eigh</span></code> are sorted), they produced the same answer.</p>
-<ol class="simple">
+<ol class="arabic simple" start="2">
 <li><p>Write a function that solves a linear system with a symmetric matrix using the Eigenvalue decomposition.  Is this function faster or slower than using LU in <code class="docutils literal notranslate"><span class="pre">my_solve</span></code>?</p></li>
 </ol>
 <p>As shown in the figure, <code class="docutils literal notranslate"><span class="pre">my_solve</span></code> is faster than <code class="docutils literal notranslate"><span class="pre">eigh</span></code> in practice.</p>
@@ -1528,6 +1206,11 @@ $<span class="math notranslate nohighlight">\(A^{-1} = U^{-1} L^{-1} P^T\)</span
 </div>
 </div>
 <div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Your code here</span>
 <span class="sd">&#39;&#39;&#39;</span>
@@ -1557,8 +1240,14 @@ $<span class="math notranslate nohighlight">\(A^{-1} = U^{-1} L^{-1} P^T\)</span
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">1. Time comparison</span>
@@ -1578,13 +1267,19 @@ $<span class="math notranslate nohighlight">\(A^{-1} = U^{-1} L^{-1} P^T\)</span
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/numpy_scipy_linalg_70_0.png" src="../_images/numpy_scipy_linalg_70_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.6626700016786344e-12
+<img alt="../_images/02285d52a29fc9aa0f50e84b6008b5d21eecb1be9a53a67c6b3e902068e7b2de.png" src="../_images/02285d52a29fc9aa0f50e84b6008b5d21eecb1be9a53a67c6b3e902068e7b2de.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.4442670110147446e-12
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">2. Compare the speed of EVD v.s. LU when solving linear systems</span>
@@ -1620,8 +1315,14 @@ $<span class="math notranslate nohighlight">\(A^{-1} = U^{-1} L^{-1} P^T\)</span
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">2. Time comparison</span>
@@ -1636,12 +1337,13 @@ $<span class="math notranslate nohighlight">\(A^{-1} = U^{-1} L^{-1} P^T\)</span
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/numpy_scipy_linalg_72_0.png" src="../_images/numpy_scipy_linalg_72_0.png" />
+<img alt="../_images/62d2bf080cd3b4555e514de90c1a008079ce19af56d45bce015b754ad0b94446.png" src="../_images/62d2bf080cd3b4555e514de90c1a008079ce19af56d45bce015b754ad0b94446.png" />
 </div>
+</details>
 </div>
-</div>
-<div class="section" id="svd">
-<h3>SVD<a class="headerlink" href="#svd" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="svd">
+<h3>SVD<a class="headerlink" href="#svd" title="Permalink to this heading">#</a></h3>
 <p>The singular value decomposition is an extremely useful practical and theoretical tool.  We can decompose a <span class="math notranslate nohighlight">\(m\times n\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span> as <span class="math notranslate nohighlight">\(A = U \Sigma V^T\)</span>, where <span class="math notranslate nohighlight">\(U\)</span> is a <span class="math notranslate nohighlight">\(m \times m\)</span> matrix with orthonormal columns (called left singular vectors), <span class="math notranslate nohighlight">\(V\)</span> is a <span class="math notranslate nohighlight">\(n\times n\)</span> matrix with orthonormal columns (called right singular vectors), and <span class="math notranslate nohighlight">\(\Sigma\)</span> is a diagonal matrix with positive entries decreasing in magnitude (called singular values).</p>
 <p>The top singular value solves the variational problem <span class="math notranslate nohighlight">\(\sigma_0 = \max u^T A v\)</span> subject to <span class="math notranslate nohighlight">\(\|u\|_2 = 1, \|v\|_2=1\)</span>, and describes the direction in which <span class="math notranslate nohighlight">\(A\)</span> induces the largest change in maginitude in a vector. The next singular value is defined similarly on the subspaces orthogonal to <span class="math notranslate nohighlight">\(u\)</span> and <span class="math notranslate nohighlight">\(v\)</span>, and so on.</p>
 <p>One way to visualize the action of a matrix is seeing how it maps the unit sphere.  The image is an ellipsoid, and the right singular vectors give the directions of the axes, and the singular values give the lengths of these axes.</p>
@@ -1670,17 +1372,17 @@ $<span class="math notranslate nohighlight">\(A^{-1} = U^{-1} L^{-1} P^T\)</span
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/numpy_scipy_linalg_76_0.png" src="../_images/numpy_scipy_linalg_76_0.png" />
+<img alt="../_images/2963645f67fa8d8f5d90bc3fffe55a3304d21d2d511336a751a30ac84264e0e3.png" src="../_images/2963645f67fa8d8f5d90bc3fffe55a3304d21d2d511336a751a30ac84264e0e3.png" />
 </div>
 </div>
-</div>
-<div class="section" id="id1">
-<h3>Exercises<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
-<ol class="simple">
+</section>
+<section id="id1">
+<h3>Exercises<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
 <li><p>Computing the SVD takes <span class="math notranslate nohighlight">\(O(n^3)\)</span> time for a <span class="math notranslate nohighlight">\(n\times n\)</span> matrix, just like all the other matrix factorizations we’ve seen.  Make plots of the runtimes of <code class="docutils literal notranslate"><span class="pre">svd</span></code>, <code class="docutils literal notranslate"><span class="pre">eigh</span></code>, <code class="docutils literal notranslate"><span class="pre">eig</span></code>, <code class="docutils literal notranslate"><span class="pre">qr</span></code> and <code class="docutils literal notranslate"><span class="pre">lu</span></code> as we increase <span class="math notranslate nohighlight">\(n\)</span>.  Which is fastest in practice?</p></li>
 </ol>
 <p>From the plot, we see that from slowest to fastest is: <code class="docutils literal notranslate"><span class="pre">eig,</span> <span class="pre">svd,</span> <span class="pre">eigh,</span> <span class="pre">qr,</span> <span class="pre">lu</span></code>. <code class="docutils literal notranslate"><span class="pre">lu</span></code> is fastest in practice.</p>
-<ol class="simple">
+<ol class="arabic simple" start="2">
 <li><p>Write a function that solves a linear system using the Singular Value Decomposition.</p></li>
 <li><p>What is the SVD of a Hermitian (symmetric matrix)?  Is <code class="docutils literal notranslate"><span class="pre">svd</span></code> or <code class="docutils literal notranslate"><span class="pre">eigh</span></code> faster?</p></li>
 </ol>
@@ -1693,6 +1395,11 @@ $<span class="math notranslate nohighlight">\(A^{-1} = U^{-1} L^{-1} P^T\)</span
 </div>
 </div>
 <div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">1. Time comparison of SVD, eig, eigh, QR, LU</span>
@@ -1735,8 +1442,14 @@ $<span class="math notranslate nohighlight">\(A^{-1} = U^{-1} L^{-1} P^T\)</span
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">1. Time comparison of SVD, eig, eigh, QR, LU</span>
@@ -1754,10 +1467,16 @@ $<span class="math notranslate nohighlight">\(A^{-1} = U^{-1} L^{-1} P^T\)</span
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/numpy_scipy_linalg_80_0.png" src="../_images/numpy_scipy_linalg_80_0.png" />
+<img alt="../_images/94cf1ca4af1dc615ccc44bf69a5701b769007e5c10a08219c8c7f3194ec7aca5.png" src="../_images/94cf1ca4af1dc615ccc44bf69a5701b769007e5c10a08219c8c7f3194ec7aca5.png" />
 </div>
+</details>
 </div>
 <div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">2. Define a function that solves a linear system using SVD</span>
@@ -1770,8 +1489,14 @@ $<span class="math notranslate nohighlight">\(A^{-1} = U^{-1} L^{-1} P^T\)</span
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">3. Compare svd and eigh on symmetric matrices</span>
@@ -1798,8 +1523,14 @@ $<span class="math notranslate nohighlight">\(A^{-1} = U^{-1} L^{-1} P^T\)</span
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">n</span><span class="p">),</span><span class="n">tsvd</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;svd&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">n</span><span class="p">),</span><span class="n">teigh</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;eigh&#39;</span><span class="p">)</span>
@@ -1811,12 +1542,13 @@ $<span class="math notranslate nohighlight">\(A^{-1} = U^{-1} L^{-1} P^T\)</span
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/numpy_scipy_linalg_83_0.png" src="../_images/numpy_scipy_linalg_83_0.png" />
+<img alt="../_images/a15308dada36af629af6fc4b097637c41534d4c0f295cd5fa1901a449ac2550b.png" src="../_images/a15308dada36af629af6fc4b097637c41534d4c0f295cd5fa1901a449ac2550b.png" />
 </div>
+</details>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1830,7 +1562,7 @@ $<span class="math notranslate nohighlight">\(A^{-1} = U^{-1} L^{-1} P^T\)</span
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./02_linear_algebra"
         },
         predefinedOutput: true
@@ -1838,44 +1570,108 @@ $<span class="math notranslate nohighlight">\(A^{-1} = U^{-1} L^{-1} P^T\)</span
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-algebra">Linear Algebra</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#householder-notation">Householder Notation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-do-we-compute">What Do we Compute?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#some-places-where-linear-algebra-appears">Some Places where Linear Algebra Appears</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-diffusion">Example: Diffusion</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-algebra-in-numpy">Linear Algebra In NumPy</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-operations">Basic Operations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-linear-systems">Solving Linear Systems</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scipy-linear-algebra">SciPy Linear Algebra</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-factorizations">Matrix Factorizations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lu-decomposition">LU decomposition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#qr-decomposition">QR decomposition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#excercise">Excercise</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalue-decompositions">Eigenvalue Decompositions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#svd">SVD</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Exercises</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="memory.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Memory and Performance</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="blas_lapack.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">BLAS and LAPACK</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
-</div>
+          </div>
+          <footer class="bd-footer-content">
             
-        </div>
-    </div>
-    <footer class="footer">
-  <p>
-    
-      By Brad Nelson<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
-</main>
-
-
-      </div>
-    </div>
+<div class="bd-footer-content__inner container">
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <div class="footer-item">
+    
+<p class="component-author">
+By Brad Nelson
+</p>
 
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

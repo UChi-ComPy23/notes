@@ -1,0 +1,68 @@
+Traceback (most recent call last):
+  File "/home/goodwill/miniconda3/envs/pycourse_test/lib/python3.11/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/home/goodwill/miniconda3/envs/pycourse_test/lib/python3.11/site-packages/nbclient/client.py", line 1305, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/goodwill/miniconda3/envs/pycourse_test/lib/python3.11/site-packages/jupyter_core/utils/__init__.py", line 166, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/goodwill/miniconda3/envs/pycourse_test/lib/python3.11/asyncio/base_events.py", line 653, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/home/goodwill/miniconda3/envs/pycourse_test/lib/python3.11/site-packages/nbclient/client.py", line 705, in async_execute
+    await self.async_execute_cell(
+  File "/home/goodwill/miniconda3/envs/pycourse_test/lib/python3.11/site-packages/nbclient/client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/goodwill/miniconda3/envs/pycourse_test/lib/python3.11/site-packages/nbclient/client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+from matplotlib.ticker import MultipleLocator, FixedLocator, FixedFormatter
+
+fig, ax = plt.subplots(figsize=(8,8))
+ax.plot(x, f(x))
+
+ax.xaxis.set_minor_locator((0.5))# minor ticks are multiples of 0.5 on X-axis
+
+ax.yaxis.set_major_locator(FixedLocator((0,0.5,1))) # set major tick labels manually
+ax.yaxis.set_major_formatter(FixedFormatter(('0', r'$\dfrac{1}{2}$', '1'))) # manual labels - you can use latex
+ax.yaxis.set_minor_locator(FixedLocator((1/3, 2/3)))
+
+plt.show(fig)
+------------------
+
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mTypeError[0m                                 Traceback (most recent call last)
+Cell [0;32mIn[8], line 6[0m
+[1;32m      3[0m fig, ax [38;5;241m=[39m plt[38;5;241m.[39msubplots(figsize[38;5;241m=[39m([38;5;241m8[39m,[38;5;241m8[39m))
+[1;32m      4[0m ax[38;5;241m.[39mplot(x, f(x))
+[0;32m----> 6[0m ax[38;5;241m.[39mxaxis[38;5;241m.[39mset_minor_locator(([38;5;241m0.5[39m))[38;5;66;03m# minor ticks are multiples of 0.5 on X-axis[39;00m
+[1;32m      8[0m ax[38;5;241m.[39myaxis[38;5;241m.[39mset_major_locator(FixedLocator(([38;5;241m0[39m,[38;5;241m0.5[39m,[38;5;241m1[39m))) [38;5;66;03m# set major tick labels manually[39;00m
+[1;32m      9[0m ax[38;5;241m.[39myaxis[38;5;241m.[39mset_major_formatter(FixedFormatter(([38;5;124m'[39m[38;5;124m0[39m[38;5;124m'[39m, [38;5;124mr[39m[38;5;124m'[39m[38;5;124m$[39m[38;5;124m\[39m[38;5;124mdfrac[39m[38;5;132;01m{1}[39;00m[38;5;132;01m{2}[39;00m[38;5;124m$[39m[38;5;124m'[39m, [38;5;124m'[39m[38;5;124m1[39m[38;5;124m'[39m))) [38;5;66;03m# manual labels - you can use latex[39;00m
+
+File [0;32m~/miniconda3/envs/pycourse_test/lib/python3.11/site-packages/matplotlib/axis.py:1882[0m, in [0;36mAxis.set_minor_locator[0;34m(self, locator)[0m
+[1;32m   1874[0m [38;5;28;01mdef[39;00m [38;5;21mset_minor_locator[39m([38;5;28mself[39m, locator):
+[1;32m   1875[0m [38;5;250m    [39m[38;5;124;03m"""[39;00m
+[1;32m   1876[0m [38;5;124;03m    Set the locator of the minor ticker.[39;00m
+[1;32m   1877[0m 
+[0;32m   (...)[0m
+[1;32m   1880[0m [38;5;124;03m    locator : `~matplotlib.ticker.Locator`[39;00m
+[1;32m   1881[0m [38;5;124;03m    """[39;00m
+[0;32m-> 1882[0m     _api[38;5;241m.[39mcheck_isinstance(mticker[38;5;241m.[39mLocator, locator[38;5;241m=[39mlocator)
+[1;32m   1883[0m     [38;5;28mself[39m[38;5;241m.[39misDefault_minloc [38;5;241m=[39m [38;5;28;01mFalse[39;00m
+[1;32m   1884[0m     [38;5;28mself[39m[38;5;241m.[39mminor[38;5;241m.[39mlocator [38;5;241m=[39m locator
+
+File [0;32m~/miniconda3/envs/pycourse_test/lib/python3.11/site-packages/matplotlib/_api/__init__.py:93[0m, in [0;36mcheck_isinstance[0;34m(_types, **kwargs)[0m
+[1;32m     91[0m     names[38;5;241m.[39mremove([38;5;124m"[39m[38;5;124mNone[39m[38;5;124m"[39m)
+[1;32m     92[0m     names[38;5;241m.[39mappend([38;5;124m"[39m[38;5;124mNone[39m[38;5;124m"[39m)
+[0;32m---> 93[0m [38;5;28;01mraise[39;00m [38;5;167;01mTypeError[39;00m(
+[1;32m     94[0m     [38;5;124m"[39m[38;5;132;01m{!r}[39;00m[38;5;124m must be an instance of [39m[38;5;132;01m{}[39;00m[38;5;124m, not a [39m[38;5;132;01m{}[39;00m[38;5;124m"[39m[38;5;241m.[39mformat(
+[1;32m     95[0m         k,
+[1;32m     96[0m         [38;5;124m"[39m[38;5;124m, [39m[38;5;124m"[39m[38;5;241m.[39mjoin(names[:[38;5;241m-[39m[38;5;241m1[39m]) [38;5;241m+[39m [38;5;124m"[39m[38;5;124m or [39m[38;5;124m"[39m [38;5;241m+[39m names[[38;5;241m-[39m[38;5;241m1[39m]
+[1;32m     97[0m         [38;5;28;01mif[39;00m [38;5;28mlen[39m(names) [38;5;241m>[39m [38;5;241m1[39m [38;5;28;01melse[39;00m names[[38;5;241m0[39m],
+[1;32m     98[0m         type_name([38;5;28mtype[39m(v))))
+
+[0;31mTypeError[0m: 'locator' must be an instance of matplotlib.ticker.Locator, not a float
+

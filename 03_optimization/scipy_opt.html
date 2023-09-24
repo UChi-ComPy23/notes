@@ -1,788 +1,469 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>Optimization in SciPy &#8212; Scientific Computing with Python</title>
-    
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
-    
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '03_optimization/scipy_opt';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Functions" href="../04_functions/functions.html" />
-    <link rel="prev" title="Optimization" href="optimization.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
     
-        <div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
-      
-      
-      
-      <h1 class="site-logo" id="site-title">Scientific Computing with Python</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../introduction.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Scientific Computing with Python</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../introduction.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
         <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../introduction.html">
-   Introduction
-  </a>
- </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../00_python/python.html">Python</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/using_python.html">Using Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/basics.html">Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/bitsbytes.html">Bits, Bytes, and Numbers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/basic_packages.html">Basic Containers and Packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/functions.html">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/classes.html">Object-Oriented Programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/modules.html">Modules and Packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/decorators.html">Decorators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/iterators.html">Iterators and Generators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/pyplot.html">Matlotlib &amp; PyPlot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/misc.html">Miscellaneous</a></li>
 </ul>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../00_python/python.html">
-   Python
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../00_python/using_python.html">
-     Using Python
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../00_python/basics.html">
-     Basics
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../00_python/bitsbytes.html">
-     Bits, Bytes, and Numbers
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../00_python/basic_packages.html">
-     Basic Containers and Packages
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../00_python/functions.html">
-     Functions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../00_python/classes.html">
-     Object-Oriented Programming
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../00_python/modules.html">
-     Modules and Packages
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../00_python/decorators.html">
-     Decorators
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../00_python/iterators.html">
-     Iterators and Generators
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../00_python/pyplot.html">
-     Matlotlib &amp; PyPlot
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../00_python/misc.html">
-     Miscellaneous
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../01_analysis/analysis.html">
-   Analysis of Algorithms
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../01_analysis/asymptotic_notation.html">
-     Asymptotic Notation
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../01_analysis/recursion.html">
-     Recursion
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../01_analysis/convergence.html">
-     Convergence of Algorithms
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../01_analysis/average_case.html">
-     Average Case Analysis
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../02_linear_algebra/linear_algebra.html">
-   Linear Algebra
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../02_linear_algebra/memory.html">
-     Memory and Performance
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../02_linear_algebra/numpy_scipy_linalg.html">
-     Dense Linear Algebra in NumPy and SciPy
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../02_linear_algebra/blas_lapack.html">
-     BLAS and LAPACK
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../02_linear_algebra/sparse.html">
-     Sparse Matrices
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../02_linear_algebra/linearoperators.html">
-     Linear Operators
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../02_linear_algebra/sparse_linalg.html">
-     Sparse Linear Algebra
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../02_linear_algebra/pytorch.html">
-     Linear Algebra in PyTorch
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../02_linear_algebra/convolutions.html">
-     Convolutions and Fourier Transforms
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../02_linear_algebra/fft.html">
-     The Fast Fourier Transform
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="optimization.html">
-   Optimization
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Optimization in SciPy
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../04_functions/functions.html">
-   Functions
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../04_functions/sympy.html">
-     Symbolic Computing
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../04_functions/roots.html">
-     Root Finding
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../04_functions/ode_initial.html">
-     Initial Value Problems
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../04_functions/interpolation.html">
-     Interpolation
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../04_functions/integration.html">
-     Integration &amp; Quadrature
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../04_functions/bvp.html">
-     Boundary Value Problems
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../05_graphs/graphs.html">
-   Graphs
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../05_graphs/networkx.html">
-     NetworkX
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../05_graphs/spectral.html">
-     Spectral Graph Theory
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../06_probability_statistics/prob_stat.html">
-   Probability and Statistics
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../06_probability_statistics/generating_random.html">
-     Generating Random Numbers
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../06_probability_statistics/scipy_stats.html">
-     Scipy
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       stats
-      </span>
-     </code>
-     package
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../07_data/data.html">
-   Data
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-  <label for="toctree-checkbox-8">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../07_data/pandas.html">
-     Pandas
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../07_data/sklearn.html">
-     SciKit Learn
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../07_data/dimension_reduction.html">
-     Dimension Reduction and Data Visualization
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../07_data/pytorch.html">
-     PyTorch Neural Networks
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../08_geometry/geometry.html">
-   Geometry
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
-  <label for="toctree-checkbox-9">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../08_geometry/distances.html">
-     Distances
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../08_geometry/nearestneighbor.html">
-     Nearest Neighbors
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../09_computing/computing.html">
-   Computing
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../09_computing/basic_bash.html">
-     Basic Bash
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../09_computing/git.html">
-     Git Version Control
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../09_computing/unittest.html">
-     Unit Testing
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../09_computing/packages.html">
-     Packages and Setup
-    </a>
-   </li>
-   <li class="toctree-l2 has-children">
-    <a class="reference internal" href="../09_computing/performance/performance.html">
-     Performance
-    </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
-    <label for="toctree-checkbox-11">
-     <i class="fas fa-chevron-down">
-     </i>
-    </label>
-    <ul>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../09_computing/performance/ipython.html">
-       Measuring Performance in Python
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../09_computing/performance/numpy_ufuncs.html">
-       Vectorization, Numpy Universal Functions
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../09_computing/environments.html">
-     Environments
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../09_computing/agent_based_models.html">
-     Agent Based Models
-    </a>
-   </li>
-  </ul>
- </li>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01_analysis/analysis.html">Analysis of Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01_analysis/asymptotic_notation.html">Asymptotic Notation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_analysis/recursion.html">Recursion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_analysis/convergence.html">Convergence of Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_analysis/average_case.html">Average Case Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../09_computing/computing.html">Computing</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../09_computing/basic_bash.html">Basic Bash</a></li>
+</ul>
+</li>
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/03_optimization/scipy_opt.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+</nav></div>
     </div>
-</div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
 
-            <!-- Source interaction buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/caam37830/book"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/caam37830/book/issues/new?title=Issue%20on%20page%20%2F03_optimization/scipy_opt.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+      </div>
+      
+      <main id="main-content" class="bd-main">
         
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
     </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/UChi-ComPy23/notes/master?urlpath=tree/03_optimization/scipy_opt.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/UChi-ComPy23/notes/blob/master/03_optimization/scipy_opt.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
 </div>
 
-            <!-- Full screen (wrap in <a> to have style consistency -->
 
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
 
-            <!-- Launch buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/caam37830/book/master?urlpath=tree/03_optimization/scipy_opt.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        <a class="colab-button" href="https://colab.research.google.com/github/caam37830/book/blob/master/03_optimization/scipy_opt.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
-                    src="../_static/images/logo_colab.png"
-                    alt="Interact on Colab">Colab</button></a>
-        
-        
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/UChi-ComPy23/notes" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/UChi-ComPy23/notes/issues/new?title=Issue%20on%20page%20%2F03_optimization/scipy_opt.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/03_optimization/scipy_opt.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
     </div>
+  
 </div>
+</div>
+              
+              
 
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Optimization in SciPy</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div>
+                <h2> Contents </h2>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
+            <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#functions-of-one-variable">
-   Functions of One Variable
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#functions-of-multiple-variables">
-   Functions of Multiple variables
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#example-solving-a-linear-system">
-     Example: Solving a Linear System
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercises">
-     Exercises
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#constraints">
-   Constraints
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#linear-constraints">
-     Linear Constraints
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#nonlinear-constraints">
-     Nonlinear constraints
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#example-eigenvalues-and-eigenvectors">
-     Example: Eigenvalues and Eigenvectors
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#optimization-options">
-   Optimization Options
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#jacobian">
-     Jacobian
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#hessian">
-     Hessian
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#solvers">
-     Solvers
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#global-optimization">
-   Global Optimization
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#finding-roots">
-   Finding Roots
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercise">
-     Exercise
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions-of-one-variable">Functions of One Variable</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions-of-multiple-variables">Functions of Multiple variables</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-solving-a-linear-system">Example: Solving a Linear System</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constraints">Constraints</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-constraints">Linear Constraints</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nonlinear-constraints">Nonlinear constraints</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-eigenvalues-and-eigenvectors">Example: Eigenvalues and Eigenvectors</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optimization-options">Optimization Options</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jacobian">Jacobian</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hessian">Hessian</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solvers">Solvers</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#global-optimization">Global Optimization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-roots">Finding Roots</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
+</ul>
+</li>
+</ul>
             </nav>
         </div>
     </div>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Optimization in SciPy</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#functions-of-one-variable">
-   Functions of One Variable
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#functions-of-multiple-variables">
-   Functions of Multiple variables
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#example-solving-a-linear-system">
-     Example: Solving a Linear System
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercises">
-     Exercises
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#constraints">
-   Constraints
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#linear-constraints">
-     Linear Constraints
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#nonlinear-constraints">
-     Nonlinear constraints
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#example-eigenvalues-and-eigenvectors">
-     Example: Eigenvalues and Eigenvectors
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#optimization-options">
-   Optimization Options
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#jacobian">
-     Jacobian
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#hessian">
-     Hessian
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#solvers">
-     Solvers
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#global-optimization">
-   Global Optimization
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#finding-roots">
-   Finding Roots
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercise">
-     Exercise
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
 
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            
-              <div>
+              
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="optimization-in-scipy">
-<h1>Optimization in SciPy<a class="headerlink" href="#optimization-in-scipy" title="Permalink to this headline">¶</a></h1>
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="optimization-in-scipy">
+<h1>Optimization in SciPy<a class="headerlink" href="#optimization-in-scipy" title="Permalink to this heading">#</a></h1>
 <p>Optimization seeks to find the best (optimal) value of some function subject to constraints</p>
 <p>\begin{equation}
 \mathop{\mathsf{minimize}}_x f(x)\
@@ -798,8 +479,8 @@
 </div>
 </div>
 </div>
-<div class="section" id="functions-of-one-variable">
-<h2>Functions of One Variable<a class="headerlink" href="#functions-of-one-variable" title="Permalink to this headline">¶</a></h2>
+<section id="functions-of-one-variable">
+<h2>Functions of One Variable<a class="headerlink" href="#functions-of-one-variable" title="Permalink to this heading">#</a></h2>
 <p>An easy example is to minimze a quadratic</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -812,7 +493,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/scipy_opt_3_0.png" src="../_images/scipy_opt_3_0.png" />
+<img alt="../_images/2d84538d3a747a0b1e85fc6bfe693ba4a38d587a624f9adf869fc4722bd23a19.png" src="../_images/2d84538d3a747a0b1e85fc6bfe693ba4a38d587a624f9adf869fc4722bd23a19.png" />
 </div>
 </div>
 <p>There is a clear minimum at <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">0</span></code>.  You can search for minima using <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize_scalar.html#scipy.optimize.minimize_scalar"><code class="docutils literal notranslate"><span class="pre">opt.minimize_scalar</span></code></a></p>
@@ -824,11 +505,15 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     fun: 1.0
-    nfev: 40
-     nit: 36
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> message: 
+          Optimization terminated successfully;
+          The returned value satisfies the termination criteria
+          (using xtol = 1.48e-08 )
  success: True
+     fun: 1.0
        x: 9.803862664247969e-09
+     nit: 36
+    nfev: 39
 </pre></div>
 </div>
 </div>
@@ -845,7 +530,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/scipy_opt_7_0.png" src="../_images/scipy_opt_7_0.png" />
+<img alt="../_images/a13cf026b4506622135f1289b882b78d91fe8fb12f3f3229d8b9ec8fbad4e349.png" src="../_images/a13cf026b4506622135f1289b882b78d91fe8fb12f3f3229d8b9ec8fbad4e349.png" />
 </div>
 </div>
 <p>If you want to add constraints such as <span class="math notranslate nohighlight">\(x \ge 1\)</span>, you can use <code class="docutils literal notranslate"><span class="pre">bounds</span></code>, along with specifying the <code class="docutils literal notranslate"><span class="pre">bounded</span></code> method:</p>
@@ -861,7 +546,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/scipy_opt_9_0.png" src="../_images/scipy_opt_9_0.png" />
+<img alt="../_images/37f4f106f2c8d9cc3c9fd2a14fd6d21b4931243aaec70b24af7f5382c8dee51e.png" src="../_images/37f4f106f2c8d9cc3c9fd2a14fd6d21b4931243aaec70b24af7f5382c8dee51e.png" />
 </div>
 </div>
 <p>For more complicated functions, there may be multiple solutions</p>
@@ -876,7 +561,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/scipy_opt_11_0.png" src="../_images/scipy_opt_11_0.png" />
+<img alt="../_images/d23177f03e020ed06fb8808ef3220266557c19ac1ad883e427ef94142b50f098.png" src="../_images/d23177f03e020ed06fb8808ef3220266557c19ac1ad883e427ef94142b50f098.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -891,13 +576,13 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/scipy_opt_12_0.png" src="../_images/scipy_opt_12_0.png" />
+<img alt="../_images/b8b1a4d77175f482e90c11b882f3bd91d95362f6ddab6bb894cde9d323d428fb.png" src="../_images/b8b1a4d77175f482e90c11b882f3bd91d95362f6ddab6bb894cde9d323d428fb.png" />
 </div>
 </div>
 <p>Note that you will only find one minimum, and this minimum will generally only be a local minimum, not a global minimum.</p>
-</div>
-<div class="section" id="functions-of-multiple-variables">
-<h2>Functions of Multiple variables<a class="headerlink" href="#functions-of-multiple-variables" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="functions-of-multiple-variables">
+<h2>Functions of Multiple variables<a class="headerlink" href="#functions-of-multiple-variables" title="Permalink to this heading">#</a></h2>
 <p>You might also wish to minimize functions of multiple variables.  In this case, you use <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html#scipy.optimize.minimize"><code class="docutils literal notranslate"><span class="pre">opt.minimize</span></code></a></p>
 <p>A multivariate quadratic generally has the form <code class="docutils literal notranslate"><span class="pre">x^T</span> <span class="pre">A</span> <span class="pre">x</span> <span class="pre">+</span> <span class="pre">b^T</span> <span class="pre">x</span> <span class="pre">+</span> <span class="pre">c</span></code>, where <code class="docutils literal notranslate"><span class="pre">x</span></code> is an <code class="docutils literal notranslate"><span class="pre">n</span></code>-dimensional vector, <code class="docutils literal notranslate"><span class="pre">A</span></code> is a <code class="docutils literal notranslate"><span class="pre">n</span></code> x <code class="docutils literal notranslate"><span class="pre">n</span></code> matrix, <code class="docutils literal notranslate"><span class="pre">b</span></code> is a <code class="docutils literal notranslate"><span class="pre">n</span></code>-dimensional vector, and <code class="docutils literal notranslate"><span class="pre">c</span></code> is a scalar.  When <code class="docutils literal notranslate"><span class="pre">A</span></code> is positive definite (PD), there is a unique minimum.</p>
 <div class="cell docutils container">
@@ -916,17 +601,17 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      fun: 3.9302202204076123e-16
- hess_inv: array([[ 20.41211752, -14.37543735],
-       [-14.37543735,  10.39594939]])
-      jac: array([3.33178122e-12, 8.09915074e-12])
-  message: &#39;Optimization terminated successfully.&#39;
-     nfev: 21
-      nit: 4
-     njev: 7
-   status: 0
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  message: Optimization terminated successfully.
   success: True
-        x: array([0.31821209, 0.34772825])
+   status: 0
+      fun: 8.338954830117961e-16
+        x: [ 5.532e-01  3.454e-01]
+      nit: 4
+      jac: [-6.189e-11  1.738e-10]
+ hess_inv: [[ 6.062e+00 -5.340e-01]
+            [-5.340e-01  9.963e-02]]
+     nfev: 18
+     njev: 6
 </pre></div>
 </div>
 </div>
@@ -941,9 +626,9 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.31821209 0.34772825]
-[0.31821198 0.34772833]
-1.3773617339186984e-07
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.55315076 0.34539292]
+[0.5531507  0.34539293]
+6.238985743408468e-08
 </pre></div>
 </div>
 </div>
@@ -966,13 +651,13 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.00013264456274068254
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.00014898926618023885
 </pre></div>
 </div>
 </div>
 </div>
-<div class="section" id="example-solving-a-linear-system">
-<h3>Example: Solving a Linear System<a class="headerlink" href="#example-solving-a-linear-system" title="Permalink to this headline">¶</a></h3>
+<section id="example-solving-a-linear-system">
+<h3>Example: Solving a Linear System<a class="headerlink" href="#example-solving-a-linear-system" title="Permalink to this heading">#</a></h3>
 <p>Recall that solving a linear system means finding <span class="math notranslate nohighlight">\(x\)</span> so that <span class="math notranslate nohighlight">\(A x = b\)</span>. We can turn this into an optimization problem by seeking to minimize the residual <span class="math notranslate nohighlight">\(\|b - Ax\|_2\)</span>:
 \begin{equation}
 \mathop{\mathsf{minimize}}_x |b - Ax|_2\
@@ -990,15 +675,15 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.938009506267644e-08
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.77341560465493e-08
 </pre></div>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="exercises">
-<h3>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h3>
-<ol class="simple">
+</section>
+<section id="exercises">
+<h3>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
 <li><p>Modify the above example to minimize <span class="math notranslate nohighlight">\(\|b-Ax\|_1\)</span> instead of <span class="math notranslate nohighlight">\(\| b - Ax\|_2\)</span> (look at documentation for <code class="docutils literal notranslate"><span class="pre">la.norm</span></code>).  Is there any difference in the output of <code class="docutils literal notranslate"><span class="pre">opt.minimize</span></code>?</p></li>
 <li><p>How fast is <code class="docutils literal notranslate"><span class="pre">la.solve</span></code> compared to the above example?</p></li>
 </ol>
@@ -1009,18 +694,18 @@
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="constraints">
-<h2>Constraints<a class="headerlink" href="#constraints" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="constraints">
+<h2>Constraints<a class="headerlink" href="#constraints" title="Permalink to this heading">#</a></h2>
 <p>Passing in a function to be optimized is fairly straightforward.  Constraints are slightly less trivial.  These are specified using classes <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.LinearConstraint.html#scipy.optimize.LinearConstraint"><code class="docutils literal notranslate"><span class="pre">LinearConstraint</span></code></a> and <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.NonlinearConstraint.html#scipy.optimize.NonlinearConstraint"><code class="docutils literal notranslate"><span class="pre">NonlinearConstraint</span></code></a></p>
 <ul class="simple">
 <li><p>Linear constraints take the form <code class="docutils literal notranslate"><span class="pre">lb</span> <span class="pre">&lt;=</span> <span class="pre">A</span> <span class="pre">&#64;</span> <span class="pre">x</span> <span class="pre">&lt;=</span> <span class="pre">ub</span></code></p></li>
 <li><p>Nonlinear constraints take the form <code class="docutils literal notranslate"><span class="pre">lb</span> <span class="pre">&lt;=</span> <span class="pre">fun(x)</span> <span class="pre">&lt;=</span> <span class="pre">ub</span></code></p></li>
 </ul>
 <p>For the special case of a linear constraint with the form <code class="docutils literal notranslate"><span class="pre">lb</span> <span class="pre">&lt;=</span> <span class="pre">x</span> <span class="pre">&lt;=</span> <span class="pre">ub</span></code>, you can use <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.Bounds.html#scipy.optimize.Bounds"><code class="docutils literal notranslate"><span class="pre">Bounds</span></code></a></p>
-<div class="section" id="linear-constraints">
-<h3>Linear Constraints<a class="headerlink" href="#linear-constraints" title="Permalink to this headline">¶</a></h3>
+<section id="linear-constraints">
+<h3>Linear Constraints<a class="headerlink" href="#linear-constraints" title="Permalink to this heading">#</a></h3>
 <p>Let’s look at how you might implement the linear constraints on a 2-vector x
 \begin{equation}
 \begin{cases}
@@ -1067,7 +752,7 @@ where <code class="docutils literal notranslate"><span class="pre">A</span> <spa
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/scipy_opt_27_0.png" src="../_images/scipy_opt_27_0.png" />
+<img alt="../_images/f39414c275b2bd79ee9290cbdacc3d1737da9f7de1b3fc29f56559058e788fe3.png" src="../_images/f39414c275b2bd79ee9290cbdacc3d1737da9f7de1b3fc29f56559058e788fe3.png" />
 </div>
 </div>
 <p>Now, let’s say we want to minimize a function <code class="docutils literal notranslate"><span class="pre">f(x)</span></code> subject to <code class="docutils literal notranslate"><span class="pre">x</span></code> obeying the constraints given above.  We can simply pass in the constraints</p>
@@ -1080,15 +765,15 @@ where <code class="docutils literal notranslate"><span class="pre">A</span> <spa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     fun: -1.9999999999999225
-     jac: array([ 2.        , -0.99999999])
- message: &#39;Optimization terminated successfully&#39;
-    nfev: 15
-     nit: 5
-    njev: 5
-  status: 0
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> message: Optimization terminated successfully
  success: True
-       x: array([-1.,  2.])
+  status: 0
+     fun: -1.999999999999934
+       x: [-1.000e+00  2.000e+00]
+     nit: 5
+     jac: [ 2.000e+00 -1.000e+00]
+    nfev: 15
+    njev: 5
 </pre></div>
 </div>
 </div>
@@ -1112,13 +797,13 @@ where <code class="docutils literal notranslate"><span class="pre">A</span> <spa
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/scipy_opt_31_0.png" src="../_images/scipy_opt_31_0.png" />
+<img alt="../_images/1d30be40693472fc86a5c317578b42c29727a33e442eb70430d8fd86285d8876.png" src="../_images/1d30be40693472fc86a5c317578b42c29727a33e442eb70430d8fd86285d8876.png" />
 </div>
 </div>
 <p>We see that <code class="docutils literal notranslate"><span class="pre">[-1,2]</span></code> does appear to be a minimum</p>
-</div>
-<div class="section" id="nonlinear-constraints">
-<h3>Nonlinear constraints<a class="headerlink" href="#nonlinear-constraints" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="nonlinear-constraints">
+<h3>Nonlinear constraints<a class="headerlink" href="#nonlinear-constraints" title="Permalink to this heading">#</a></h3>
 <p>Nonlinear constraints can be used to define more complicated domains.  For instance, let’s look at the constraint
 \begin{equation}
 1 \le | x |_2 \le 2
@@ -1150,7 +835,7 @@ where <code class="docutils literal notranslate"><span class="pre">A</span> <spa
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/scipy_opt_36_0.png" src="../_images/scipy_opt_36_0.png" />
+<img alt="../_images/3087bb10b629aa2f0a6a22641e4ef7df2a90fdca5bae408c6b5194915b29a0cb.png" src="../_images/3087bb10b629aa2f0a6a22641e4ef7df2a90fdca5bae408c6b5194915b29a0cb.png" />
 </div>
 </div>
 <p>Let’s try minimizing the same function as before: <span class="math notranslate nohighlight">\(f(x) = x[0] * x[1]\)</span></p>
@@ -1174,7 +859,7 @@ where <code class="docutils literal notranslate"><span class="pre">A</span> <spa
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/scipy_opt_38_0.png" src="../_images/scipy_opt_38_0.png" />
+<img alt="../_images/6938c60d312b79d94d5a64ca20c07266c7ef618cf3792ab8c02b929ede95fd36.png" src="../_images/6938c60d312b79d94d5a64ca20c07266c7ef618cf3792ab8c02b929ede95fd36.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1185,23 +870,23 @@ where <code class="docutils literal notranslate"><span class="pre">A</span> <spa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     fun: -2.0000003973204366
-     jac: array([ 1.41433328, -1.41409439])
- message: &#39;Optimization terminated successfully&#39;
-    nfev: 29
-     nit: 10
-    njev: 9
-  status: 0
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> message: Optimization terminated successfully
  success: True
-       x: array([-1.41421947,  1.41420793])
+  status: 0
+     fun: -2.0000000000591687
+       x: [-1.414e+00  1.414e+00]
+     nit: 13
+     jac: [ 1.414e+00 -1.414e+00]
+    nfev: 36
+    njev: 12
 </pre></div>
 </div>
 </div>
 </div>
 <p>we see that the solution is close to a true minimizer <span class="math notranslate nohighlight">\(x = [-\sqrt{2}, \sqrt{2}]\)</span></p>
-</div>
-<div class="section" id="example-eigenvalues-and-eigenvectors">
-<h3>Example: Eigenvalues and Eigenvectors<a class="headerlink" href="#example-eigenvalues-and-eigenvectors" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="example-eigenvalues-and-eigenvectors">
+<h3>Example: Eigenvalues and Eigenvectors<a class="headerlink" href="#example-eigenvalues-and-eigenvectors" title="Permalink to this heading">#</a></h3>
 <p>One example of an optimzation problem is to find the largest eigenvalue/eigenvector pair of a matrix <span class="math notranslate nohighlight">\(A\)</span>.  If <span class="math notranslate nohighlight">\(A\)</span> is symmetric, and <span class="math notranslate nohighlight">\((\lambda, x)\)</span> is the largest eigenvalue pair, then <span class="math notranslate nohighlight">\(x\)</span> satisfies
 \begin{equation}
 \mathop{\mathsf{minimize}}_x -x^T A x\
@@ -1221,15 +906,15 @@ where <code class="docutils literal notranslate"><span class="pre">A</span> <spa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     fun: -7.0051008371389845
-     jac: array([ 1.294622  , -9.66204524,  0.05215836, -9.53999293, -3.19989908])
- message: &#39;Iteration limit reached&#39;
-    nfev: 646
-     nit: 100
-    njev: 100
-  status: 9
- success: False
-       x: array([-0.09314357,  0.68971253, -0.00335122,  0.68067797,  0.22867741])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> message: Optimization terminated successfully
+ success: True
+  status: 0
+     fun: -4.553283614442328
+       x: [-3.576e-01  5.595e-01 -7.155e-01 -1.744e-01 -1.295e-01]
+     nit: 22
+     jac: [ 3.257e+00 -5.095e+00  6.515e+00  1.588e+00  1.180e+00]
+    nfev: 138
+    njev: 22
 </pre></div>
 </div>
 </div>
@@ -1244,8 +929,8 @@ where <code class="docutils literal notranslate"><span class="pre">A</span> <spa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(7.005078048252652,
- array([ 0.09173686, -0.68888584,  0.00569634, -0.68233194, -0.22674065]))
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(4.553283482723925,
+ array([ 0.35764911, -0.55946282,  0.71546815,  0.17439849,  0.12953364]))
 </pre></div>
 </div>
 </div>
@@ -1258,20 +943,20 @@ where <code class="docutils literal notranslate"><span class="pre">A</span> <spa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>error in eigenvalue: -2.2788886332669733e-05
-error in eigenvector: 0.0038273335339999216
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>error in eigenvalue: -1.317184024074436e-07
+error in eigenvector: 3.194246652588882e-05
 </pre></div>
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="optimization-options">
-<h2>Optimization Options<a class="headerlink" href="#optimization-options" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="optimization-options">
+<h2>Optimization Options<a class="headerlink" href="#optimization-options" title="Permalink to this heading">#</a></h2>
 <p>So far, we haven’t worried too much about the internals of <code class="docutils literal notranslate"><span class="pre">opt.minimize</span></code>.  However, for large problems, you’re often going to want to choose an appropriate solver, and provide Jacobian and Hessian information if you are able to.</p>
 <p>A list of available solvers is available <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/optimize.html#local-multivariate-optimization">in the <code class="docutils literal notranslate"><span class="pre">minimize</span></code> documentation</a>.</p>
-<div class="section" id="jacobian">
-<h3>Jacobian<a class="headerlink" href="#jacobian" title="Permalink to this headline">¶</a></h3>
+<section id="jacobian">
+<h3>Jacobian<a class="headerlink" href="#jacobian" title="Permalink to this heading">#</a></h3>
 <p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Jacobian_matrix_and_determinant">Jacobian</a> of a multi-valued function <span class="math notranslate nohighlight">\(f: \mathbb{R}^n \to \mathbb{R}^m\)</span> is the <span class="math notranslate nohighlight">\(m\times n\)</span> matrix <span class="math notranslate nohighlight">\(J_f\)</span>, where
 \begin{equation}
 J_f[i,j] = \frac{\partial{f}_i}{\partial{x_j}}
@@ -1297,21 +982,21 @@ J_f[i,j] = \frac{\partial{f}_i}{\partial{x_j}}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 4.35 ms, sys: 14 µs, total: 4.36 ms
-Wall time: 3.87 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 3.99 ms, sys: 0 ns, total: 3.99 ms
+Wall time: 3.94 ms
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      fun: -1.999999999999989
- hess_inv: array([[1.00440983, 0.00156471],
-       [0.00156471, 1.00054913]])
-      jac: array([1.49011612e-07, 5.96046448e-08])
-  message: &#39;Optimization terminated successfully.&#39;
-     nfev: 33
-      nit: 8
-     njev: 11
-   status: 0
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  message: Optimization terminated successfully.
   success: True
-        x: array([ 3.14159279, -1.57079627])
+   status: 0
+      fun: -1.9999999999526994
+        x: [ 3.142e+00 -1.571e+00]
+      nit: 7
+      jac: [-9.164e-06  3.204e-06]
+ hess_inv: [[ 1.034e+00 -1.208e-02]
+            [-1.208e-02  1.004e+00]]
+     nfev: 33
+     njev: 11
 </pre></div>
 </div>
 </div>
@@ -1324,29 +1009,29 @@ Wall time: 3.87 ms
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 1.85 ms, sys: 0 ns, total: 1.85 ms
-Wall time: 1.49 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 2.58 ms, sys: 0 ns, total: 2.58 ms
+Wall time: 2.43 ms
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      fun: -1.9999999999999871
- hess_inv: array([[1.00441742, 0.00155392],
-       [0.00155392, 1.00054693]])
-      jac: array([1.50490860e-07, 5.29887128e-08])
-  message: &#39;Optimization terminated successfully.&#39;
-     nfev: 11
-      nit: 8
-     njev: 11
-   status: 0
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  message: Optimization terminated successfully.
   success: True
-        x: array([ 3.1415928 , -1.57079627])
+   status: 0
+      fun: -1.9999999999527005
+        x: [ 3.142e+00 -1.571e+00]
+      nit: 7
+      jac: [-9.178e-06  3.219e-06]
+ hess_inv: [[ 1.034e+00 -1.208e-02]
+            [-1.208e-02  1.004e+00]]
+     nfev: 11
+     njev: 11
 </pre></div>
 </div>
 </div>
 </div>
 <p>We see that when we provoide the Jacobian, the number of function evaluations <code class="docutils literal notranslate"><span class="pre">nfev</span></code> decreases.</p>
-</div>
-<div class="section" id="hessian">
-<h3>Hessian<a class="headerlink" href="#hessian" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="hessian">
+<h3>Hessian<a class="headerlink" href="#hessian" title="Permalink to this heading">#</a></h3>
 <p>The Hessian of a multivariate function <span class="math notranslate nohighlight">\(f: \mathbb{R}^n \to \mathbb{R}\)</span> is a <span class="math notranslate nohighlight">\(n\times n\)</span> matrix <span class="math notranslate nohighlight">\(H_f\)</span> of second derivatives:
 \begin{equation}
 H[i,j] = \frac{\partial^2 f}{\partial x_i \partial x_j}
@@ -1364,25 +1049,25 @@ H[i,j] = \frac{\partial^2 f}{\partial x_i \partial x_j}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 1.14 ms, sys: 947 µs, total: 2.09 ms
-Wall time: 3.48 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 3.28 ms, sys: 0 ns, total: 3.28 ms
+Wall time: 3.09 ms
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/brad/miniconda3/envs/pycourse/lib/python3.8/site-packages/scipy/optimize/_minimize.py:522: RuntimeWarning: Method BFGS does not use Hessian information (hess).
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/goodwill/miniconda3/envs/pycourse_test/lib/python3.11/site-packages/scipy/optimize/_minimize.py:565: RuntimeWarning: Method BFGS does not use Hessian information (hess).
   warn(&#39;Method %s does not use Hessian information (hess).&#39; % method,
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      fun: -1.9999999999999871
- hess_inv: array([[1.00441742, 0.00155392],
-       [0.00155392, 1.00054693]])
-      jac: array([1.50490860e-07, 5.29887128e-08])
-  message: &#39;Optimization terminated successfully.&#39;
-     nfev: 11
-      nit: 8
-     njev: 11
-   status: 0
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  message: Optimization terminated successfully.
   success: True
-        x: array([ 3.1415928 , -1.57079627])
+   status: 0
+      fun: -1.9999999999527005
+        x: [ 3.142e+00 -1.571e+00]
+      nit: 7
+      jac: [-9.178e-06  3.219e-06]
+ hess_inv: [[ 1.034e+00 -1.208e-02]
+            [-1.208e-02  1.004e+00]]
+     nfev: 11
+     njev: 11
 </pre></div>
 </div>
 </div>
@@ -1399,20 +1084,20 @@ Wall time: 3.48 ms
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 34.8 ms, sys: 0 ns, total: 34.8 ms
-Wall time: 34.2 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 0 ns, sys: 3.95 ms, total: 3.95 ms
+Wall time: 3.49 ms
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     fun: -2.0
-     jac: array([-3.55792612e-06,  7.75826012e-09])
- message: &#39;Optimization terminated successfully.&#39;
-    nfev: 8
-    nhev: 5
-     nit: 5
-    njev: 8
-  status: 0
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> message: Optimization terminated successfully.
  success: True
-       x: array([ 3.14159265, -7.85398163])
+  status: 0
+     fun: -2.0
+       x: [ 3.142e+00 -1.414e+01]
+     nit: 7
+     jac: [-6.212e-11  1.423e-10]
+    nfev: 7
+    njev: 7
+    nhev: 7
 </pre></div>
 </div>
 </div>
@@ -1424,15 +1109,15 @@ Wall time: 34.2 ms
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-4.79027284e-08, -2.00000002e+00])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 2.92141769e-06, -4.00000102e+00])
 </pre></div>
 </div>
 </div>
 </div>
 <p>As we see above, we only compute the function, Jacobian and Hessian for 5 iterations.  The wall time is about 5x as fast as when we didn’t provide any of this additional information as well.  This will matter more for larger problems.</p>
-</div>
-<div class="section" id="solvers">
-<h3>Solvers<a class="headerlink" href="#solvers" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="solvers">
+<h3>Solvers<a class="headerlink" href="#solvers" title="Permalink to this heading">#</a></h3>
 <p>Here’s a guide to a couple of different solvers.  See the <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html#scipy.optimize.minimize">notes section of <code class="docutils literal notranslate"><span class="pre">minimize</span></code></a> for additional details.</p>
 <ul class="simple">
 <li><p>Unconstrained minimization: <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/optimize.minimize-bfgs.html"><code class="docutils literal notranslate"><span class="pre">BFGS</span></code></a> - uses Jacobian evaluations to get a low-rank approximation to the Hessian.</p></li>
@@ -1441,10 +1126,10 @@ Wall time: 34.2 ms
 <li><p>General constrained minimization: <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/optimize.minimize-trustconstr.html#optimize-minimize-trustconstr"><code class="docutils literal notranslate"><span class="pre">trust-const</span></code></a> - a trust region method for constrained optimization problems.  Can use the Hessian of both the objective and constraints.</p></li>
 </ul>
 <p>You can find a lot of information and examples about these different options in the <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/tutorial/optimize.html"><code class="docutils literal notranslate"><span class="pre">scipy.optimize</span></code> tutorial</a></p>
-</div>
-</div>
-<div class="section" id="global-optimization">
-<h2>Global Optimization<a class="headerlink" href="#global-optimization" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="global-optimization">
+<h2>Global Optimization<a class="headerlink" href="#global-optimization" title="Permalink to this heading">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">opt.minimize</span></code> is good for finding local minima of functions.  This often works well when you have a single minimum, or if you don’t care too much about finding the global minimum.</p>
 <p>What if your function has many local minima, but you want to find the global minimum?  You can use one of the <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/optimize.html#global-optimization">global optimization functions</a>.</p>
 <p>Note that finding a global minumum is generally a much more difficult problem than finding a local minimum, and these functions are not guranteed to find the true global minimum, and may not be very fast.</p>
@@ -1480,24 +1165,25 @@ Wall time: 34.2 ms
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                        fun: -2.0
- lowest_optimization_result:       fun: -2.0
- hess_inv: array([[ 0.88652443, -0.07768622],
-       [-0.07768622,  0.94681543]])
-      jac: array([1.49011612e-08, 0.00000000e+00])
-  message: &#39;Optimization terminated successfully.&#39;
-     nfev: 9
-      nit: 2
-     njev: 3
-   status: 0
-  success: True
-        x: array([ 3.14159266, -1.57079633])
-                    message: [&#39;requested number of basinhopping iterations completed successfully&#39;]
-      minimization_failures: 0
-                       nfev: 1224
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                    message: [&#39;requested number of basinhopping iterations completed successfully&#39;]
+                    success: True
+                        fun: -2.0
+                          x: [ 3.142e+00 -1.571e+00]
                         nit: 100
-                       njev: 408
-                          x: array([ 3.14159266, -1.57079633])
+      minimization_failures: 0
+                       nfev: 1245
+                       njev: 415
+ lowest_optimization_result:  message: Optimization terminated successfully.
+                              success: True
+                               status: 0
+                                  fun: -2.0
+                                    x: [ 3.142e+00 -1.571e+00]
+                                  nit: 13
+                                  jac: [ 0.000e+00  1.490e-08]
+                             hess_inv: [[ 8.364e-01 -1.664e-04]
+                                        [-1.664e-04  8.333e-01]]
+                                 nfev: 60
+                                 njev: 20
 </pre></div>
 </div>
 </div>
@@ -1511,28 +1197,29 @@ Wall time: 34.2 ms
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 9.18 ms, sys: 8 µs, total: 9.19 ms
-Wall time: 8.64 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 7.13 ms, sys: 0 ns, total: 7.13 ms
+Wall time: 6.5 ms
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                        fun: -1.9999999999974776
- lowest_optimization_result:       fun: -1.9999999999974776
- hess_inv: array([[0.85962884, 0.0022822 ],
-       [0.0022822 , 0.83353566]])
-      jac: array([-2.45869160e-06, -2.23517418e-07])
-  message: &#39;Optimization terminated successfully.&#39;
-     nfev: 96
-      nit: 11
-     njev: 32
-   status: 0
-  success: True
-        x: array([ 3.14159061, -1.57079651])
-                    message: [&#39;requested number of basinhopping iterations completed successfully&#39;]
-      minimization_failures: 0
-                       nfev: 108
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                    message: [&#39;requested number of basinhopping iterations completed successfully&#39;]
+                    success: True
+                        fun: 4.428959780787112
+                          x: [ 8.048e+00  3.335e+00]
                         nit: 1
-                       njev: 36
-                          x: array([ 3.14159061, -1.57079651])
+      minimization_failures: 0
+                       nfev: 57
+                       njev: 19
+ lowest_optimization_result:  message: Optimization terminated successfully.
+                              success: True
+                               status: 0
+                                  fun: 4.428959780787112
+                                    x: [ 8.048e+00  3.335e+00]
+                                  nit: 9
+                                  jac: [ 1.788e-07 -4.232e-06]
+                             hess_inv: [[ 2.561e+00 -2.354e-02]
+                                        [-2.354e-02  2.739e+00]]
+                                 nfev: 30
+                                 njev: 10
 </pre></div>
 </div>
 </div>
@@ -1547,27 +1234,27 @@ Wall time: 8.64 ms
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 258 ms, sys: 2 ms, total: 260 ms
-Wall time: 259 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 142 ms, sys: 0 ns, total: 142 ms
+Wall time: 141 ms
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     fun: -1.999999999999944
- message: [&#39;Maximum number of iteration reached&#39;]
-    nfev: 4049
-    nhev: 0
-     nit: 1000
-    njev: 16
-  status: 0
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> message: [&#39;Maximum number of iteration reached&#39;]
  success: True
-       x: array([ 3.14159237, -1.5707962 ])
+  status: 0
+     fun: -1.999999999999629
+       x: [ 3.142e+00 -1.571e+00]
+     nit: 1000
+    nfev: 4064
+    njev: 21
+    nhev: 0
 </pre></div>
 </div>
 </div>
 </div>
 <p>This runs much faster, and doesn’t need as much tweaking of the arguments.  However, we had to specify bounds in which we would look for the solution.</p>
-</div>
-<div class="section" id="finding-roots">
-<h2>Finding Roots<a class="headerlink" href="#finding-roots" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="finding-roots">
+<h2>Finding Roots<a class="headerlink" href="#finding-roots" title="Permalink to this heading">#</a></h2>
 <p>A root of a function <span class="math notranslate nohighlight">\(f: \mathbb{R}^m \to \mathbb{R}^n\)</span> is a point <span class="math notranslate nohighlight">\(x\)</span> so that <span class="math notranslate nohighlight">\(f(x) = 0\)</span>.  The go-to function for this is <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.root.html#scipy.optimize.root"><code class="docutils literal notranslate"><span class="pre">opt.root</span></code></a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1620,20 +1307,20 @@ x_0 x_1 - x_1 - 5 = 0
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 211 µs, sys: 0 ns, total: 211 µs
-Wall time: 216 µs
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 121 µs, sys: 10 µs, total: 131 µs
+Wall time: 127 µs
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    fjac: array([[-0.56248005, -0.82681085],
-       [ 0.82681085, -0.56248005]])
-     fun: array([3.73212572e-12, 1.61710645e-11])
- message: &#39;The solution converged.&#39;
-    nfev: 17
-     qtf: array([6.25677420e-08, 2.40104774e-08])
-       r: array([-1.0907073 , -1.7621827 , -7.37420598])
-  status: 1
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> message: The solution converged.
  success: True
-       x: array([6.50409711, 0.90841421])
+  status: 1
+     fun: [ 3.732e-12  1.617e-11]
+       x: [ 6.504e+00  9.084e-01]
+    nfev: 17
+    fjac: [[-5.625e-01 -8.268e-01]
+           [ 8.268e-01 -5.625e-01]]
+       r: [-1.091e+00 -1.762e+00 -7.374e+00]
+     qtf: [ 6.257e-08  2.401e-08]
 </pre></div>
 </div>
 </div>
@@ -1667,23 +1354,23 @@ Wall time: 216 µs
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 1.61 ms, sys: 23 µs, total: 1.63 ms
-Wall time: 2.74 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 1.12 ms, sys: 0 ns, total: 1.12 ms
+Wall time: 1.17 ms
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   cov_x: array([[ 0.87470958, -0.02852752],
-       [-0.02852752,  0.01859874]])
-    fjac: array([[ 7.52318843, -0.73161761],
-       [ 0.24535902, -1.06922242]])
-     fun: array([0., 0.])
-    ipvt: array([2, 1], dtype=int32)
- message: &#39;The relative error between two consecutive iterates is at most 0.000000&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> message: The relative error between two consecutive iterates is at most 0.000000
+ success: True
+  status: 2
+     fun: [ 0.000e+00  0.000e+00]
+       x: [ 6.504e+00  9.084e-01]
+   cov_x: [[ 8.747e-01 -2.853e-02]
+           [-2.853e-02  1.860e-02]]
     nfev: 8
     njev: 7
-     qtf: array([9.53776817e-13, 1.20713548e-13])
-  status: 2
- success: True
-       x: array([6.50409711, 0.90841421])
+    fjac: [[ 7.523e+00 -7.316e-01]
+           [ 2.454e-01 -1.069e+00]]
+    ipvt: [2 1]
+     qtf: [ 9.538e-13  1.207e-13]
 </pre></div>
 </div>
 </div>
@@ -1701,12 +1388,45 @@ Wall time: 2.74 ms
 </div>
 </div>
 <p>We see that the computed root in this case satisfies the equations more precisely.</p>
-<div class="section" id="exercise">
-<h3>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h3>
+<section id="exercise">
+<h3>Exercise<a class="headerlink" href="#exercise" title="Permalink to this heading">#</a></h3>
 <p>Compute a root of the above example using <code class="docutils literal notranslate"><span class="pre">opt.minimize</span></code> instead of <code class="docutils literal notranslate"><span class="pre">opt.root</span></code>.  One way to do this is to minimize <span class="math notranslate nohighlight">\(\|f(x)\|\)</span>.  Do the results differ if you use a 1-norm vs a 2-norm?</p>
+<p>Above examples: find roots of multi-valued functions.  E.g. if we want to solve the nonlinear system
+\begin{equation}
+x_0 \cos(x_1) = 4
+\end{equation} <br>
+\begin{equation}
+x_0 x_1 - x_1 = 5
+\end{equation}</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## 2-norm:</span>
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">la</span><span class="o">.</span><span class="n">norm</span><span class="p">([</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">-</span> <span class="mi">4</span><span class="p">,</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">5</span><span class="p">],</span> <span class="nb">ord</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">sol1</span> <span class="o">=</span> <span class="n">opt</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sol1</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
+
+<span class="c1">## 1-norm:</span>
+<span class="k">def</span> <span class="nf">g</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">la</span><span class="o">.</span><span class="n">norm</span><span class="p">([</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">-</span> <span class="mi">4</span><span class="p">,</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">5</span><span class="p">],</span> <span class="nb">ord</span> <span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">sol2</span> <span class="o">=</span> <span class="n">opt</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sol2</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[6.50409711 0.9084142 ]
+[6.38657705 0.89398092]
+</pre></div>
 </div>
 </div>
 </div>
+<p>As we can see from the result, 1-norm result and 2-norm result are slightly different. But they are both very close to the result computated by <code class="docutils literal notranslate"><span class="pre">opt.root</span></code>.</p>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1720,7 +1440,7 @@ Wall time: 2.74 ms
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./03_optimization"
         },
         predefinedOutput: true
@@ -1728,44 +1448,105 @@ Wall time: 2.74 ms
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions-of-one-variable">Functions of One Variable</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions-of-multiple-variables">Functions of Multiple variables</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-solving-a-linear-system">Example: Solving a Linear System</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constraints">Constraints</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-constraints">Linear Constraints</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nonlinear-constraints">Nonlinear constraints</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-eigenvalues-and-eigenvectors">Example: Eigenvalues and Eigenvectors</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optimization-options">Optimization Options</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jacobian">Jacobian</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hessian">Hessian</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solvers">Solvers</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#global-optimization">Global Optimization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-roots">Finding Roots</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="optimization.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Optimization</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="../04_functions/functions.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Functions</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
-</div>
+          </div>
+          <footer class="bd-footer-content">
             
-        </div>
-    </div>
-    <footer class="footer">
-  <p>
-    
-      By Brad Nelson<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
-</main>
-
-
-      </div>
-    </div>
+<div class="bd-footer-content__inner container">
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <div class="footer-item">
+    
+<p class="component-author">
+By Brad Nelson
+</p>
 
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

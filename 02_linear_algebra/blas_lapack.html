@@ -1,786 +1,482 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>BLAS and LAPACK &#8212; Scientific Computing with Python</title>
-    
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
-    
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '02_linear_algebra/blas_lapack';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Sparse Matrices" href="sparse.html" />
-    <link rel="prev" title="Dense Linear Algebra in NumPy and SciPy" href="numpy_scipy_linalg.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
     
-        <div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
-      
-      
-      
-      <h1 class="site-logo" id="site-title">Scientific Computing with Python</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../introduction.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Scientific Computing with Python</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../introduction.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
         <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../introduction.html">
-   Introduction
-  </a>
- </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../00_python/python.html">Python</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/using_python.html">Using Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/basics.html">Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/bitsbytes.html">Bits, Bytes, and Numbers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/basic_packages.html">Basic Containers and Packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/functions.html">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/classes.html">Object-Oriented Programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/modules.html">Modules and Packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/decorators.html">Decorators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/iterators.html">Iterators and Generators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/pyplot.html">Matlotlib &amp; PyPlot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/misc.html">Miscellaneous</a></li>
 </ul>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../00_python/python.html">
-   Python
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../00_python/using_python.html">
-     Using Python
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../00_python/basics.html">
-     Basics
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../00_python/bitsbytes.html">
-     Bits, Bytes, and Numbers
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../00_python/basic_packages.html">
-     Basic Containers and Packages
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../00_python/functions.html">
-     Functions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../00_python/classes.html">
-     Object-Oriented Programming
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../00_python/modules.html">
-     Modules and Packages
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../00_python/decorators.html">
-     Decorators
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../00_python/iterators.html">
-     Iterators and Generators
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../00_python/pyplot.html">
-     Matlotlib &amp; PyPlot
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../00_python/misc.html">
-     Miscellaneous
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../01_analysis/analysis.html">
-   Analysis of Algorithms
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../01_analysis/asymptotic_notation.html">
-     Asymptotic Notation
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../01_analysis/recursion.html">
-     Recursion
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../01_analysis/convergence.html">
-     Convergence of Algorithms
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../01_analysis/average_case.html">
-     Average Case Analysis
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="linear_algebra.html">
-   Linear Algebra
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="memory.html">
-     Memory and Performance
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="numpy_scipy_linalg.html">
-     Dense Linear Algebra in NumPy and SciPy
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     BLAS and LAPACK
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="sparse.html">
-     Sparse Matrices
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="linearoperators.html">
-     Linear Operators
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="sparse_linalg.html">
-     Sparse Linear Algebra
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="pytorch.html">
-     Linear Algebra in PyTorch
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="convolutions.html">
-     Convolutions and Fourier Transforms
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="fft.html">
-     The Fast Fourier Transform
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../03_optimization/optimization.html">
-   Optimization
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../03_optimization/scipy_opt.html">
-     Optimization in SciPy
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../04_functions/functions.html">
-   Functions
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../04_functions/sympy.html">
-     Symbolic Computing
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../04_functions/roots.html">
-     Root Finding
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../04_functions/differentiation.html">
-     Differentiation
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../04_functions/ode_initial.html">
-     Initial Value Problems
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../04_functions/interpolation.html">
-     Interpolation
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../04_functions/integration.html">
-     Integration &amp; Quadrature
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../04_functions/bvp.html">
-     Boundary Value Problems
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../05_graphs/graphs.html">
-   Graphs
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../05_graphs/networkx.html">
-     NetworkX
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../05_graphs/spectral.html">
-     Spectral Graph Theory
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../06_probability_statistics/prob_stat.html">
-   Probability and Statistics
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../06_probability_statistics/generating_random.html">
-     Generating Random Numbers
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../06_probability_statistics/scipy_stats.html">
-     Scipy
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       stats
-      </span>
-     </code>
-     package
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../07_data/data.html">
-   Data
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-  <label for="toctree-checkbox-8">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../07_data/pandas.html">
-     Pandas
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../07_data/sklearn.html">
-     SciKit Learn
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../07_data/dimension_reduction.html">
-     Dimension Reduction and Data Visualization
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../07_data/pytorch.html">
-     PyTorch Neural Networks
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../08_geometry/geometry.html">
-   Geometry
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
-  <label for="toctree-checkbox-9">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../08_geometry/distances.html">
-     Distances
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../08_geometry/nearestneighbor.html">
-     Nearest Neighbors
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../09_computing/computing.html">
-   Computing
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../09_computing/basic_bash.html">
-     Basic Bash
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../09_computing/git.html">
-     Git Version Control
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../09_computing/unittest.html">
-     Unit Testing
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../09_computing/packages.html">
-     Packages and Setup
-    </a>
-   </li>
-   <li class="toctree-l2 has-children">
-    <a class="reference internal" href="../09_computing/performance/performance.html">
-     Performance
-    </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
-    <label for="toctree-checkbox-11">
-     <i class="fas fa-chevron-down">
-     </i>
-    </label>
-    <ul>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../09_computing/performance/ipython.html">
-       Measuring Performance in Python
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../09_computing/performance/numpy_ufuncs.html">
-       Vectorization, Numpy Universal Functions
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../09_computing/environments.html">
-     Environments
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../09_computing/agent_based_models.html">
-     Agent Based Models
-    </a>
-   </li>
-  </ul>
- </li>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01_analysis/analysis.html">Analysis of Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01_analysis/asymptotic_notation.html">Asymptotic Notation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_analysis/recursion.html">Recursion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_analysis/convergence.html">Convergence of Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_analysis/average_case.html">Average Case Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../09_computing/computing.html">Computing</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../09_computing/basic_bash.html">Basic Bash</a></li>
+</ul>
+</li>
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/02_linear_algebra/blas_lapack.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+</nav></div>
     </div>
-</div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
 
-            <!-- Source interaction buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/caam37830/book"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/caam37830/book/issues/new?title=Issue%20on%20page%20%2F02_linear_algebra/blas_lapack.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+      </div>
+      
+      <main id="main-content" class="bd-main">
         
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
     </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/UChi-ComPy23/notes/master?urlpath=tree/02_linear_algebra/blas_lapack.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/UChi-ComPy23/notes/blob/master/02_linear_algebra/blas_lapack.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
 </div>
 
-            <!-- Full screen (wrap in <a> to have style consistency -->
 
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
 
-            <!-- Launch buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/caam37830/book/master?urlpath=tree/02_linear_algebra/blas_lapack.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        <a class="colab-button" href="https://colab.research.google.com/github/caam37830/book/blob/master/02_linear_algebra/blas_lapack.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
-                    src="../_static/images/logo_colab.png"
-                    alt="Interact on Colab">Colab</button></a>
-        
-        
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/UChi-ComPy23/notes" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/UChi-ComPy23/notes/issues/new?title=Issue%20on%20page%20%2F02_linear_algebra/blas_lapack.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/02_linear_algebra/blas_lapack.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
     </div>
+  
 </div>
+</div>
+              
+              
 
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>BLAS and LAPACK</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div>
+                <h2> Contents </h2>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
+            <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#why-should-you-care">
-   Why should you care?
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#view-your-configuration">
-   View Your Configuration
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#blas-routines">
-   BLAS Routines
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#blas-naming-conventions">
-     BLAS Naming Conventions
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#blas-levels">
-     BLAS Levels
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#flops">
-       FLOPS
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#blas-level-1">
-       BLAS Level 1
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#blas-level-2">
-       BLAS Level 2
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#blas-level-3">
-       BLAS Level 3
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#lapack-routines">
-   LAPACK Routines
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#example-obtain-a-orthonormal-basis-for-columns-of-a-matrix">
-     Example: Obtain a orthonormal basis for columns of a matrix
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercise">
-   Exercise
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id1">
-   Exercise
-  </a>
- </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-should-you-care">Why should you care?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#view-your-configuration">View Your Configuration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#blas-routines">BLAS Routines</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#blas-naming-conventions">BLAS Naming Conventions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#blas-levels">BLAS Levels</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#flops">FLOPS</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#blas-level-1">BLAS Level 1</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#blas-level-2">BLAS Level 2</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#blas-level-3">BLAS Level 3</a></li>
 </ul>
-
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lapack-routines">LAPACK Routines</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-obtain-a-orthonormal-basis-for-columns-of-a-matrix">Example: Obtain a orthonormal basis for columns of a matrix</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Exercise</a></li>
+</ul>
             </nav>
         </div>
     </div>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>BLAS and LAPACK</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#why-should-you-care">
-   Why should you care?
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#view-your-configuration">
-   View Your Configuration
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#blas-routines">
-   BLAS Routines
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#blas-naming-conventions">
-     BLAS Naming Conventions
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#blas-levels">
-     BLAS Levels
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#flops">
-       FLOPS
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#blas-level-1">
-       BLAS Level 1
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#blas-level-2">
-       BLAS Level 2
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#blas-level-3">
-       BLAS Level 3
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#lapack-routines">
-   LAPACK Routines
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#example-obtain-a-orthonormal-basis-for-columns-of-a-matrix">
-     Example: Obtain a orthonormal basis for columns of a matrix
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercise">
-   Exercise
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id1">
-   Exercise
-  </a>
- </li>
-</ul>
 
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            
-              <div>
+              
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="blas-and-lapack">
-<h1>BLAS and LAPACK<a class="headerlink" href="#blas-and-lapack" title="Permalink to this headline">¶</a></h1>
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="blas-and-lapack">
+<h1>BLAS and LAPACK<a class="headerlink" href="#blas-and-lapack" title="Permalink to this heading">#</a></h1>
 <p>We’ve seen a bit of dense linear algebra using numpy and scipy.  Now we’re going to look under the hood.</p>
 <p>Regardless of what language you’re using, chances are if you’re doing numerical linear algebra, you are able to take advantage of libraries of code which implement most common linear algebra routines and factorizations.</p>
 <p><a class="reference external" href="https://www.netlib.org/blas/">Basic Linear Algebra Subprograms (BLAS)</a></p>
 <p><a class="reference external" href="https://www.netlib.org/lapack/">Linear Algebra PACKage (LAPACK)</a></p>
 <p>These libraries are wrapped by scipy, which exposes an interface.</p>
-<div class="section" id="why-should-you-care">
-<h2>Why should you care?<a class="headerlink" href="#why-should-you-care" title="Permalink to this headline">¶</a></h2>
+<section id="why-should-you-care">
+<h2>Why should you care?<a class="headerlink" href="#why-should-you-care" title="Permalink to this heading">#</a></h2>
 <p>First, you probably shouldn’t be writing your own basic linear algebra routines if you can avoid it.</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>It takes time to write them</p></li>
 <li><p>Even if you know what you’re doing, there’s a chance you have a bug</p></li>
 <li><p>Performance optimization is involved</p></li>
 </ol>
 <p>It is entirely possible to do linear algebra in Python without ever worrying about the libraries under the hood.  However, maybe you are prototyping an algorithm in Python, and then want to write compiled/optimized code in C/fortran.  In this case, it is good to be able to translate what you’re doing into BLAS/LAPACK routines.</p>
-</div>
-<div class="section" id="view-your-configuration">
-<h2>View Your Configuration<a class="headerlink" href="#view-your-configuration" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="view-your-configuration">
+<h2>View Your Configuration<a class="headerlink" href="#view-your-configuration" title="Permalink to this heading">#</a></h2>
 <p>You can view what BLAS and LAPACK libraries NumPy is using</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -793,27 +489,36 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Populating the interactive namespace from numpy and matplotlib
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>%pylab is deprecated, use %matplotlib inline and import the required libraries.
+Populating the interactive namespace from numpy and matplotlib
+blas_armpl_info:
+  NOT AVAILABLE
 blas_mkl_info:
     libraries = [&#39;mkl_rt&#39;, &#39;pthread&#39;]
-    library_dirs = [&#39;/home/brad/miniconda3/envs/pycourse/lib&#39;]
+    library_dirs = [&#39;/home/goodwill/miniconda3/envs/pycourse_test/lib&#39;]
     define_macros = [(&#39;SCIPY_MKL_H&#39;, None), (&#39;HAVE_CBLAS&#39;, None)]
-    include_dirs = [&#39;/home/brad/miniconda3/envs/pycourse/include&#39;]
+    include_dirs = [&#39;/home/goodwill/miniconda3/envs/pycourse_test/include&#39;]
 blas_opt_info:
     libraries = [&#39;mkl_rt&#39;, &#39;pthread&#39;]
-    library_dirs = [&#39;/home/brad/miniconda3/envs/pycourse/lib&#39;]
+    library_dirs = [&#39;/home/goodwill/miniconda3/envs/pycourse_test/lib&#39;]
     define_macros = [(&#39;SCIPY_MKL_H&#39;, None), (&#39;HAVE_CBLAS&#39;, None)]
-    include_dirs = [&#39;/home/brad/miniconda3/envs/pycourse/include&#39;]
+    include_dirs = [&#39;/home/goodwill/miniconda3/envs/pycourse_test/include&#39;]
+lapack_armpl_info:
+  NOT AVAILABLE
 lapack_mkl_info:
     libraries = [&#39;mkl_rt&#39;, &#39;pthread&#39;]
-    library_dirs = [&#39;/home/brad/miniconda3/envs/pycourse/lib&#39;]
+    library_dirs = [&#39;/home/goodwill/miniconda3/envs/pycourse_test/lib&#39;]
     define_macros = [(&#39;SCIPY_MKL_H&#39;, None), (&#39;HAVE_CBLAS&#39;, None)]
-    include_dirs = [&#39;/home/brad/miniconda3/envs/pycourse/include&#39;]
+    include_dirs = [&#39;/home/goodwill/miniconda3/envs/pycourse_test/include&#39;]
 lapack_opt_info:
     libraries = [&#39;mkl_rt&#39;, &#39;pthread&#39;]
-    library_dirs = [&#39;/home/brad/miniconda3/envs/pycourse/lib&#39;]
+    library_dirs = [&#39;/home/goodwill/miniconda3/envs/pycourse_test/lib&#39;]
     define_macros = [(&#39;SCIPY_MKL_H&#39;, None), (&#39;HAVE_CBLAS&#39;, None)]
-    include_dirs = [&#39;/home/brad/miniconda3/envs/pycourse/include&#39;]
+    include_dirs = [&#39;/home/goodwill/miniconda3/envs/pycourse_test/include&#39;]
+Supported SIMD extensions in this NumPy install:
+    baseline = SSE,SSE2,SSE3
+    found = SSSE3,SSE41,POPCNT,SSE42,AVX,F16C,FMA3,AVX2
+    not found = AVX512F,AVX512CD,AVX512_KNL,AVX512_KNM,AVX512_SKX,AVX512_CLX,AVX512_CNL,AVX512_ICL
 </pre></div>
 </div>
 </div>
@@ -827,33 +532,76 @@ lapack_opt_info:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>lapack_mkl_info:
-    libraries = [&#39;mkl_rt&#39;, &#39;pthread&#39;]
-    library_dirs = [&#39;/home/brad/miniconda3/envs/pycourse/lib&#39;]
-    define_macros = [(&#39;SCIPY_MKL_H&#39;, None), (&#39;HAVE_CBLAS&#39;, None)]
-    include_dirs = [&#39;/home/brad/miniconda3/envs/pycourse/include&#39;]
-lapack_opt_info:
-    libraries = [&#39;mkl_rt&#39;, &#39;pthread&#39;]
-    library_dirs = [&#39;/home/brad/miniconda3/envs/pycourse/lib&#39;]
-    define_macros = [(&#39;SCIPY_MKL_H&#39;, None), (&#39;HAVE_CBLAS&#39;, None)]
-    include_dirs = [&#39;/home/brad/miniconda3/envs/pycourse/include&#39;]
-blas_mkl_info:
-    libraries = [&#39;mkl_rt&#39;, &#39;pthread&#39;]
-    library_dirs = [&#39;/home/brad/miniconda3/envs/pycourse/lib&#39;]
-    define_macros = [(&#39;SCIPY_MKL_H&#39;, None), (&#39;HAVE_CBLAS&#39;, None)]
-    include_dirs = [&#39;/home/brad/miniconda3/envs/pycourse/include&#39;]
-blas_opt_info:
-    libraries = [&#39;mkl_rt&#39;, &#39;pthread&#39;]
-    library_dirs = [&#39;/home/brad/miniconda3/envs/pycourse/lib&#39;]
-    define_macros = [(&#39;SCIPY_MKL_H&#39;, None), (&#39;HAVE_CBLAS&#39;, None)]
-    include_dirs = [&#39;/home/brad/miniconda3/envs/pycourse/include&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Build Dependencies:
+  blas:
+    detection method: pkgconfig
+    found: true
+    include directory: /home/goodwill/miniconda3/envs/pycourse_test/include
+    lib directory: /home/goodwill/miniconda3/envs/pycourse_test/lib
+    name: mkl-sdl
+    openblas configuration: unknown
+    pc file directory: /home/goodwill/miniconda3/envs/pycourse_test/lib/pkgconfig
+    version: &#39;2023.1&#39;
+  lapack:
+    detection method: pkgconfig
+    found: true
+    include directory: /home/goodwill/miniconda3/envs/pycourse_test/include
+    lib directory: /home/goodwill/miniconda3/envs/pycourse_test/lib
+    name: mkl-sdl
+    openblas configuration: unknown
+    pc file directory: /home/goodwill/miniconda3/envs/pycourse_test/lib/pkgconfig
+    version: &#39;2023.1&#39;
+  pybind11:
+    detection method: pkgconfig
+    include directory: /home/goodwill/miniconda3/envs/pycourse_test/include
+    name: pybind11
+    version: 2.10.4
+Compilers:
+  c:
+    commands: /croot/scipy_1691606680890/_build_env/bin/x86_64-conda-linux-gnu-cc
+    linker: ld.bfd
+    name: gcc
+    version: 11.2.0
+  c++:
+    commands: /croot/scipy_1691606680890/_build_env/bin/x86_64-conda-linux-gnu-c++
+    linker: ld.bfd
+    name: gcc
+    version: 11.2.0
+  cython:
+    commands: cython
+    linker: cython
+    name: cython
+    version: 0.29.36
+  fortran:
+    commands: /croot/scipy_1691606680890/_build_env/bin/x86_64-conda-linux-gnu-gfortran
+    linker: ld.bfd
+    name: gcc
+    version: 11.2.0
+  pythran:
+    include directory: ../../_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_p/lib/python3.11/site-packages/pythran
+    version: 0.13.1
+Machine Information:
+  build:
+    cpu: x86_64
+    endian: little
+    family: x86_64
+    system: linux
+  cross-compiled: false
+  host:
+    cpu: x86_64
+    endian: little
+    family: x86_64
+    system: linux
+Python Information:
+  path: /home/goodwill/miniconda3/envs/pycourse_test/bin/python
+  version: &#39;3.11&#39;
 </pre></div>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="blas-routines">
-<h2>BLAS Routines<a class="headerlink" href="#blas-routines" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="blas-routines">
+<h2>BLAS Routines<a class="headerlink" href="#blas-routines" title="Permalink to this heading">#</a></h2>
 <p><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/linalg.blas.html">scipy BLAS interface</a></p>
 <p>BLAS implements <em>basic</em> linear algebra routines like dot product, matrix-vector product, and matrix-matrix product as well as triangular solves.</p>
 <p>It is written in Fortran, so will be easiest to use if you set the flag <code class="docutils literal notranslate"><span class="pre">order='F'</span></code> when constructing arrays</p>
@@ -873,7 +621,7 @@ blas_opt_info:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.536062998606052e-12
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.515699563214431e-12
 </pre></div>
 </div>
 </div>
@@ -885,7 +633,7 @@ blas_opt_info:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.18 s ± 26.9 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.04 s ± 45.3 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
 </pre></div>
 </div>
 </div>
@@ -897,19 +645,19 @@ blas_opt_info:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.22 s ± 79.5 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.04 s ± 61.5 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
 </pre></div>
 </div>
 </div>
 </div>
-<div class="section" id="blas-naming-conventions">
-<h3>BLAS Naming Conventions<a class="headerlink" href="#blas-naming-conventions" title="Permalink to this headline">¶</a></h3>
+<section id="blas-naming-conventions">
+<h3>BLAS Naming Conventions<a class="headerlink" href="#blas-naming-conventions" title="Permalink to this heading">#</a></h3>
 <p>BLAS functions have short names (like <code class="docutils literal notranslate"><span class="pre">dgemm</span></code>) that look a little cryptic at first.  There is a pattern to the names though.  See <a class="reference external" href="https://software.intel.com/content/www/us/en/develop/documentation/mkl-developer-reference-fortran/top/blas-and-sparse-blas-routines/blas-routines/naming-conventions-for-blas-routines.html">here</a> for reference.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">blas</span><span class="o">.&lt;</span><span class="n">character</span><span class="o">&gt;&lt;</span><span class="n">name</span><span class="o">&gt;&lt;</span><span class="n">mod</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">&lt;character&gt;</span></code> field can be</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">s</span></code>: single precision float</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">d</span></code>: double precision float</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">c</span></code>: single precision complex float</p></li>
@@ -918,18 +666,18 @@ blas_opt_info:
 <p>The <code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code> field indicate either the operation type, or matrix type.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">&lt;mod&gt;</span></code> field indicates additional details about the operation.</p>
 <p>For example, <code class="docutils literal notranslate"><span class="pre">dgemm</span> <span class="pre">=</span> <span class="pre">d</span> <span class="pre">+</span> <span class="pre">ge</span> <span class="pre">+</span> <span class="pre">mm</span></code> has <code class="docutils literal notranslate"><span class="pre">d</span></code> as the <code class="docutils literal notranslate"><span class="pre">&lt;character&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">ge</span></code> for <code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code> (general matrix), and <code class="docutils literal notranslate"><span class="pre">mm</span></code> for <code class="docutils literal notranslate"><span class="pre">&lt;mod&gt;</span></code> (matrix multiplication).</p>
-</div>
-<div class="section" id="blas-levels">
-<h3>BLAS Levels<a class="headerlink" href="#blas-levels" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="blas-levels">
+<h3>BLAS Levels<a class="headerlink" href="#blas-levels" title="Permalink to this heading">#</a></h3>
 <p>BLAS is split up into 3 conceptual levels</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Level 1 - vector-vector operations</p></li>
 <li><p>Level 2 - matrix-vector operations</p></li>
 <li><p>Level 3 - matrix-matrix operations</p></li>
 </ol>
 <p>Level 3 operations are most efficient, since they can take the most advantage of memory performance optimizations e.g. minimizing cache misses.</p>
-<div class="section" id="flops">
-<h4>FLOPS<a class="headerlink" href="#flops" title="Permalink to this headline">¶</a></h4>
+<section id="flops">
+<h4>FLOPS<a class="headerlink" href="#flops" title="Permalink to this heading">#</a></h4>
 <p>FLOPS are Floating-Point Operations Per Second, and are one way to measure the power of numerical code.  Floating point operations are counted as the number of <code class="docutils literal notranslate"><span class="pre">+,</span> <span class="pre">*,</span> <span class="pre">/,</span> <span class="pre">-</span></code> applied to floating point numbers.</p>
 <ul class="simple">
 <li><p>A human is capable of &lt;1 flop</p></li>
@@ -937,11 +685,11 @@ blas_opt_info:
 <li><p>A high end GPU will be measured in Tera-flops (<span class="math notranslate nohighlight">\(10^{12}\)</span>)</p></li>
 <li><p>Super computers are mostly O(100) Peta-flops (<span class="math notranslate nohighlight">\(10^{17}\)</span>).  Some are close to an Exa-flop (<span class="math notranslate nohighlight">\(10^{18}\)</span>)</p></li>
 </ul>
-</div>
-<div class="section" id="blas-level-1">
-<h4>BLAS Level 1<a class="headerlink" href="#blas-level-1" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="blas-level-1">
+<h4>BLAS Level 1<a class="headerlink" href="#blas-level-1" title="Permalink to this heading">#</a></h4>
 <p>Some vector-vector operations (insert the appropriate <code class="docutils literal notranslate"><span class="pre">&lt;character&gt;</span></code>)</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.linalg.blas.daxpy.html"><code class="docutils literal notranslate"><span class="pre">axpy</span></code></a> (<span class="math notranslate nohighlight">\(a x + y\)</span>)</p></li>
 <li><p><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.linalg.blas.ddot.html"><code class="docutils literal notranslate"><span class="pre">dot</span></code></a> (dot product <span class="math notranslate nohighlight">\(x^H x\)</span>)</p></li>
 <li><p><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.linalg.blas.dnrm2.html"><code class="docutils literal notranslate"><span class="pre">nrm2</span></code></a> (<span class="math notranslate nohighlight">\(\|x\|_2\)</span>)</p></li>
@@ -961,7 +709,7 @@ blas_opt_info:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.552713678800501e-15
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0
 </pre></div>
 </div>
 </div>
@@ -992,18 +740,18 @@ blas_opt_info:
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>measuring BLAS Level 1 flops using &lt;class &#39;numpy.float32&#39;&gt;
-time elapsed = 0.006452083587646484 sec.
-3.099774e+09 FLOPS
+time elapsed = 0.004889965057373047 sec.
+4.090009e+09 FLOPS
 </pre></div>
 </div>
 </div>
 </div>
 <p>This is consistent with a CPU running at ~3 GHz</p>
-</div>
-<div class="section" id="blas-level-2">
-<h4>BLAS Level 2<a class="headerlink" href="#blas-level-2" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="blas-level-2">
+<h4>BLAS Level 2<a class="headerlink" href="#blas-level-2" title="Permalink to this heading">#</a></h4>
 <p>Some matrix-vector operations (insert appropriate <code class="docutils literal notranslate"><span class="pre">&lt;character&gt;</span></code>)</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.linalg.blas.dgemv.html#scipy.linalg.blas.dgemv"><code class="docutils literal notranslate"><span class="pre">gemv</span></code></a> <span class="math notranslate nohighlight">\(\alpha A x\)</span></p></li>
 <li><p><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.linalg.blas.dtrsv.html#scipy.linalg.blas.dtrsv"><code class="docutils literal notranslate"><span class="pre">trsv</span></code></a> <span class="math notranslate nohighlight">\(L^{-1} x\)</span> (triangular solve)</p></li>
 <li><p><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.linalg.blas.strmv.html#scipy.linalg.blas.strmv"><code class="docutils literal notranslate"><span class="pre">trmv</span></code></a> <span class="math notranslate nohighlight">\(L x\)</span> (triangular matrix-vector product)</p></li>
@@ -1028,19 +776,17 @@ time elapsed = 0.006452083587646484 sec.
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>measuring BLAS Level 2 flops using &lt;class &#39;numpy.float32&#39;&gt;
+time elapsed = 0.19464397430419922 sec.
+1.723888e+08 FLOPS
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time elapsed = 0.201141357421875 sec.
-1.668202e+08 FLOPS
-</pre></div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="blas-level-3">
-<h4>BLAS Level 3<a class="headerlink" href="#blas-level-3" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="blas-level-3">
+<h4>BLAS Level 3<a class="headerlink" href="#blas-level-3" title="Permalink to this heading">#</a></h4>
 <p>Some matrix-matrix operations (insert appropriate <code class="docutils literal notranslate"><span class="pre">&lt;character&gt;</span></code>)</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.linalg.blas.dgemm.html#scipy.linalg.blas.dgemm"><code class="docutils literal notranslate"><span class="pre">gemm</span></code></a> <span class="math notranslate nohighlight">\(\alpha AB\)</span></p></li>
 <li><p><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.linalg.blas.dsyrk.html#scipy.linalg.blas.dsyrk"><code class="docutils literal notranslate"><span class="pre">syrk</span></code></a> <span class="math notranslate nohighlight">\(\alpha A A^T\)</span></p></li>
 <li><p><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.linalg.blas.dtrmm.html#scipy.linalg.blas.dtrmm"><code class="docutils literal notranslate"><span class="pre">trmm</span></code></a> <span class="math notranslate nohighlight">\(\alpha L_1 L_2\)</span> (triangular multiplication)</p></li>
@@ -1067,18 +813,18 @@ time elapsed = 0.006452083587646484 sec.
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>measuring BLAS Level 3 flops using &lt;class &#39;numpy.float32&#39;&gt;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time elapsed = 1.088022232055664 sec.
-1.263200e+11 FLOPS
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time elapsed = 0.9548194408416748 sec.
+1.439423e+11 FLOPS
 </pre></div>
 </div>
 </div>
 </div>
 <p>From our experminets, we see that the BLAS level 3 operation gives us the most FLOPS.</p>
-</div>
-</div>
-</div>
-<div class="section" id="lapack-routines">
-<h2>LAPACK Routines<a class="headerlink" href="#lapack-routines" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+</section>
+<section id="lapack-routines">
+<h2>LAPACK Routines<a class="headerlink" href="#lapack-routines" title="Permalink to this heading">#</a></h2>
 <p><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/linalg.lapack.html">scipy LAPACK interface</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1089,8 +835,8 @@ time elapsed = 0.006452083587646484 sec.
 </div>
 <p>LAPACK is a library of linear algebra routines that go beyond basic operations.  These include routines for various factorizations and eigenvalue and singular value decompositions.</p>
 <p>Again, the names are a bit cryptic, and it is worth searching online (and reading documentation) to figure out how to call the right functions.</p>
-<div class="section" id="example-obtain-a-orthonormal-basis-for-columns-of-a-matrix">
-<h3>Example: Obtain a orthonormal basis for columns of a matrix<a class="headerlink" href="#example-obtain-a-orthonormal-basis-for-columns-of-a-matrix" title="Permalink to this headline">¶</a></h3>
+<section id="example-obtain-a-orthonormal-basis-for-columns-of-a-matrix">
+<h3>Example: Obtain a orthonormal basis for columns of a matrix<a class="headerlink" href="#example-obtain-a-orthonormal-basis-for-columns-of-a-matrix" title="Permalink to this heading">#</a></h3>
 <p>In a variety of situations it is convenient to be able to obtain an orthonormal basis for columns of a matrix <code class="docutils literal notranslate"><span class="pre">A</span></code> (e.g. subspace iteration, randomized numerical linear algebra).  One way to do this is to use the QR decomposition:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1111,7 +857,7 @@ time elapsed = 0.006452083587646484 sec.
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1000, 100)
-3.8251165998905494e-15
+3.793037124297152e-15
 </pre></div>
 </div>
 </div>
@@ -1134,7 +880,7 @@ time elapsed = 0.006452083587646484 sec.
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1000, 100)
-4.00715689225618e-15
+3.792831496917381e-15
 </pre></div>
 </div>
 </div>
@@ -1160,7 +906,7 @@ time elapsed = 0.006452083587646484 sec.
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1000, 100)
-3.932829855433616e-15
+3.952561479351786e-15
 0.0
 </pre></div>
 </div>
@@ -1183,21 +929,21 @@ time elapsed = 0.006452083587646484 sec.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>timing &lt;function get_Q_qr at 0x7f6f27bcdf70&gt;
-  time elapsed = 0.019899606704711914 sec.
-timing &lt;function get_Q_lapack at 0x7f6efd9e1dc0&gt;
-  time elapsed = 0.016045093536376953 sec.
-timing &lt;function get_Q_inplace at 0x7f6efd9e1e50&gt;
-  time elapsed = 0.0139617919921875 sec.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>timing &lt;function get_Q_qr at 0x7fd461c96160&gt;
+  time elapsed = 0.016373395919799805 sec.
+timing &lt;function get_Q_lapack at 0x7fd4615b3100&gt;
+  time elapsed = 0.011026382446289062 sec.
+timing &lt;function get_Q_inplace at 0x7fd4615b3380&gt;
+  time elapsed = 0.009057760238647461 sec.
 </pre></div>
 </div>
 </div>
 </div>
 <p>As we see, the in-place version is fastest.</p>
-</div>
-</div>
-<div class="section" id="exercise">
-<h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="exercise">
+<h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this heading">#</a></h2>
 <p>One way to get the top <code class="docutils literal notranslate"><span class="pre">k</span></code>-dimensional eigenspace (eigenpace with k-largest eigenvalues) is using a subspace version of the power method.  Here is some pseudocode:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
 <span class="c1"># get top k-dimensional eigenspace of symmetric matrix A</span>
@@ -1220,9 +966,9 @@ timing &lt;function get_Q_inplace at 0x7f6efd9e1e50&gt;
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="id1">
-<h2>Exercise<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="id1">
+<h2>Exercise<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
 <p>Implement a version of <code class="docutils literal notranslate"><span class="pre">solve</span></code> for a square matrix <code class="docutils literal notranslate"><span class="pre">A</span></code> which uses LAPACK for the LU decomposition, and BLAS for the triangular solves.  You may want to look at <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.linalg.lapack.dgetrf.html#scipy.linalg.lapack.dgetrf">dgetrf</a> (the <code class="docutils literal notranslate"><span class="pre">lu</span></code> return object has L in the lower triangular part, and U in the upper triangular part)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1231,8 +977,8 @@ timing &lt;function get_Q_inplace at 0x7f6efd9e1e50&gt;
 </div>
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1246,7 +992,7 @@ timing &lt;function get_Q_inplace at 0x7f6efd9e1e50&gt;
             mode: "pycourse"
         },
         kernelOptions: {
-            kernelName: "pycourse",
+            name: "pycourse",
             path: "./02_linear_algebra"
         },
         predefinedOutput: true
@@ -1254,44 +1000,101 @@ timing &lt;function get_Q_inplace at 0x7f6efd9e1e50&gt;
     </script>
     <script>kernelName = 'pycourse'</script>
 
-              </div>
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-should-you-care">Why should you care?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#view-your-configuration">View Your Configuration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#blas-routines">BLAS Routines</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#blas-naming-conventions">BLAS Naming Conventions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#blas-levels">BLAS Levels</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#flops">FLOPS</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#blas-level-1">BLAS Level 1</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#blas-level-2">BLAS Level 2</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#blas-level-3">BLAS Level 3</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lapack-routines">LAPACK Routines</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-obtain-a-orthonormal-basis-for-columns-of-a-matrix">Example: Obtain a orthonormal basis for columns of a matrix</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Exercise</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="numpy_scipy_linalg.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Dense Linear Algebra in NumPy and SciPy</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="sparse.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Sparse Matrices</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
-</div>
+          </div>
+          <footer class="bd-footer-content">
             
-        </div>
-    </div>
-    <footer class="footer">
-  <p>
-    
-      By Brad Nelson<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
-</main>
-
-
-      </div>
-    </div>
+<div class="bd-footer-content__inner container">
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <div class="footer-item">
+    
+<p class="component-author">
+By Brad Nelson
+</p>
 
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>
