@@ -63,12 +63,12 @@ In [2]:
 
 Python scripts are text files stored with a `.py` extension.  You can run scripts from the command line
 
-First, let's create a simple Python script which just prints a string:
+First, let's create a simple Python script which just prints a string. We create it using a combination of `echo` and `>`:
 ```bash
 (pycourse) $ echo 'print("hello world!")' > hello.py
 ```
 
-You will now have a file `hello.py`
+You will now have a file `hello.py`, which we can view using `cat`:
 ```bash
 (pycourse) $ cat hello.py
 print("hello world!")
@@ -135,7 +135,7 @@ After installation, you should see a `jupyter` command is now available.
 ~/miniconda3/bin/jupyter
 ```
 
-### Install A Kernel for your environment
+### Install a Kernel for your environment
 
 The next thing you need to do is install a kernel for your `pycourse` environment.  This will allow you to run code in Jupyter notebooks using the same setup as you would if you activate `pycourse`.
 

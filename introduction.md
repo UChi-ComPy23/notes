@@ -39,17 +39,3 @@ If you're serious about scientific computing, I would recommend (at least) learn
 
 This book organizes material into chapters that more or less contain information about a single topic.  This is done in an attempt to organize information in a sensible way.  However, it is not intended to be read or taught in the sequential order seen in the table of contents.  The course will carve some path through the content of the book, and any reader can likewise choose their own adventure through the content.
 
-The chapters are as follows:
-
-<ol start="0">
-	<li>Python - syntax, basic packages, basic and advanced topics</li>
-	<li> Analysis - asymptotics and convergence</li>
-	<li> Linear algebra - dense and sparse</li>
-	<li> Optimization - specifying and solving problems</li>
-	<li> Functions - root finding, interpolation, calculus on computers</li>
-	<li> Graphs - the network kind</li>
-	<li> Probability and Statistics - generating random numbers, distributions, parameter estimation</li>
-	<li> Data - reading data, visualization, machine learning</li>
-	<li> Geometry - metrics, nearest neighbor search, clustering</li>
-	<li> Computing - how to use computing resources, how to work with other people</li>
-</ol>
