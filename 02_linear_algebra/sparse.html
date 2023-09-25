@@ -850,9 +850,9 @@ Every subsequent row is in the form <code class="docutils literal notranslate"><
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for CSR multiply: 0.00016260147094726562 sec.
-time for dense multiply: 0.0013477802276611328 sec.
-CSR is 8.288856304985337x faster
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for CSR multiply: 0.0023632049560546875 sec.
+time for dense multiply: 0.0030388832092285156 sec.
+CSR is 1.2859160613397902x faster
 </pre></div>
 </div>
 </div>
@@ -911,20 +911,20 @@ CSR is 8.288856304985337x faster
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>matvec:
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for CSC matvec: 7.500e-06 sec.
-time for CSR matvec: 6.300e-06 sec.
-time for LIL matvec: 1.218e-04 sec.
-time for COO matvec: 6.500e-06 sec.
-time for DOK matvec: 7.762e-04 sec.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for CSC matvec: 8.700e-06 sec.
+time for CSR matvec: 7.700e-06 sec.
+time for LIL matvec: 1.422e-04 sec.
+time for COO matvec: 7.800e-06 sec.
+time for DOK matvec: 9.846e-04 sec.
 
 matmat:
+time for CSC matmat: 1.822e-04 sec. 	&lt;class &#39;scipy.sparse._csc.csc_matrix&#39;&gt;
+time for CSR matmat: 2.195e-04 sec. 	&lt;class &#39;scipy.sparse._csr.csr_matrix&#39;&gt;
+time for LIL matmat: 5.855e-04 sec. 	&lt;class &#39;scipy.sparse._csr.csr_matrix&#39;&gt;
+time for COO matmat: 7.271e-04 sec. 	&lt;class &#39;scipy.sparse._csr.csr_matrix&#39;&gt;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for CSC matmat: 1.439e-04 sec. 	&lt;class &#39;scipy.sparse._csc.csc_matrix&#39;&gt;
-time for CSR matmat: 1.461e-04 sec. 	&lt;class &#39;scipy.sparse._csr.csr_matrix&#39;&gt;
-time for LIL matmat: 3.619e-04 sec. 	&lt;class &#39;scipy.sparse._csr.csr_matrix&#39;&gt;
-time for COO matmat: 3.362e-04 sec. 	&lt;class &#39;scipy.sparse._csr.csr_matrix&#39;&gt;
-time for DOK matmat: 1.072e-03 sec. 	&lt;class &#39;scipy.sparse._csr.csr_matrix&#39;&gt;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for DOK matmat: 1.696e-03 sec. 	&lt;class &#39;scipy.sparse._csr.csr_matrix&#39;&gt;
 </pre></div>
 </div>
 </div>
@@ -1012,13 +1012,13 @@ time for DOK matmat: 1.072e-03 sec. 	&lt;class &#39;scipy.sparse._csr.csr_matrix
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>COO in CSC order
-time for matvec: 7.400e-06 sec.
+time for matvec: 1.310e-05 sec.
 
 COO in CSR order
-time for matvec: 5.700e-06 sec.
+time for matvec: 9.900e-06 sec.
 
 COO in random order
-time for matvec: 5.500e-06 sec.
+time for matvec: 9.500e-06 sec.
 </pre></div>
 </div>
 </div>
@@ -1094,7 +1094,7 @@ time for matvec: 5.500e-06 sec.
   <div class="footer-item">
     
 <p class="component-author">
-By Brad Nelson
+By Tristan Goodwill. Adapted from notes by Brad Nelson
 </p>
 
   </div>

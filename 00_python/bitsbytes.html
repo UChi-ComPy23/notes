@@ -577,7 +577,7 @@ f	1111	15
 </div>
 </div>
 </div>
-<p>hexadecimal is often used because it breaks up bits into blocks of 4 (16 = 2^4).  So a 64-bit type has some representation as a length-16 string in hexadecimal</p>
+<p>hexadecimal is often used because it breaks up bits into blocks of 4 (16 = 2^4).  So a 64-bit type has some representation as a length-16 string in hexadecimal.</p>
 </section>
 <section id="integers">
 <h2>Integers<a class="headerlink" href="#integers" title="Permalink to this heading">#</a></h2>
@@ -637,7 +637,7 @@ f	1111	15
 </section>
 <section id="bitwise-operations">
 <h2>Bitwise operations<a class="headerlink" href="#bitwise-operations" title="Permalink to this heading">#</a></h2>
-<p>You can perform operations on bit strings in Python.  To start with, we recall operations in boolean algebra: <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> (and), <code class="docutils literal notranslate"><span class="pre">|</span></code> (or), and <code class="docutils literal notranslate"><span class="pre">^</span></code> (xor) <code class="docutils literal notranslate"><span class="pre">~</span></code> (not)</p>
+<p>You can perform operations on bit strings in Python.  To start with, we recall operations in boolean algebra: <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> (and), <code class="docutils literal notranslate"><span class="pre">|</span></code> (or), and <code class="docutils literal notranslate"><span class="pre">^</span></code> (xor) <code class="docutils literal notranslate"><span class="pre">~</span></code> (not).</p>
 <p>Here’s a list of possible values for <code class="docutils literal notranslate"><span class="pre">&amp;</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -708,7 +708,7 @@ bitwise operations
 </div>
 </div>
 </div>
-<p>Note that <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> and <code class="docutils literal notranslate"><span class="pre">and</span></code> are not equivalent.  <code class="docutils literal notranslate"><span class="pre">and</span></code> does not operate bitwise - it interprets both as logical values (where <code class="docutils literal notranslate"><span class="pre">0</span></code> is <code class="docutils literal notranslate"><span class="pre">False</span></code> and any other number is <code class="docutils literal notranslate"><span class="pre">True</span></code>)</p>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> and <code class="docutils literal notranslate"><span class="pre">and</span></code> are not equivalent.  <code class="docutils literal notranslate"><span class="pre">and</span></code> does not operate bitwise - it interprets both as logical values (where <code class="docutils literal notranslate"><span class="pre">0</span></code> is <code class="docutils literal notranslate"><span class="pre">False</span></code> and any other number is <code class="docutils literal notranslate"><span class="pre">True</span></code>).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">binprint</span><span class="p">(</span><span class="mb">0b1100</span> <span class="o">&amp;</span> <span class="mb">0b0101</span><span class="p">)</span>
@@ -917,7 +917,7 @@ bitwise operations
 <p>Floating point numbers are numbers written in scientific notation (in base-2).  E.g. <span class="math notranslate nohighlight">\(1.1 * 2^{10} = 1.5 * 2^2\)</span> in base-10 = 6.  They contain a sign bit, a set of bits for the decimal (called the significand or mantissa), and a set of bits for the exponent.</p>
 <p>For example, float32 has 1 bit for the sign, 8 bits for the exponent, and 23 bits for the mantissa.</p>
 <p><img alt="img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Float_example.svg/1920px-Float_example.svg.png" /></p>
-<p>For further reading on potential considerations with floating point numbers, see <a class="reference external" href="https://docs.python.org/3/tutorial/floatingpoint.html">the Python documentation</a></p>
+<p>For further reading on potential considerations with floating point numbers, see <a class="reference external" href="https://docs.python.org/3/tutorial/floatingpoint.html">the Python documentation</a>.</p>
 <p>You can inspect the bits used in a floating point number in python using the <code class="docutils literal notranslate"><span class="pre">bitstring</span></code> package</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(pycourse) $ conda install bistring -c conda-forge
 </pre></div>
@@ -967,7 +967,7 @@ bitwise operations
 </div>
 </div>
 </div>
-<p>as a result, you can’t count on floating point numbers to count:</p>
+<p>As a result, you can’t count on floating point numbers to count:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -1034,7 +1034,7 @@ b = <span class=" -Color -Color-Blue">0</span><span class=" -Color -Color-Green"
 </div>
 </div>
 </div>
-<p>The exponent has a “bias” equal to half the number of possible bits.  So to get the value of an 8-bit exponent, we subtract <code class="docutils literal notranslate"><span class="pre">2**7-1</span> <span class="pre">=</span> <span class="pre">127</span> <span class="pre">=</span> <span class="pre">0b01111111</span></code></p>
+<p>The exponent has a “bias” equal to half the number of possible bits.  So to get the value of an 8-bit exponent, we subtract <code class="docutils literal notranslate"><span class="pre">2**7-1</span> <span class="pre">=</span> <span class="pre">127</span> <span class="pre">=</span> <span class="pre">0b01111111</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">2</span><span class="o">**-</span><span class="mi">126</span><span class="p">,</span> <span class="mf">1e0</span><span class="p">,</span> <span class="mi">2</span><span class="o">**</span><span class="mi">126</span><span class="p">]:</span>
@@ -1050,12 +1050,12 @@ b = <span class=" -Color -Color-Blue">0</span><span class=" -Color -Color-Green"
 </div>
 </div>
 </div>
-<p>You obtain the number by raising the significand to the base multiplied by the exponent</p>
+<p>You obtain the number by raising the significand to the base multiplied by the exponent.</p>
 </section>
 <section id="print-formatting">
 <h3>Print Formatting<a class="headerlink" href="#print-formatting" title="Permalink to this heading">#</a></h3>
 <p>It is often convenient to format floating point numbers for printing without showing full precision.  An explanation of available options can be found in the <a class="reference external" href="https://docs.python.org/3/library/string.html#format-specification-mini-language">format specification mini-language documentation</a>.  We’ll cover a few examples.</p>
-<p>When formatting a floating point number with <code class="docutils literal notranslate"><span class="pre">format</span></code>, you put format specification in the curly braces <code class="docutils literal notranslate"><span class="pre">{}</span></code>, as in <code class="docutils literal notranslate"><span class="pre">&quot;{:width.precision}}</span></code></p>
+<p>When formatting a floating point number with <code class="docutils literal notranslate"><span class="pre">format</span></code>, you put format specification in the curly braces <code class="docutils literal notranslate"><span class="pre">{}</span></code>, as in <code class="docutils literal notranslate"><span class="pre">&quot;{:width.precision}}</span></code>.</p>
 <p>The <em>width</em> denotes the total field width.</p>
 <p>The <em>precision</em> denotes how many digits should be displayed after the decimal.</p>
 <div class="cell docutils container">
@@ -1314,7 +1314,7 @@ inf
   <div class="footer-item">
     
 <p class="component-author">
-By Brad Nelson
+By Tristan Goodwill. Adapted from notes by Brad Nelson
 </p>
 
   </div>

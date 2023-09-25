@@ -491,7 +491,9 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>%pylab is deprecated, use %matplotlib inline and import the required libraries.
 Populating the interactive namespace from numpy and matplotlib
-blas_armpl_info:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>blas_armpl_info:
   NOT AVAILABLE
 blas_mkl_info:
     libraries = [&#39;mkl_rt&#39;, &#39;pthread&#39;]
@@ -621,7 +623,7 @@ Python Information:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.515699563214431e-12
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.4616157040688296e-12
 </pre></div>
 </div>
 </div>
@@ -633,7 +635,7 @@ Python Information:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.04 s ± 45.3 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.41 s ± 232 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
 </pre></div>
 </div>
 </div>
@@ -645,7 +647,7 @@ Python Information:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.04 s ± 61.5 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.31 s ± 251 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
 </pre></div>
 </div>
 </div>
@@ -740,8 +742,8 @@ Python Information:
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>measuring BLAS Level 1 flops using &lt;class &#39;numpy.float32&#39;&gt;
-time elapsed = 0.004889965057373047 sec.
-4.090009e+09 FLOPS
+time elapsed = 0.004933357238769531 sec.
+4.054034e+09 FLOPS
 </pre></div>
 </div>
 </div>
@@ -776,8 +778,10 @@ time elapsed = 0.004889965057373047 sec.
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>measuring BLAS Level 2 flops using &lt;class &#39;numpy.float32&#39;&gt;
-time elapsed = 0.19464397430419922 sec.
-1.723888e+08 FLOPS
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time elapsed = 0.37459635734558105 sec.
+8.957490e+07 FLOPS
 </pre></div>
 </div>
 </div>
@@ -813,8 +817,8 @@ time elapsed = 0.19464397430419922 sec.
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>measuring BLAS Level 3 flops using &lt;class &#39;numpy.float32&#39;&gt;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time elapsed = 0.9548194408416748 sec.
-1.439423e+11 FLOPS
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time elapsed = 1.1915695667266846 sec.
+1.153428e+11 FLOPS
 </pre></div>
 </div>
 </div>
@@ -857,7 +861,7 @@ time elapsed = 0.19464397430419922 sec.
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1000, 100)
-3.793037124297152e-15
+3.908701917205841e-15
 </pre></div>
 </div>
 </div>
@@ -880,7 +884,7 @@ time elapsed = 0.19464397430419922 sec.
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1000, 100)
-3.792831496917381e-15
+4.100800343302609e-15
 </pre></div>
 </div>
 </div>
@@ -906,7 +910,7 @@ time elapsed = 0.19464397430419922 sec.
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1000, 100)
-3.952561479351786e-15
+4.24315276978895e-15
 0.0
 </pre></div>
 </div>
@@ -929,12 +933,14 @@ time elapsed = 0.19464397430419922 sec.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>timing &lt;function get_Q_qr at 0x7fd461c96160&gt;
-  time elapsed = 0.016373395919799805 sec.
-timing &lt;function get_Q_lapack at 0x7fd4615b3100&gt;
-  time elapsed = 0.011026382446289062 sec.
-timing &lt;function get_Q_inplace at 0x7fd4615b3380&gt;
-  time elapsed = 0.009057760238647461 sec.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>timing &lt;function get_Q_qr at 0x7ff39821ab60&gt;
+  time elapsed = 0.021814346313476562 sec.
+timing &lt;function get_Q_lapack at 0x7ff39821b380&gt;
+  time elapsed = 0.015540122985839844 sec.
+timing &lt;function get_Q_inplace at 0x7ff39821b560&gt;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  time elapsed = 0.014452219009399414 sec.
 </pre></div>
 </div>
 </div>
@@ -1058,7 +1064,7 @@ timing &lt;function get_Q_inplace at 0x7fd4615b3380&gt;
   <div class="footer-item">
     
 <p class="component-author">
-By Brad Nelson
+By Tristan Goodwill. Adapted from notes by Brad Nelson
 </p>
 
   </div>
