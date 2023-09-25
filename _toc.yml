@@ -4,6 +4,8 @@ title: Start Here
 sections:
 - file: 00_python/python
   sections:
+  - file: 00_python/conda
+  - file: 00_python/jupyter
   - file: 00_python/using_python
   - file: 00_python/basics
   - file: 00_python/bitsbytes
