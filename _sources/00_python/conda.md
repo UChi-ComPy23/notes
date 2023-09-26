@@ -75,7 +75,7 @@ $ conda --version
 ```
 Should return
 ```
-conda 4.8.4
+conda 23.8.4
 ```
 (or some similar version)
 
