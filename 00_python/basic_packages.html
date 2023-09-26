@@ -164,6 +164,8 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="python.html">Python</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="conda.html">Installing Anaconda Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jupyter.html">Installing and Using Jupyter Notebooks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="using_python.html">Using Python</a></li>
 <li class="toctree-l2"><a class="reference internal" href="basics.html">Basics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="bitsbytes.html">Bits, Bytes, and Numbers</a></li>
@@ -829,7 +831,7 @@ cat
 6
 int64
 8
-&lt;memory at 0x7f8a71d560c0&gt;
+&lt;memory at 0x7fbf62d5dff0&gt;
   C_CONTIGUOUS : True
   F_CONTIGUOUS : False
   OWNDATA : True
@@ -848,11 +850,11 @@ int64
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 
 <span class="c1"># an array of 1</span>
-<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float</span><span class="p">)</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 
 <span class="c1"># just an array with no initialization - WARNING: data can be anything</span>
-<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float</span><span class="p">)</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 
 <span class="c1"># random normal data</span>
@@ -863,30 +865,15 @@ int64
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0 1 2]
-</pre></div>
-</div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>---------------------------------------------------------------------------
-AttributeError                            Traceback (most recent call last)
-Cell In[23], line 6
-      3 print(a)
-      5 # an array of 1
-----&gt; 6 a = np.ones((3,2), dtype=np.float)
-      7 print(a)
-      9 # just an array with no initialization - WARNING: data can be anything
-
-File ~/miniconda3/envs/pycourse_test/lib/python3.11/site-packages/numpy/__init__.py:319, in __getattr__(attr)
-    314     warnings.warn(
-    315         f&quot;In the future `np.{attr}` will be defined as the &quot;
-    316         &quot;corresponding NumPy scalar.&quot;, FutureWarning, stacklevel=2)
-    318 if attr in __former_attrs__:
---&gt; 319     raise AttributeError(__former_attrs__[attr])
-    321 if attr == &#39;testing&#39;:
-    322     import numpy.testing as testing
-
-AttributeError: module &#39;numpy&#39; has no attribute &#39;float&#39;.
-`np.float` was a deprecated alias for the builtin `float`. To avoid this error in existing code, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
-The aliases was originally deprecated in NumPy 1.20; for more details and guidance see the original release note at:
-    https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+[[1. 1.]
+ [1. 1.]
+ [1. 1.]]
+[[1. 1.]
+ [1. 1.]
+ [1. 1.]]
+[[-1.07500678  0.3229216 ]
+ [ 0.19545898 -0.56385095]
+ [ 2.12244714  0.51538288]]
 </pre></div>
 </div>
 </div>
@@ -1062,8 +1049,10 @@ The aliases was originally deprecated in NumPy 1.20; for more details and guidan
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for loop over list: 0.16 sec.
-time for numpy vectorization: 0.00221 sec.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for loop over list: 0.0983 sec.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for numpy vectorization: 0.00284 sec.
 </pre></div>
 </div>
 </div>
@@ -1094,7 +1083,7 @@ time for numpy vectorization: 0.00221 sec.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/bd392b2f3add73601633c27935ac151a619907fe1ff7732d005e57dcd9fdf97c.png" src="../_images/bd392b2f3add73601633c27935ac151a619907fe1ff7732d005e57dcd9fdf97c.png" />
+<img alt="../_images/ec48143bd755912c668e728fde92cf7497656ec700cab8c66e0d624d4e6031c8.png" src="../_images/ec48143bd755912c668e728fde92cf7497656ec700cab8c66e0d624d4e6031c8.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1111,7 +1100,7 @@ time for numpy vectorization: 0.00221 sec.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/47852f521aff358b96fbc49a6b292c2b6967f3a1fa76fbc36169050f6b238657.png" src="../_images/47852f521aff358b96fbc49a6b292c2b6967f3a1fa76fbc36169050f6b238657.png" />
+<img alt="../_images/4bb514178860789963c2a53871cad40203ba64a85c4f13b0e12f9910a9bdaedb.png" src="../_images/4bb514178860789963c2a53871cad40203ba64a85c4f13b0e12f9910a9bdaedb.png" />
 </div>
 </div>
 </section>
@@ -1138,7 +1127,7 @@ time for numpy vectorization: 0.00221 sec.
 <p>Files can be loaded using <code class="docutils literal notranslate"><span class="pre">np.loadtxt()</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;example.csv&#39;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;example.csv&#39;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
 <span class="n">y</span>
 </pre></div>
 </div>
@@ -1150,7 +1139,7 @@ time for numpy vectorization: 0.00221 sec.
        ...,
        [3988, 3989, 3990, 3991],
        [3992, 3993, 3994, 3995],
-       [3996, 3997, 3998, 3999]])
+       [3996, 3997, 3998, 3999]], dtype=int32)
 </pre></div>
 </div>
 </div>
@@ -1605,7 +1594,7 @@ Name: temperature, Length: 1000, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/11c28f6c1eab5500043b495a675d10fb1f349d90223c8c2a58e9046b133d92d4.png" src="../_images/11c28f6c1eab5500043b495a675d10fb1f349d90223c8c2a58e9046b133d92d4.png" />
+<img alt="../_images/c7ee757ed6ca62d59bbb54cfe230e09f4c7abedd8dda41aa48ec85176523cd1e.png" src="../_images/c7ee757ed6ca62d59bbb54cfe230e09f4c7abedd8dda41aa48ec85176523cd1e.png" />
 </div>
 </div>
 </section>
