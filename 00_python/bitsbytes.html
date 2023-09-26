@@ -164,6 +164,8 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="python.html">Python</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="conda.html">Installing Anaconda Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jupyter.html">Installing and Using Jupyter Notebooks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="using_python.html">Using Python</a></li>
 <li class="toctree-l2"><a class="reference internal" href="basics.html">Basics</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Bits, Bytes, and Numbers</a></li>
@@ -563,7 +565,7 @@ f	1111	15
 </div>
 </div>
 </div>
-<p>You can also use octal (base 8) if you’d like using the <code class="docutils literal notranslate"><span class="pre">0o</span></code> prefix</p>
+<p>By using the <code class="docutils literal notranslate"><span class="pre">0o</span></code> prefix, you can also use octal (base 8) if you’d like</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mo">0o10</span>
@@ -765,16 +767,10 @@ bitwise operations
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">16</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">bitstring</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="k">def</span> <span class="nf">print_int8</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span><span class="sd">     print a as if it were an 8-bit signed integer</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span><span class="sd">     &quot;&quot;&quot;</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;bitstring&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Blue">0</span><span class=" -Color -Color-Red">0000001</span>
+<span class=" -Color -Color-Blue">0</span><span class=" -Color -Color-Red">0001000</span>
+<span class=" -Color -Color-Blue">0</span><span class=" -Color -Color-Red">1000000</span>
+<span class=" -Color -Color-Blue">0</span><span class=" -Color -Color-Red">1111111</span>
 </pre></div>
 </div>
 </div>
@@ -919,7 +915,7 @@ bitwise operations
 <p><img alt="img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Float_example.svg/1920px-Float_example.svg.png" /></p>
 <p>For further reading on potential considerations with floating point numbers, see <a class="reference external" href="https://docs.python.org/3/tutorial/floatingpoint.html">the Python documentation</a>.</p>
 <p>You can inspect the bits used in a floating point number in python using the <code class="docutils literal notranslate"><span class="pre">bitstring</span></code> package</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(pycourse) $ conda install bistring -c conda-forge
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(pycourse) $ conda install bitstring -c conda-forge
 </pre></div>
 </div>
 <div class="cell docutils container">
@@ -1203,6 +1199,10 @@ b = <span class=" -Color -Color-Blue">0</span><span class=" -Color -Color-Green"
 inf
 </pre></div>
 </div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_10592/167000260.py:3: RuntimeWarning: overflow encountered in cast
+  print(np.float32(1.0 *2**128))
+</pre></div>
+</div>
 </div>
 </details>
 </div>
@@ -1218,6 +1218,10 @@ inf
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_10592/1218727782.py:1: RuntimeWarning: overflow encountered in cast
+  np.float32(1.0 *2**128)
+</pre></div>
+</div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>inf
 </pre></div>
 </div>
