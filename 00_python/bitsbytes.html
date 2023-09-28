@@ -979,6 +979,42 @@ bitwise operations
 </div>
 </div>
 </div>
+<p>You must also be aware of accumulating rounding errors. Let’s test that by taking an average of many duplicates of 1/3.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">floatype</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">floatype</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">samp</span> <span class="o">=</span> <span class="n">floatype</span><span class="p">(</span><span class="mf">1.</span><span class="o">/</span><span class="mf">3.</span><span class="p">)</span> <span class="c1"># be sure that samples are in the same precision</span>
+<span class="n">nsamp</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="mi">6</span> <span class="c1"># how many samples</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nsamp</span><span class="p">):</span>
+  <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">+</span><span class="n">samp</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">/</span><span class="n">nsamp</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error in the mean is </span><span class="si">{:.2e}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">samp</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Error in the mean is 4.97e-04
+</pre></div>
+</div>
+</div>
+</div>
+<p>There other ways to compute means, but they don’t do much better</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">floatype</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nsamp</span><span class="p">):</span>
+  <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">*</span><span class="n">floatype</span><span class="p">(</span><span class="n">i</span><span class="o">/</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span><span class="o">+</span><span class="n">samp</span><span class="o">/</span><span class="n">floatype</span><span class="p">((</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error in the mean is </span><span class="si">{:.2e}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">samp</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Error in the mean is 1.91e-04
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a = </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">fmt_float32_bits</span><span class="p">(</span><span class="n">a</span><span class="p">)))</span>
@@ -1199,7 +1235,7 @@ b = <span class=" -Color -Color-Blue">0</span><span class=" -Color -Color-Green"
 inf
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_10592/167000260.py:3: RuntimeWarning: overflow encountered in cast
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1589/167000260.py:3: RuntimeWarning: overflow encountered in cast
   print(np.float32(1.0 *2**128))
 </pre></div>
 </div>
@@ -1218,7 +1254,7 @@ inf
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_10592/1218727782.py:1: RuntimeWarning: overflow encountered in cast
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1589/1218727782.py:1: RuntimeWarning: overflow encountered in cast
   np.float32(1.0 *2**128)
 </pre></div>
 </div>

@@ -16,7 +16,7 @@ Installation will depend on your operating system.  We'll assume that this goes 
 
 ### Installing Miniconda on Linux
 
-As per the Miniconda instructions, you can install Miniconda on a Linux machine using the following commands.
+If you are using `bash`, then, as per the Miniconda instructions, you can install Miniconda on a Linux machine using the following commands.
 
 ```bash
 mkdir -p ~/miniconda3
@@ -29,7 +29,7 @@ rm -rf ~/miniconda3/miniconda.sh
 
 ### Installing Miniconda on macOs
 
-As per the Miniconda instructions, you can install Miniconda on a mac using the following commands.
+If you are using `bash`, then, as per the Miniconda instructions, you can install Miniconda on a mac using the following commands. If you are using a different terminal, go and see the above instructions.
 
 ```bash
 mkdir -p ~/miniconda3
