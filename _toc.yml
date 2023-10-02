@@ -23,6 +23,16 @@ sections:
   - file: 01_analysis/recursion
   - file: 01_analysis/convergence
   - file: 01_analysis/average_case
+- file: 02_linear_algebra/linear_algebra
+  sections:
+  - file: 02_linear_algebra/memory
+  - file: 02_linear_algebra/numpy_scipy_linalg
+  - file: 02_linear_algebra/blas_lapack
+- file: 04_functions/functions 
+  sections:
+  - file: 04_functions/roots
 - file: 09_computing/computing
   sections:
   - file: 09_computing/basic_bash
+  - file: 09_computing/performance/ipython
+  - file: 09_computing/performance/numpy_ufuncs
