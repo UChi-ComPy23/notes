@@ -67,6 +67,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = '02_linear_algebra/blas_lapack';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Functions" href="../04_functions/functions.html" />
+    <link rel="prev" title="Dense Linear Algebra in NumPy and SciPy" href="numpy_scipy_linalg.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -160,8 +162,10 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../00_python/python.html">Python</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/conda.html">Installing Anaconda Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/jupyter.html">Installing and Using Jupyter Notebooks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../00_python/using_python.html">Using Python</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../00_python/basics.html">Basics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../00_python/bitsbytes.html">Bits, Bytes, and Numbers</a></li>
@@ -182,8 +186,20 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../01_analysis/average_case.html">Average Case Analysis</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../09_computing/computing.html">Computing</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="linear_algebra.html">Linear Algebra</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="memory.html">Memory and Performance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numpy_scipy_linalg.html">Dense Linear Algebra in NumPy and SciPy</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">BLAS and LAPACK</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../04_functions/functions.html">Functions</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../04_functions/roots.html">Root Finding</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../09_computing/computing.html">Computing</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../09_computing/basic_bash.html">Basic Bash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09_computing/performance/ipython.html">Measuring Performance in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09_computing/performance/numpy_ufuncs.html">Vectorization, Numpy Universal Functions</a></li>
 </ul>
 </li>
 </ul>
@@ -491,9 +507,7 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>%pylab is deprecated, use %matplotlib inline and import the required libraries.
 Populating the interactive namespace from numpy and matplotlib
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>blas_armpl_info:
+blas_armpl_info:
   NOT AVAILABLE
 blas_mkl_info:
     libraries = [&#39;mkl_rt&#39;, &#39;pthread&#39;]
@@ -623,7 +637,7 @@ Python Information:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.4616157040688296e-12
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.497623786025807e-12
 </pre></div>
 </div>
 </div>
@@ -635,7 +649,7 @@ Python Information:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.41 s ± 232 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.22 s ± 46.9 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
 </pre></div>
 </div>
 </div>
@@ -647,7 +661,7 @@ Python Information:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.31 s ± 251 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.21 s ± 59.1 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
 </pre></div>
 </div>
 </div>
@@ -711,7 +725,7 @@ Python Information:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-3.552713678800501e-15
 </pre></div>
 </div>
 </div>
@@ -742,8 +756,8 @@ Python Information:
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>measuring BLAS Level 1 flops using &lt;class &#39;numpy.float32&#39;&gt;
-time elapsed = 0.004933357238769531 sec.
-4.054034e+09 FLOPS
+time elapsed = 0.004961252212524414 sec.
+4.031240e+09 FLOPS
 </pre></div>
 </div>
 </div>
@@ -778,10 +792,8 @@ time elapsed = 0.004933357238769531 sec.
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>measuring BLAS Level 2 flops using &lt;class &#39;numpy.float32&#39;&gt;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time elapsed = 0.37459635734558105 sec.
-8.957490e+07 FLOPS
+time elapsed = 0.20241928100585938 sec.
+1.657670e+08 FLOPS
 </pre></div>
 </div>
 </div>
@@ -817,8 +829,8 @@ time elapsed = 0.004933357238769531 sec.
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>measuring BLAS Level 3 flops using &lt;class &#39;numpy.float32&#39;&gt;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time elapsed = 1.1915695667266846 sec.
-1.153428e+11 FLOPS
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time elapsed = 1.1370549201965332 sec.
+1.208727e+11 FLOPS
 </pre></div>
 </div>
 </div>
@@ -861,7 +873,7 @@ time elapsed = 0.004933357238769531 sec.
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1000, 100)
-3.908701917205841e-15
+3.739657302945131e-15
 </pre></div>
 </div>
 </div>
@@ -884,7 +896,7 @@ time elapsed = 0.004933357238769531 sec.
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1000, 100)
-4.100800343302609e-15
+3.649480057144998e-15
 </pre></div>
 </div>
 </div>
@@ -910,7 +922,7 @@ time elapsed = 0.004933357238769531 sec.
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1000, 100)
-4.24315276978895e-15
+3.99579045877564e-15
 0.0
 </pre></div>
 </div>
@@ -933,14 +945,14 @@ time elapsed = 0.004933357238769531 sec.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>timing &lt;function get_Q_qr at 0x7ff39821ab60&gt;
-  time elapsed = 0.021814346313476562 sec.
-timing &lt;function get_Q_lapack at 0x7ff39821b380&gt;
-  time elapsed = 0.015540122985839844 sec.
-timing &lt;function get_Q_inplace at 0x7ff39821b560&gt;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>timing &lt;function get_Q_qr at 0x7f9b82453c40&gt;
+  time elapsed = 0.023363590240478516 sec.
+timing &lt;function get_Q_lapack at 0x7f9b47c9ef20&gt;
+  time elapsed = 0.018870830535888672 sec.
+timing &lt;function get_Q_inplace at 0x7f9b47c9f920&gt;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  time elapsed = 0.014452219009399414 sec.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  time elapsed = 0.015296697616577148 sec.
 </pre></div>
 </div>
 </div>
@@ -1016,6 +1028,24 @@ timing &lt;function get_Q_inplace at 0x7ff39821b560&gt;
                 <footer class="prev-next-footer">
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="numpy_scipy_linalg.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Dense Linear Algebra in NumPy and SciPy</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../04_functions/functions.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Functions</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               

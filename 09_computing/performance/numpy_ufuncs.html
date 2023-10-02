@@ -65,6 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = '09_computing/performance/numpy_ufuncs';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Measuring Performance in Python" href="ipython.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -158,8 +159,10 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../00_python/python.html">Python</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../00_python/conda.html">Installing Anaconda Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../00_python/jupyter.html">Installing and Using Jupyter Notebooks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../00_python/using_python.html">Using Python</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../00_python/basics.html">Basics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../00_python/bitsbytes.html">Bits, Bytes, and Numbers</a></li>
@@ -180,8 +183,20 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../01_analysis/average_case.html">Average Case Analysis</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../computing.html">Computing</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../02_linear_algebra/linear_algebra.html">Linear Algebra</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../02_linear_algebra/memory.html">Memory and Performance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02_linear_algebra/numpy_scipy_linalg.html">Dense Linear Algebra in NumPy and SciPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02_linear_algebra/blas_lapack.html">BLAS and LAPACK</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../04_functions/functions.html">Functions</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../04_functions/roots.html">Root Finding</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../computing.html">Computing</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../basic_bash.html">Basic Bash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ipython.html">Measuring Performance in Python</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Vectorization, Numpy Universal Functions</a></li>
 </ul>
 </li>
 </ul>
@@ -517,8 +532,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for naive add: 3.212e-01 sec
-time for numpy add: 3.600e-03 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for naive add: 1.877e-01 sec
+time for numpy add: 3.002e-03 sec
 </pre></div>
 </div>
 </div>
@@ -548,11 +563,11 @@ time for numpy add: 3.600e-03 sec
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for naive add: 2.967e-01 sec
-time for numpy add: 5.086e-03 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for naive add: 1.949e-01 sec
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for numpy add (vectorize): 2.707e-01 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for numpy add: 2.462e-03 sec
+time for numpy add (vectorize): 1.656e-01 sec
 </pre></div>
 </div>
 </div>
@@ -623,11 +638,11 @@ y_i = \sum_j A_{i,j} x_j
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for naive matvec: 3.115e-01 sec
-time for numpy matvec: 6.854e-03 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for naive matvec: 1.541e-01 sec
+time for numpy matvec: 6.517e-03 sec
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8.187912212630974e-13
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8.522610904620144e-13
 </pre></div>
 </div>
 </div>
@@ -977,6 +992,15 @@ time for numba add (cuda): 5.494e-01 sec
                 <footer class="prev-next-footer">
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="ipython.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Measuring Performance in Python</p>
+      </div>
+    </a>
 </div>
                 </footer>
               
