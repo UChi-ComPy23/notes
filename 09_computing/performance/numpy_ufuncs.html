@@ -519,21 +519,21 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span>
 <span class="n">z</span> <span class="o">=</span> <span class="n">naive_add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;time for naive add: </span><span class="si">{:0.3e}</span><span class="s2"> sec&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">))</span>
 
-<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span>
 <span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;time for numpy add: </span><span class="si">{:0.3e}</span><span class="s2"> sec&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for naive add: 1.877e-01 sec
-time for numpy add: 3.002e-03 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for naive add: 3.167e-01 sec
+time for numpy add: 3.623e-03 sec
 </pre></div>
 </div>
 </div>
@@ -545,29 +545,29 @@ time for numpy add: 3.002e-03 sec
 <span class="k">def</span> <span class="nf">numpy_add_vectorize</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
 
-<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span>
 <span class="n">z</span> <span class="o">=</span> <span class="n">naive_add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;time for naive add: </span><span class="si">{:0.3e}</span><span class="s2"> sec&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">))</span>
 
-<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span>
 <span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;time for numpy add: </span><span class="si">{:0.3e}</span><span class="s2"> sec&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">))</span>
 
-<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span>
 <span class="n">z</span> <span class="o">=</span> <span class="n">numpy_add_vectorize</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;time for numpy add (vectorize): </span><span class="si">{:0.3e}</span><span class="s2"> sec&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for naive add: 1.949e-01 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for naive add: 3.149e-01 sec
+time for numpy add: 2.305e-03 sec
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for numpy add: 2.462e-03 sec
-time for numpy add (vectorize): 1.656e-01 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for numpy add (vectorize): 2.233e-01 sec
 </pre></div>
 </div>
 </div>
@@ -622,15 +622,15 @@ y_i = \sum_j A_{i,j} x_j
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span>
 <span class="n">y1</span> <span class="o">=</span> <span class="n">naive_matvec</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
-<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;time for naive matvec: </span><span class="si">{:0.3e}</span><span class="s2"> sec&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">))</span>
 
-<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span>
 <span class="c1"># y2 = np.matmul(A, x)</span>
 <span class="n">y2</span> <span class="o">=</span> <span class="n">A</span> <span class="o">@</span> <span class="n">x</span>
-<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;time for numpy matvec: </span><span class="si">{:0.3e}</span><span class="s2"> sec&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">))</span>
 
 <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">y1</span> <span class="o">-</span> <span class="n">y2</span><span class="p">)</span>
@@ -638,11 +638,11 @@ y_i = \sum_j A_{i,j} x_j
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for naive matvec: 1.541e-01 sec
-time for numpy matvec: 6.517e-03 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for naive matvec: 2.086e-01 sec
+time for numpy matvec: 1.213e-02 sec
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8.522610904620144e-13
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7.785211272079127e-13
 </pre></div>
 </div>
 </div>
@@ -682,17 +682,8 @@ time for numpy matvec: 6.517e-03 sec
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">jit</span><span class="p">,</span> <span class="n">njit</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nd">@jit</span> <span class="c1"># this is the only thing we do different</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="k">def</span> <span class="nf">numba_add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span><span class="sd">     add two arrays using a Python for-loop</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span><span class="sd">     &quot;&quot;&quot;</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;numba&#39;
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_4455/852113555.py:3: NumbaDeprecationWarning: <span class=" -Color -Color-Bold">The &#39;nopython&#39; keyword argument was not supplied to the &#39;numba.jit&#39; decorator. The implicit default value for this argument is currently False, but it will be changed to True in Numba 0.59.0. See https://numba.readthedocs.io/en/stable/reference/deprecation.html#deprecation-of-object-mode-fall-back-behaviour-when-using-jit for details.</span>
+  @jit # this is the only thing we do different
 </pre></div>
 </div>
 </div>
@@ -704,27 +695,29 @@ time for numpy matvec: 6.517e-03 sec
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
 
-<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span>
 <span class="n">z</span> <span class="o">=</span> <span class="n">naive_add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;time for naive add: </span><span class="si">{:0.3e}</span><span class="s2"> sec&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">))</span>
 
-<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span>
 <span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;time for numpy add: </span><span class="si">{:0.3e}</span><span class="s2"> sec&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">))</span>
 
-<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span>
 <span class="n">z</span> <span class="o">=</span> <span class="n">numba_add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;time for numba add: </span><span class="si">{:0.3e}</span><span class="s2"> sec&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for naive add: 5.799e-01 sec
-time for numpy add: 6.249e-03 sec
-time for numba add: 3.699e-01 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for naive add: 3.010e-01 sec
+time for numpy add: 2.255e-03 sec
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for numba add: 9.229e-01 sec
 </pre></div>
 </div>
 </div>
@@ -737,27 +730,27 @@ time for numba add: 3.699e-01 sec
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
 
-<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span>
 <span class="n">z</span> <span class="o">=</span> <span class="n">naive_add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;time for naive add: </span><span class="si">{:0.3e}</span><span class="s2"> sec&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">))</span>
 
-<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span>
 <span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;time for numpy add: </span><span class="si">{:0.3e}</span><span class="s2"> sec&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">))</span>
 
-<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span>
 <span class="n">z</span> <span class="o">=</span> <span class="n">numba_add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;time for numba add: </span><span class="si">{:0.3e}</span><span class="s2"> sec&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for naive add: 5.351e-01 sec
-time for numpy add: 6.576e-03 sec
-time for numba add: 7.216e-03 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for naive add: 3.077e-01 sec
+time for numpy add: 1.888e-03 sec
+time for numba add: 3.728e-03 sec
 </pre></div>
 </div>
 </div>
@@ -795,27 +788,31 @@ time for numba add: 7.216e-03 sec
 
 <span class="n">z</span> <span class="o">=</span> <span class="n">numba_add_parallel</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="c1"># precompile</span>
 
-<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span>
 <span class="n">z</span> <span class="o">=</span> <span class="n">numba_add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;time for numba add: </span><span class="si">{:0.3e}</span><span class="s2"> sec&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">))</span>
 
-<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span>
 <span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;time for numpy add: </span><span class="si">{:0.3e}</span><span class="s2"> sec&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">))</span>
 
-<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span>
 <span class="n">z</span> <span class="o">=</span> <span class="n">numba_add_parallel</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;time for numba parallel add: </span><span class="si">{:0.3e}</span><span class="s2"> sec&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for numba add: 6.308e-01 sec
-time for numpy add: 4.022e-01 sec
-time for numba parallel add: 2.752e-01 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for numba add: 3.790e-01 sec
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for numpy add: 2.359e-01 sec
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for numba parallel add: 2.621e-01 sec
 </pre></div>
 </div>
 </div>
@@ -848,14 +845,14 @@ time for numba parallel add: 2.752e-01 sec
 
 <span class="n">y</span> <span class="o">=</span> <span class="n">numba_matvec</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="c1"># precompile</span>
 
-<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span>
 <span class="n">y1</span> <span class="o">=</span> <span class="n">numba_matvec</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
-<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;time for numba parallel matvec: </span><span class="si">{:0.3e}</span><span class="s2"> sec&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">))</span>
 
-<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span>
 <span class="n">y2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
-<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;time for numpy matvec: </span><span class="si">{:0.3e}</span><span class="s2"> sec&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">))</span>
 
 <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">y1</span> <span class="o">-</span> <span class="n">y2</span><span class="p">)</span>
@@ -863,11 +860,11 @@ time for numba parallel add: 2.752e-01 sec
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for numba parallel matvec: 1.721e-02 sec
-time for numpy matvec: 1.328e-02 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for numba parallel matvec: 7.419e-03 sec
+time for numpy matvec: 7.739e-03 sec
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8.885033347743797e-12
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9.241265606103372e-12
 </pre></div>
 </div>
 </div>
@@ -895,21 +892,21 @@ time for numpy matvec: 1.328e-02 sec
 <span class="c1"># precompile</span>
 <span class="n">z</span> <span class="o">=</span> <span class="n">numba_add_vectorize</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 
-<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span>
 <span class="n">z</span> <span class="o">=</span> <span class="n">numba_add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;time for numba add: </span><span class="si">{:0.3e}</span><span class="s2"> sec&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">))</span>
 
-<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span>
 <span class="n">z</span> <span class="o">=</span> <span class="n">numba_add_vectorize</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;time for numba add (vectorized): </span><span class="si">{:0.3e}</span><span class="s2"> sec&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for numba add: 3.162e-01 sec
-time for numba add (vectorized): 2.357e-01 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for numba add: 2.150e-01 sec
+time for numba add (vectorized): 1.093e-01 sec
 </pre></div>
 </div>
 </div>
@@ -925,25 +922,209 @@ time for numba add (vectorized): 2.357e-01 sec
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">OSError</span><span class="g g-Whitespace">                                   </span>Traceback (most recent call last)
+<span class="nn">File ~/miniconda3/envs/pycourse_test/lib/python3.11/site-packages/numba/cuda/cudadrv/nvvm.py:139,</span> in <span class="ni">NVVM.__new__</span><span class="nt">(cls)</span>
+<span class="g g-Whitespace">    </span><span class="mi">138</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">139</span>     <span class="n">inst</span><span class="o">.</span><span class="n">driver</span> <span class="o">=</span> <span class="n">open_cudalib</span><span class="p">(</span><span class="s1">&#39;nvvm&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">140</span> <span class="k">except</span> <span class="ne">OSError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+
+<span class="nn">File ~/miniconda3/envs/pycourse_test/lib/python3.11/site-packages/numba/cuda/cudadrv/libs.py:64,</span> in <span class="ni">open_cudalib</span><span class="nt">(lib)</span>
+<span class="g g-Whitespace">     </span><span class="mi">63</span> <span class="n">path</span> <span class="o">=</span> <span class="n">get_cudalib</span><span class="p">(</span><span class="n">lib</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">64</span> <span class="k">return</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">CDLL</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+
+<span class="nn">File ~/miniconda3/envs/pycourse_test/lib/python3.11/ctypes/__init__.py:376,</span> in <span class="ni">CDLL.__init__</span><span class="nt">(self, name, mode, handle, use_errno, use_last_error, winmode)</span>
+<span class="g g-Whitespace">    </span><span class="mi">375</span> <span class="k">if</span> <span class="n">handle</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">376</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span> <span class="o">=</span> <span class="n">_dlopen</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="p">,</span> <span class="n">mode</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">377</span> <span class="k">else</span><span class="p">:</span>
+
+<span class="ne">OSError</span>: libnvvm.so: cannot open shared object file: No such file or directory
+
+<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
+
+<span class="ne">NvvmSupportError</span><span class="g g-Whitespace">                          </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">19</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">vectorize</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="nd">@vectorize</span><span class="p">([</span><span class="s1">&#39;float32(float32, float32)&#39;</span><span class="p">],</span> <span class="n">target</span><span class="o">=</span><span class="s1">&#39;cuda&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="k">def</span> <span class="nf">numba_add_cuda</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+
+<span class="nn">File ~/miniconda3/envs/pycourse_test/lib/python3.11/site-packages/numba/np/ufunc/decorators.py:131,</span> in <span class="ni">vectorize.&lt;locals&gt;.wrap</span><span class="nt">(func)</span>
+<span class="g g-Whitespace">    </span><span class="mi">129</span> <span class="n">vec</span> <span class="o">=</span> <span class="n">Vectorize</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="o">**</span><span class="n">kws</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">130</span> <span class="k">for</span> <span class="n">sig</span> <span class="ow">in</span> <span class="n">ftylist</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">131</span>     <span class="n">vec</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">sig</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">132</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">ftylist</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">133</span>     <span class="n">vec</span><span class="o">.</span><span class="n">disable_compile</span><span class="p">()</span>
+
+<span class="nn">File ~/miniconda3/envs/pycourse_test/lib/python3.11/site-packages/numba/np/ufunc/deviceufunc.py:391,</span> in <span class="ni">DeviceVectorize.add</span><span class="nt">(self, sig)</span>
+<span class="g g-Whitespace">    </span><span class="mi">388</span> <span class="n">funcname</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pyfunc</span><span class="o">.</span><span class="vm">__name__</span>
+<span class="g g-Whitespace">    </span><span class="mi">389</span> <span class="n">kernelsource</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_kernel_source</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_kernel_template</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">390</span>                                        <span class="n">devfnsig</span><span class="p">,</span> <span class="n">funcname</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">391</span> <span class="n">corefn</span><span class="p">,</span> <span class="n">return_type</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compile_core</span><span class="p">(</span><span class="n">devfnsig</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">392</span> <span class="n">glbl</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_globals</span><span class="p">(</span><span class="n">corefn</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">393</span> <span class="n">sig</span> <span class="o">=</span> <span class="n">signature</span><span class="p">(</span><span class="n">types</span><span class="o">.</span><span class="n">void</span><span class="p">,</span> <span class="o">*</span><span class="p">([</span><span class="n">a</span><span class="p">[:]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">args</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">return_type</span><span class="p">[:]]))</span>
+
+<span class="nn">File ~/miniconda3/envs/pycourse_test/lib/python3.11/site-packages/numba/cuda/vectorizers.py:202,</span> in <span class="ni">CUDAVectorize._compile_core</span><span class="nt">(self, sig)</span>
+<span class="g g-Whitespace">    </span><span class="mi">201</span> <span class="k">def</span> <span class="nf">_compile_core</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sig</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">202</span>     <span class="n">cudevfn</span> <span class="o">=</span> <span class="n">cuda</span><span class="o">.</span><span class="n">jit</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="kc">True</span><span class="p">)(</span><span class="bp">self</span><span class="o">.</span><span class="n">pyfunc</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">203</span>     <span class="k">return</span> <span class="n">cudevfn</span><span class="p">,</span> <span class="n">cudevfn</span><span class="o">.</span><span class="n">overloads</span><span class="p">[</span><span class="n">sig</span><span class="o">.</span><span class="n">args</span><span class="p">]</span><span class="o">.</span><span class="n">signature</span><span class="o">.</span><span class="n">return_type</span>
+
+<span class="nn">File ~/miniconda3/envs/pycourse_test/lib/python3.11/site-packages/numba/cuda/decorators.py:131,</span> in <span class="ni">jit.&lt;locals&gt;._jit</span><span class="nt">(func)</span>
+<span class="g g-Whitespace">    </span><span class="mi">129</span>     <span class="kn">from</span> <span class="nn">numba.core</span> <span class="kn">import</span> <span class="n">typeinfer</span>
+<span class="g g-Whitespace">    </span><span class="mi">130</span>     <span class="k">with</span> <span class="n">typeinfer</span><span class="o">.</span><span class="n">register_dispatcher</span><span class="p">(</span><span class="n">disp</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">131</span>         <span class="n">disp</span><span class="o">.</span><span class="n">compile_device</span><span class="p">(</span><span class="n">argtypes</span><span class="p">,</span> <span class="n">restype</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">132</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">133</span>     <span class="n">disp</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">argtypes</span><span class="p">)</span>
+
+<span class="nn">File ~/miniconda3/envs/pycourse_test/lib/python3.11/site-packages/numba/cuda/dispatcher.py:877,</span> in <span class="ni">CUDADispatcher.compile_device</span><span class="nt">(self, args, return_type)</span>
+<span class="g g-Whitespace">    </span><span class="mi">871</span> <span class="n">nvvm_options</span> <span class="o">=</span> <span class="p">{</span>
+<span class="g g-Whitespace">    </span><span class="mi">872</span>     <span class="s1">&#39;opt&#39;</span><span class="p">:</span> <span class="mi">3</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">targetoptions</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;opt&#39;</span><span class="p">)</span> <span class="k">else</span> <span class="mi">0</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">873</span>     <span class="s1">&#39;fastmath&#39;</span><span class="p">:</span> <span class="n">fastmath</span>
+<span class="g g-Whitespace">    </span><span class="mi">874</span> <span class="p">}</span>
+<span class="g g-Whitespace">    </span><span class="mi">876</span> <span class="n">cc</span> <span class="o">=</span> <span class="n">get_current_device</span><span class="p">()</span><span class="o">.</span><span class="n">compute_capability</span>
+<span class="ne">--&gt; </span><span class="mi">877</span> <span class="n">cres</span> <span class="o">=</span> <span class="n">compile_cuda</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">py_func</span><span class="p">,</span> <span class="n">return_type</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">878</span>                     <span class="n">debug</span><span class="o">=</span><span class="n">debug</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">879</span>                     <span class="n">lineinfo</span><span class="o">=</span><span class="n">lineinfo</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">880</span>                     <span class="n">inline</span><span class="o">=</span><span class="n">inline</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">881</span>                     <span class="n">fastmath</span><span class="o">=</span><span class="n">fastmath</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">882</span>                     <span class="n">nvvm_options</span><span class="o">=</span><span class="n">nvvm_options</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">883</span>                     <span class="n">cc</span><span class="o">=</span><span class="n">cc</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">884</span> <span class="bp">self</span><span class="o">.</span><span class="n">overloads</span><span class="p">[</span><span class="n">args</span><span class="p">]</span> <span class="o">=</span> <span class="n">cres</span>
+<span class="g g-Whitespace">    </span><span class="mi">886</span> <span class="n">cres</span><span class="o">.</span><span class="n">target_context</span><span class="o">.</span><span class="n">insert_user_function</span><span class="p">(</span><span class="n">cres</span><span class="o">.</span><span class="n">entry_point</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">887</span>                                          <span class="n">cres</span><span class="o">.</span><span class="n">fndesc</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">888</span>                                          <span class="p">[</span><span class="n">cres</span><span class="o">.</span><span class="n">library</span><span class="p">])</span>
+
+<span class="nn">File ~/miniconda3/envs/pycourse_test/lib/python3.11/site-packages/numba/core/compiler_lock.py:35,</span> in <span class="ni">_CompilerLock.__call__.&lt;locals&gt;._acquire_compile_lock</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">32</span> <span class="nd">@functools</span><span class="o">.</span><span class="n">wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">33</span> <span class="k">def</span> <span class="nf">_acquire_compile_lock</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">34</span>     <span class="k">with</span> <span class="bp">self</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">35</span>         <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File ~/miniconda3/envs/pycourse_test/lib/python3.11/site-packages/numba/cuda/compiler.py:230,</span> in <span class="ni">compile_cuda</span><span class="nt">(pyfunc, return_type, args, debug, lineinfo, inline, fastmath, nvvm_options, cc)</span>
+<span class="g g-Whitespace">    </span><span class="mi">228</span> <span class="kn">from</span> <span class="nn">numba.core.target_extension</span> <span class="kn">import</span> <span class="n">target_override</span>
+<span class="g g-Whitespace">    </span><span class="mi">229</span> <span class="k">with</span> <span class="n">target_override</span><span class="p">(</span><span class="s1">&#39;cuda&#39;</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">230</span>     <span class="n">cres</span> <span class="o">=</span> <span class="n">compiler</span><span class="o">.</span><span class="n">compile_extra</span><span class="p">(</span><span class="n">typingctx</span><span class="o">=</span><span class="n">typingctx</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">231</span>                                   <span class="n">targetctx</span><span class="o">=</span><span class="n">targetctx</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">232</span>                                   <span class="n">func</span><span class="o">=</span><span class="n">pyfunc</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">233</span>                                   <span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">234</span>                                   <span class="n">return_type</span><span class="o">=</span><span class="n">return_type</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">235</span>                                   <span class="n">flags</span><span class="o">=</span><span class="n">flags</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">236</span>                                   <span class="nb">locals</span><span class="o">=</span><span class="p">{},</span>
+<span class="g g-Whitespace">    </span><span class="mi">237</span>                                   <span class="n">pipeline_class</span><span class="o">=</span><span class="n">CUDACompiler</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">239</span> <span class="n">library</span> <span class="o">=</span> <span class="n">cres</span><span class="o">.</span><span class="n">library</span>
+<span class="g g-Whitespace">    </span><span class="mi">240</span> <span class="n">library</span><span class="o">.</span><span class="n">finalize</span><span class="p">()</span>
+
+<span class="nn">File ~/miniconda3/envs/pycourse_test/lib/python3.11/site-packages/numba/core/compiler.py:762,</span> in <span class="ni">compile_extra</span><span class="nt">(typingctx, targetctx, func, args, return_type, flags, locals, library, pipeline_class)</span>
+<span class="g g-Whitespace">    </span><span class="mi">738</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Compiler entry point</span>
+<span class="g g-Whitespace">    </span><span class="mi">739</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">740</span><span class="sd"> Parameter</span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">    </span><span class="mi">758</span><span class="sd">     compiler pipeline</span>
+<span class="g g-Whitespace">    </span><span class="mi">759</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">760</span> <span class="n">pipeline</span> <span class="o">=</span> <span class="n">pipeline_class</span><span class="p">(</span><span class="n">typingctx</span><span class="p">,</span> <span class="n">targetctx</span><span class="p">,</span> <span class="n">library</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">761</span>                           <span class="n">args</span><span class="p">,</span> <span class="n">return_type</span><span class="p">,</span> <span class="n">flags</span><span class="p">,</span> <span class="nb">locals</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">762</span> <span class="k">return</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">compile_extra</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+
+<span class="nn">File ~/miniconda3/envs/pycourse_test/lib/python3.11/site-packages/numba/core/compiler.py:460,</span> in <span class="ni">CompilerBase.compile_extra</span><span class="nt">(self, func)</span>
+<span class="g g-Whitespace">    </span><span class="mi">458</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">lifted</span> <span class="o">=</span> <span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">459</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">lifted_from</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="ne">--&gt; </span><span class="mi">460</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compile_bytecode</span><span class="p">()</span>
+
+<span class="nn">File ~/miniconda3/envs/pycourse_test/lib/python3.11/site-packages/numba/core/compiler.py:528,</span> in <span class="ni">CompilerBase._compile_bytecode</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">524</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">525</span><span class="sd"> Populate and run pipeline for bytecode input</span>
+<span class="g g-Whitespace">    </span><span class="mi">526</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">527</span> <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">func_ir</span> <span class="ow">is</span> <span class="kc">None</span>
+<span class="ne">--&gt; </span><span class="mi">528</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compile_core</span><span class="p">()</span>
+
+<span class="nn">File ~/miniconda3/envs/pycourse_test/lib/python3.11/site-packages/numba/core/compiler.py:507,</span> in <span class="ni">CompilerBase._compile_core</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">505</span>         <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">fail_reason</span> <span class="o">=</span> <span class="n">e</span>
+<span class="g g-Whitespace">    </span><span class="mi">506</span>         <span class="k">if</span> <span class="n">is_final_pipeline</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">507</span>             <span class="k">raise</span> <span class="n">e</span>
+<span class="g g-Whitespace">    </span><span class="mi">508</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">509</span>     <span class="k">raise</span> <span class="n">CompilerError</span><span class="p">(</span><span class="s2">&quot;All available pipelines exhausted&quot;</span><span class="p">)</span>
+
+<span class="nn">File ~/miniconda3/envs/pycourse_test/lib/python3.11/site-packages/numba/core/compiler.py:494,</span> in <span class="ni">CompilerBase._compile_core</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">492</span> <span class="n">res</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="g g-Whitespace">    </span><span class="mi">493</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">494</span>     <span class="n">pm</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">495</span>     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">cr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">496</span>         <span class="k">break</span>
+
+<span class="nn">File ~/miniconda3/envs/pycourse_test/lib/python3.11/site-packages/numba/core/compiler_machinery.py:368,</span> in <span class="ni">PassManager.run</span><span class="nt">(self, state)</span>
+<span class="g g-Whitespace">    </span><span class="mi">365</span> <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;Failed in </span><span class="si">%s</span><span class="s2"> mode pipeline (step: </span><span class="si">%s</span><span class="s2">)&quot;</span> <span class="o">%</span> \
+<span class="g g-Whitespace">    </span><span class="mi">366</span>     <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pipeline_name</span><span class="p">,</span> <span class="n">pass_desc</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">367</span> <span class="n">patched_exception</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_patch_error</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">368</span> <span class="k">raise</span> <span class="n">patched_exception</span>
+
+<span class="nn">File ~/miniconda3/envs/pycourse_test/lib/python3.11/site-packages/numba/core/compiler_machinery.py:356,</span> in <span class="ni">PassManager.run</span><span class="nt">(self, state)</span>
+<span class="g g-Whitespace">    </span><span class="mi">354</span> <span class="n">pass_inst</span> <span class="o">=</span> <span class="n">_pass_registry</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pss</span><span class="p">)</span><span class="o">.</span><span class="n">pass_inst</span>
+<span class="g g-Whitespace">    </span><span class="mi">355</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">pass_inst</span><span class="p">,</span> <span class="n">CompilerPass</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">356</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_runPass</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">pass_inst</span><span class="p">,</span> <span class="n">state</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">357</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">358</span>     <span class="k">raise</span> <span class="ne">BaseException</span><span class="p">(</span><span class="s2">&quot;Legacy pass in use&quot;</span><span class="p">)</span>
+
+<span class="nn">File ~/miniconda3/envs/pycourse_test/lib/python3.11/site-packages/numba/core/compiler_lock.py:35,</span> in <span class="ni">_CompilerLock.__call__.&lt;locals&gt;._acquire_compile_lock</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">32</span> <span class="nd">@functools</span><span class="o">.</span><span class="n">wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">33</span> <span class="k">def</span> <span class="nf">_acquire_compile_lock</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">34</span>     <span class="k">with</span> <span class="bp">self</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">35</span>         <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File ~/miniconda3/envs/pycourse_test/lib/python3.11/site-packages/numba/core/compiler_machinery.py:311,</span> in <span class="ni">PassManager._runPass</span><span class="nt">(self, index, pss, internal_state)</span>
+<span class="g g-Whitespace">    </span><span class="mi">309</span>     <span class="n">mutated</span> <span class="o">|=</span> <span class="n">check</span><span class="p">(</span><span class="n">pss</span><span class="o">.</span><span class="n">run_initialization</span><span class="p">,</span> <span class="n">internal_state</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">310</span> <span class="k">with</span> <span class="n">SimpleTimer</span><span class="p">()</span> <span class="k">as</span> <span class="n">pass_time</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">311</span>     <span class="n">mutated</span> <span class="o">|=</span> <span class="n">check</span><span class="p">(</span><span class="n">pss</span><span class="o">.</span><span class="n">run_pass</span><span class="p">,</span> <span class="n">internal_state</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">312</span> <span class="k">with</span> <span class="n">SimpleTimer</span><span class="p">()</span> <span class="k">as</span> <span class="n">finalize_time</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">313</span>     <span class="n">mutated</span> <span class="o">|=</span> <span class="n">check</span><span class="p">(</span><span class="n">pss</span><span class="o">.</span><span class="n">run_finalizer</span><span class="p">,</span> <span class="n">internal_state</span><span class="p">)</span>
+
+<span class="nn">File ~/miniconda3/envs/pycourse_test/lib/python3.11/site-packages/numba/core/compiler_machinery.py:273,</span> in <span class="ni">PassManager._runPass.&lt;locals&gt;.check</span><span class="nt">(func, compiler_state)</span>
+<span class="g g-Whitespace">    </span><span class="mi">272</span> <span class="k">def</span> <span class="nf">check</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">compiler_state</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">273</span>     <span class="n">mangled</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">compiler_state</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">274</span>     <span class="k">if</span> <span class="n">mangled</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">275</span>         <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;CompilerPass implementations should return True/False. &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">276</span>                <span class="s2">&quot;CompilerPass with name &#39;</span><span class="si">%s</span><span class="s2">&#39; did not.&quot;</span><span class="p">)</span>
+
+<span class="nn">File ~/miniconda3/envs/pycourse_test/lib/python3.11/site-packages/numba/cuda/compiler.py:128,</span> in <span class="ni">CUDALegalization.run_pass</span><span class="nt">(self, state)</span>
+<span class="g g-Whitespace">    </span><span class="mi">125</span> <span class="k">def</span> <span class="nf">run_pass</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">126</span>     <span class="c1"># Early return if NVVM 7</span>
+<span class="g g-Whitespace">    </span><span class="mi">127</span>     <span class="kn">from</span> <span class="nn">numba.cuda.cudadrv.nvvm</span> <span class="kn">import</span> <span class="n">NVVM</span>
+<span class="ne">--&gt; </span><span class="mi">128</span>     <span class="k">if</span> <span class="n">NVVM</span><span class="p">()</span><span class="o">.</span><span class="n">is_nvvm70</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">129</span>         <span class="k">return</span> <span class="kc">False</span>
+<span class="g g-Whitespace">    </span><span class="mi">130</span>     <span class="c1"># NVVM &lt; 7, need to check for charseq</span>
+
+<span class="nn">File ~/miniconda3/envs/pycourse_test/lib/python3.11/site-packages/numba/cuda/cudadrv/nvvm.py:144,</span> in <span class="ni">NVVM.__new__</span><span class="nt">(cls)</span>
+<span class="g g-Whitespace">    </span><span class="mi">141</span>     <span class="bp">cls</span><span class="o">.</span><span class="n">__INSTANCE</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="g g-Whitespace">    </span><span class="mi">142</span>     <span class="n">errmsg</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;libNVVM cannot be found. Do `conda install &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">143</span>               <span class="s2">&quot;cudatoolkit`:</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">144</span>     <span class="k">raise</span> <span class="n">NvvmSupportError</span><span class="p">(</span><span class="n">errmsg</span> <span class="o">%</span> <span class="n">e</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">146</span> <span class="c1"># Find &amp; populate functions</span>
+<span class="g g-Whitespace">    </span><span class="mi">147</span> <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">proto</span> <span class="ow">in</span> <span class="n">inst</span><span class="o">.</span><span class="n">_PROTOTYPES</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+
+<span class="ne">NvvmSupportError</span>: libNVVM cannot be found. Do `conda install cudatoolkit`:
+<span class="n">libnvvm</span><span class="o">.</span><span class="n">so</span><span class="p">:</span> <span class="n">cannot</span> <span class="nb">open</span> <span class="n">shared</span> <span class="nb">object</span> <span class="n">file</span><span class="p">:</span> <span class="n">No</span> <span class="n">such</span> <span class="n">file</span> <span class="ow">or</span> <span class="n">directory</span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># precompile</span>
 <span class="n">z</span> <span class="o">=</span> <span class="n">numba_add_cuda</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 
-<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span>
 <span class="n">z</span> <span class="o">=</span> <span class="n">numba_add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;time for numba add: </span><span class="si">{:0.3e}</span><span class="s2"> sec&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">))</span>
 
-<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span>
 <span class="n">z</span> <span class="o">=</span> <span class="n">numba_add_vectorize</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;time for numba add (vectorized): </span><span class="si">{:0.3e}</span><span class="s2"> sec&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">))</span>
 
-<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span>
 <span class="n">z</span> <span class="o">=</span> <span class="n">numba_add_cuda</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;time for numba add (cuda): </span><span class="si">{:0.3e}</span><span class="s2"> sec&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">))</span>
 </pre></div>
 </div>
