@@ -162,6 +162,8 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../00_python/python.html">Python</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/conda.html">Installing Anaconda Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/jupyter.html">Installing and Using Jupyter Notebooks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../00_python/using_python.html">Using Python</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../00_python/basics.html">Basics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../00_python/bitsbytes.html">Bits, Bytes, and Numbers</a></li>
@@ -182,8 +184,20 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../01_analysis/average_case.html">Average Case Analysis</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../09_computing/computing.html">Computing</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../02_linear_algebra/linear_algebra.html">Linear Algebra</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02_linear_algebra/memory.html">Memory and Performance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02_linear_algebra/numpy_scipy_linalg.html">Dense Linear Algebra in NumPy and SciPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02_linear_algebra/blas_lapack.html">BLAS and LAPACK</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../04_functions/functions.html">Functions</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../04_functions/roots.html">Root Finding</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../09_computing/computing.html">Computing</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../09_computing/basic_bash.html">Basic Bash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09_computing/performance/ipython.html">Measuring Performance in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09_computing/performance/numpy_ufuncs.html">Vectorization, Numpy Universal Functions</a></li>
 </ul>
 </li>
 </ul>
@@ -492,7 +506,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/fe69efa849e6b4c4678e3ee57466bbe4d60bc8e70fcac99f7174d0c734126dd0.png" src="../_images/fe69efa849e6b4c4678e3ee57466bbe4d60bc8e70fcac99f7174d0c734126dd0.png" />
+<img alt="../_images/58832dc1d96d9ae80a2ea143d16033c817c87d5268e96aa093b51abdeb87e994.png" src="../_images/58832dc1d96d9ae80a2ea143d16033c817c87d5268e96aa093b51abdeb87e994.png" />
 </div>
 </div>
 <p>We might also call a data set a “point cloud”, or a collection of points in some space.</p>
@@ -530,102 +544,11 @@ d(x,y) = |x - y|_2
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
-<span class="n">cos_sim</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">y</span><span class="p">))</span>
-<span class="n">cos_dis</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="p">:</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">cos_sim</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
-<span class="n">euc_dis</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">y</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">cos_sim</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">x</span><span class="p">),</span> <span class="n">cos_dis</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">x</span><span class="p">),</span> <span class="n">euc_dis</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">x</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">cos_sim</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="o">-</span><span class="n">x</span><span class="p">),</span> <span class="n">cos_dis</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="o">-</span><span class="n">x</span><span class="p">),</span> <span class="n">euc_dis</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="o">-</span><span class="n">x</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">cos_sim</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span> <span class="n">cos_dis</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span> <span class="n">euc_dis</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0 0.0 0.0
--1.0 2.0 7.483314773547883
-0.8571428571428571 0.1428571428571429 2.0
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-<span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6345944310435964
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">@</span> <span class="n">X</span><span class="o">.</span><span class="n">T</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.63459443, -1.32401058,  0.14316369, ...,  0.22005869,
-        -0.66695071,  0.94141373],
-       [-1.32401058,  4.9596163 ,  0.78346752, ..., -2.69050607,
-         0.94837807, -0.35746636],
-       [ 0.14316369,  0.78346752,  1.242058  , ..., -0.88186698,
-        -1.30918604,  0.30510329],
-       ...,
-       [ 0.22005869, -2.69050607, -0.88186698, ...,  2.38382535,
-        -0.01397792, -1.47809017],
-       [-0.66695071,  0.94837807, -1.30918604, ..., -0.01397792,
-         2.09723134, -0.34266604],
-       [ 0.94141373, -0.35746636,  0.30510329, ..., -1.47809017,
-        -0.34266604,  3.29256829]])
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
 </section>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="solution">
 <h1>Solution:<a class="headerlink" href="#solution" title="Permalink to this heading">#</a></h1>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The function for the cosine similarity:</span>
-<span class="k">def</span> <span class="nf">cosimi</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
-    <span class="n">num</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">y</span>
-    <span class="n">denum</span> <span class="o">=</span> <span class="n">la</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">la</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">num</span><span class="o">/</span><span class="n">denum</span>
-
-<span class="c1"># The functions for the cosine distance:</span>
-<span class="k">def</span> <span class="nf">cosdis</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
-    <span class="n">num</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">y</span>
-    <span class="n">denum</span> <span class="o">=</span> <span class="n">la</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">la</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-    <span class="n">cosimi</span> <span class="o">=</span> <span class="n">num</span><span class="o">/</span><span class="n">denum</span>
-    <span class="k">return</span> <span class="mi">1</span><span class="o">-</span><span class="n">cosimi</span>
-
-<span class="c1"># The function for the euclidean distance:</span>
-<span class="k">def</span> <span class="nf">euclidis</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">la</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">y</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
 <section id="computing-distances">
 <h2>Computing Distances<a class="headerlink" href="#computing-distances" title="Permalink to this heading">#</a></h2>
 <p>SciPy provides a variety of functionality for computing distances in <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/spatial.distance.html"><code class="docutils literal notranslate"><span class="pre">scipy.spatial.distance</span></code></a>.</p>
@@ -729,7 +652,7 @@ d(x,y) = | x- y |_A = \sqrt{(x - y)^T A (x - y)}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8015240700476003
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.324181885474759
 </pre></div>
 </div>
 </div>
@@ -795,11 +718,11 @@ d(x, y; w) = \sqrt{\sum_i w_i(x_i - y_i)^2}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.        , 0.93693176, 2.05110159, 0.61754035, 1.73615966],
-       [0.93693176, 0.        , 1.58188866, 1.34604666, 1.12188221],
-       [2.05110159, 1.58188866, 0.        , 1.93722641, 0.50044343],
-       [0.61754035, 1.34604666, 1.93722641, 0.        , 1.76589087],
-       [1.73615966, 1.12188221, 0.50044343, 1.76589087, 0.        ]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.        , 1.03600819, 2.06499641, 1.96108734, 0.39143361],
+       [1.03600819, 0.        , 1.37924189, 2.03373226, 1.36710209],
+       [2.06499641, 1.37924189, 0.        , 1.45564381, 2.20391213],
+       [1.96108734, 2.03373226, 1.45564381, 0.        , 1.82041042],
+       [0.39143361, 1.36710209, 2.20391213, 1.82041042, 0.        ]])
 </pre></div>
 </div>
 </div>
@@ -811,11 +734,11 @@ d(x, y; w) = \sqrt{\sum_i w_i(x_i - y_i)^2}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.        , 1.17582999, 2.01344928, 0.60003199, 1.81350166],
-       [1.17582999, 0.        , 1.56025852, 1.61735233, 1.0879112 ],
-       [2.01344928, 1.56025852, 0.        , 2.10168512, 0.49625012],
-       [0.60003199, 1.61735233, 2.10168512, 0.        , 2.09848271],
-       [1.81350166, 1.0879112 , 0.49625012, 2.09848271, 0.        ]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.        , 1.04362237, 2.05467938, 1.91868911, 0.48667548],
+       [1.04362237, 0.        , 1.33561751, 2.37593728, 1.46603561],
+       [2.05467938, 1.33561751, 0.        , 1.7477768 , 2.1511586 ],
+       [1.91868911, 2.37593728, 1.7477768 , 0.        , 1.75458656],
+       [0.48667548, 1.46603561, 2.1511586 , 1.75458656, 0.        ]])
 </pre></div>
 </div>
 </div>
@@ -852,7 +775,7 @@ D = \sqrt{1 x^{2T} + x^2 1^T - 2 X X^T}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.965068306494546e-16
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.3322676295501878e-15
 </pre></div>
 </div>
 </div>
@@ -919,7 +842,7 @@ a : rank-2 array(&#39;d&#39;) with bounds (n,n)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.8459253727671276e-16
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.368774871883577e-15
 </pre></div>
 </div>
 </div>
@@ -943,9 +866,9 @@ a : rank-2 array(&#39;d&#39;) with bounds (n,n)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pairwise : 0.07824873924255371 sec.
-pairwise_euclidean : 0.0006511211395263672 sec.
-pairwise_euclidean_blas : 0.00024318695068359375 sec.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pairwise : 0.038756370544433594 sec.
+pairwise_euclidean : 0.004265308380126953 sec.
+pairwise_euclidean_blas : 0.0001785755157470703 sec.
 </pre></div>
 </div>
 </div>
@@ -1027,8 +950,8 @@ pairwise_euclidean_blas : 0.00024318695068359375 sec.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.98389077, 0.7777538 , 2.4146834 , ..., 1.10552506, 2.33762698,
-       3.44315205])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([2.79596145, 0.42288585, 1.94067214, ..., 3.6193519 , 2.37041433,
+       2.26635233])
 </pre></div>
 </div>
 </div>
@@ -1053,10 +976,10 @@ pairwise_euclidean_blas : 0.00024318695068359375 sec.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pairwise : 0.09322810173034668 sec.
-pairwise_euclidean : 0.0005431175231933594 sec.
-pairwise_euclidean_blas : 0.0003063678741455078 sec.
-pdist : 9.417533874511719e-05 sec.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pairwise : 0.05038595199584961 sec.
+pairwise_euclidean : 0.0004456043243408203 sec.
+pairwise_euclidean_blas : 0.00014162063598632812 sec.
+pdist : 6.747245788574219e-05 sec.
 </pre></div>
 </div>
 </div>
@@ -1084,10 +1007,10 @@ pdist : 9.417533874511719e-05 sec.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pairwise : 0.1168673038482666 sec.
-pairwise_euclidean : 0.0006091594696044922 sec.
-pairwise_euclidean_blas : 0.00022649765014648438 sec.
-sq_pdist : 0.00024771690368652344 sec.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pairwise : 0.04885983467102051 sec.
+pairwise_euclidean : 0.0004684925079345703 sec.
+pairwise_euclidean_blas : 0.00014209747314453125 sec.
+sq_pdist : 7.05718994140625e-05 sec.
 </pre></div>
 </div>
 </div>

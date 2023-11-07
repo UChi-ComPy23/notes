@@ -532,8 +532,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for naive add: 3.167e-01 sec
-time for numpy add: 3.623e-03 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for naive add: 1.942e-01 sec
+time for numpy add: 2.670e-03 sec
 </pre></div>
 </div>
 </div>
@@ -563,11 +563,11 @@ time for numpy add: 3.623e-03 sec
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for naive add: 3.149e-01 sec
-time for numpy add: 2.305e-03 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for naive add: 2.306e-01 sec
+time for numpy add: 4.435e-03 sec
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for numpy add (vectorize): 2.233e-01 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for numpy add (vectorize): 2.026e-01 sec
 </pre></div>
 </div>
 </div>
@@ -638,11 +638,11 @@ y_i = \sum_j A_{i,j} x_j
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for naive matvec: 2.086e-01 sec
-time for numpy matvec: 1.213e-02 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for naive matvec: 1.814e-01 sec
+time for numpy matvec: 7.195e-03 sec
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7.785211272079127e-13
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8.300452349640955e-13
 </pre></div>
 </div>
 </div>
@@ -682,7 +682,7 @@ time for numpy matvec: 1.213e-02 sec
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_4455/852113555.py:3: NumbaDeprecationWarning: <span class=" -Color -Color-Bold">The &#39;nopython&#39; keyword argument was not supplied to the &#39;numba.jit&#39; decorator. The implicit default value for this argument is currently False, but it will be changed to True in Numba 0.59.0. See https://numba.readthedocs.io/en/stable/reference/deprecation.html#deprecation-of-object-mode-fall-back-behaviour-when-using-jit for details.</span>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1094/852113555.py:3: NumbaDeprecationWarning: <span class=" -Color -Color-Bold">The &#39;nopython&#39; keyword argument was not supplied to the &#39;numba.jit&#39; decorator. The implicit default value for this argument is currently False, but it will be changed to True in Numba 0.59.0. See https://numba.readthedocs.io/en/stable/reference/deprecation.html#deprecation-of-object-mode-fall-back-behaviour-when-using-jit for details.</span>
   @jit # this is the only thing we do different
 </pre></div>
 </div>
@@ -713,11 +713,11 @@ time for numpy matvec: 1.213e-02 sec
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for naive add: 3.010e-01 sec
-time for numpy add: 2.255e-03 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for naive add: 2.303e-01 sec
+time for numpy add: 1.974e-03 sec
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for numba add: 9.229e-01 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for numba add: 4.997e-01 sec
 </pre></div>
 </div>
 </div>
@@ -748,9 +748,9 @@ time for numpy add: 2.255e-03 sec
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for naive add: 3.077e-01 sec
-time for numpy add: 1.888e-03 sec
-time for numba add: 3.728e-03 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for naive add: 2.469e-01 sec
+time for numpy add: 2.393e-03 sec
+time for numba add: 3.977e-03 sec
 </pre></div>
 </div>
 </div>
@@ -806,18 +806,35 @@ time for numba add: 3.728e-03 sec
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for numba add: 3.790e-01 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for numba add: 3.876e-01 sec
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for numpy add: 2.359e-01 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for numpy add: 2.121e-01 sec
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for numba parallel add: 2.621e-01 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for numba parallel add: 2.872e-01 sec
 </pre></div>
 </div>
 </div>
 </div>
 <p>Parallelization of <code class="docutils literal notranslate"><span class="pre">matvec</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@jit</span><span class="p">(</span><span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">parallel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">numba_sumvec</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    naive matrix-vector multiplication implementation</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">prange</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+    
+    <span class="k">return</span> <span class="n">y</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@jit</span><span class="p">(</span><span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">parallel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -860,11 +877,11 @@ time for numba add: 3.728e-03 sec
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for numba parallel matvec: 7.419e-03 sec
-time for numpy matvec: 7.739e-03 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for numba parallel matvec: 7.512e-03 sec
+time for numpy matvec: 7.721e-03 sec
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9.241265606103372e-12
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8.619700560424106e-12
 </pre></div>
 </div>
 </div>
@@ -905,8 +922,8 @@ time for numpy matvec: 7.739e-03 sec
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for numba add: 2.150e-01 sec
-time for numba add (vectorized): 1.093e-01 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for numba add: 1.924e-01 sec
+time for numba add (vectorized): 1.191e-01 sec
 </pre></div>
 </div>
 </div>
@@ -944,7 +961,7 @@ time for numba add (vectorized): 1.093e-01 sec
 <span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
 
 <span class="ne">NvvmSupportError</span><span class="g g-Whitespace">                          </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">19</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">20</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">vectorize</span>
 <span class="ne">----&gt; </span><span class="mi">3</span> <span class="nd">@vectorize</span><span class="p">([</span><span class="s1">&#39;float32(float32, float32)&#39;</span><span class="p">],</span> <span class="n">target</span><span class="o">=</span><span class="s1">&#39;cuda&#39;</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="k">def</span> <span class="nf">numba_add_cuda</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
