@@ -589,7 +589,7 @@ Populating the interactive namespace from numpy and matplotlib
 <p>where <code class="docutils literal notranslate"><span class="pre">p[j]</span></code> is the pollution at <code class="docutils literal notranslate"><span class="pre">y[j]</span></code>, <code class="docutils literal notranslate"><span class="pre">f[i]</span></code> is the rate of pollution at source <code class="docutils literal notranslate"><span class="pre">x[i]</span></code>, and <code class="docutils literal notranslate"><span class="pre">G[i,j]</span></code> is <span class="math notranslate nohighlight">\(-\frac{1}{2\pi} \log \|x_i - y_j\|_2\)</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">G</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">ny</span><span class="p">,</span> <span class="n">nx</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">G</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">ny</span><span class="p">,</span> <span class="n">nx</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nx</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ny</span><span class="p">):</span>
         <span class="n">G</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">y</span><span class="p">[</span><span class="n">j</span><span class="p">]))</span>
@@ -599,26 +599,9 @@ Populating the interactive namespace from numpy and matplotlib
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>---------------------------------------------------------------------------
-AttributeError                            Traceback (most recent call last)
-Cell In[4], line 1
-----&gt; 1 G = np.empty((ny, nx), dtype=np.float)
-      2 for i in range(nx):
-      3     for j in range(ny):
-
-File ~/miniconda3/envs/pycourse_test/lib/python3.11/site-packages/numpy/__init__.py:319, in __getattr__(attr)
-    314     warnings.warn(
-    315         f&quot;In the future `np.{attr}` will be defined as the &quot;
-    316         &quot;corresponding NumPy scalar.&quot;, FutureWarning, stacklevel=2)
-    318 if attr in __former_attrs__:
---&gt; 319     raise AttributeError(__former_attrs__[attr])
-    321 if attr == &#39;testing&#39;:
-    322     import numpy.testing as testing
-
-AttributeError: module &#39;numpy&#39; has no attribute &#39;float&#39;.
-`np.float` was a deprecated alias for the builtin `float`. To avoid this error in existing code, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
-The aliases was originally deprecated in NumPy 1.20; for more details and guidance see the original release note at:
-    https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.2493779 , 0.10068884, 0.18840228],
+       [0.15224308, 0.14768804, 0.26461807],
+       [0.22302595, 0.08119219, 0.15141249]])
 </pre></div>
 </div>
 </div>
@@ -741,7 +724,7 @@ The aliases was originally deprecated in NumPy 1.20; for more details and guidan
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 1.11022302e-16,  2.22044605e-16, -2.22044605e-16])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-9.71445147e-17,  0.00000000e+00, -2.22044605e-16])
 </pre></div>
 </div>
 </div>
@@ -780,10 +763,10 @@ The aliases was originally deprecated in NumPy 1.20; for more details and guidan
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.11638689041137695 sec.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.11246252059936523 sec.
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.700651763187572e-11
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.1174904388936674e-11
 </pre></div>
 </div>
 </div>
@@ -799,10 +782,10 @@ The aliases was originally deprecated in NumPy 1.20; for more details and guidan
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.026604413986206055 sec.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.020412206649780273 sec.
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7.913077098404492e-12
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.4925083905687826e-11
 </pre></div>
 </div>
 </div>
@@ -819,7 +802,7 @@ The aliases was originally deprecated in NumPy 1.20; for more details and guidan
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.79910147578442e-12
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.9148491570653133e-11
 </pre></div>
 </div>
 </div>
@@ -839,7 +822,7 @@ The aliases was originally deprecated in NumPy 1.20; for more details and guidan
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.954860379710892e-14
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.731494937152129e-14
 </pre></div>
 </div>
 </div>
@@ -859,7 +842,7 @@ The aliases was originally deprecated in NumPy 1.20; for more details and guidan
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12.959849113533133
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12.784556981877792
 </pre></div>
 </div>
 </div>
@@ -941,7 +924,7 @@ $<span class="math notranslate nohighlight">\( A = PLU\)</span>$</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.800469442732169e-12
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.7678577431064205e-12
 </pre></div>
 </div>
 </div>
@@ -956,7 +939,7 @@ $<span class="math notranslate nohighlight">\( A = PLU\)</span>$</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.1925409285384606e-12
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.3211455725744655e-13
 </pre></div>
 </div>
 </div>
@@ -995,7 +978,7 @@ $<span class="math notranslate nohighlight">\(A^{-1} = U^{-1} L^{-1} P^T\)</span
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.6729625547045684e-11
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.159094719134261e-11
 </pre></div>
 </div>
 </div>
@@ -1048,7 +1031,7 @@ $<span class="math notranslate nohighlight">\(A^{-1} = U^{-1} L^{-1} P^T\)</span
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/3ba8d0abd9f23ea64c5688a11ab7c7deada2459eff1ca1ccc630935d34eca818.png" src="../_images/3ba8d0abd9f23ea64c5688a11ab7c7deada2459eff1ca1ccc630935d34eca818.png" />
+<img alt="../_images/e066b1058b8941068b730cfddb612da22868ed7cb249b3001dc83d4c0ed7663e.png" src="../_images/e066b1058b8941068b730cfddb612da22868ed7cb249b3001dc83d4c0ed7663e.png" />
 </div>
 </details>
 </div>
@@ -1072,7 +1055,7 @@ $<span class="math notranslate nohighlight">\(A^{-1} = U^{-1} L^{-1} P^T\)</span
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.918636792825306e-13
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.932375974139028e-13
 </pre></div>
 </div>
 </div>
@@ -1097,7 +1080,7 @@ $<span class="math notranslate nohighlight">\(A^{-1} = U^{-1} L^{-1} P^T\)</span
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.322728506564255e-13
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.334097587487618e-13
 </pre></div>
 </div>
 </div>
@@ -1130,7 +1113,7 @@ $<span class="math notranslate nohighlight">\(A^{-1} = U^{-1} L^{-1} P^T\)</span
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.967335210592819e-14
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.557518358474563e-14
 </pre></div>
 </div>
 </div>
@@ -1162,7 +1145,7 @@ $<span class="math notranslate nohighlight">\(A^{-1} = U^{-1} L^{-1} P^T\)</span
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.7783244209694767e-13
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.4650378881782887e-13
 </pre></div>
 </div>
 </div>
@@ -1185,7 +1168,7 @@ $<span class="math notranslate nohighlight">\(A^{-1} = U^{-1} L^{-1} P^T\)</span
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.7824289548299113e-13
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.6795314041834336e-13
 </pre></div>
 </div>
 </div>
@@ -1197,7 +1180,7 @@ $<span class="math notranslate nohighlight">\(A^{-1} = U^{-1} L^{-1} P^T\)</span
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.5408759552077597e-12
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.2999977055072566e-12
 </pre></div>
 </div>
 </div>
@@ -1283,8 +1266,8 @@ $<span class="math notranslate nohighlight">\(A^{-1} = U^{-1} L^{-1} P^T\)</span
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/02285d52a29fc9aa0f50e84b6008b5d21eecb1be9a53a67c6b3e902068e7b2de.png" src="../_images/02285d52a29fc9aa0f50e84b6008b5d21eecb1be9a53a67c6b3e902068e7b2de.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.4442670110147446e-12
+<img alt="../_images/23b8df15b1a85a0e4ff1599c7041e1ac327376803f64417ad815548902b900ed.png" src="../_images/23b8df15b1a85a0e4ff1599c7041e1ac327376803f64417ad815548902b900ed.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.3358203432289883e-12
 </pre></div>
 </div>
 </div>
@@ -1353,7 +1336,7 @@ $<span class="math notranslate nohighlight">\(A^{-1} = U^{-1} L^{-1} P^T\)</span
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/62d2bf080cd3b4555e514de90c1a008079ce19af56d45bce015b754ad0b94446.png" src="../_images/62d2bf080cd3b4555e514de90c1a008079ce19af56d45bce015b754ad0b94446.png" />
+<img alt="../_images/32f70c225fc947fe1c5262a7eb87f0affddfc2cb31c80ab11e8c07f3c9cd1912.png" src="../_images/32f70c225fc947fe1c5262a7eb87f0affddfc2cb31c80ab11e8c07f3c9cd1912.png" />
 </div>
 </details>
 </div>
@@ -1388,7 +1371,7 @@ $<span class="math notranslate nohighlight">\(A^{-1} = U^{-1} L^{-1} P^T\)</span
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/2963645f67fa8d8f5d90bc3fffe55a3304d21d2d511336a751a30ac84264e0e3.png" src="../_images/2963645f67fa8d8f5d90bc3fffe55a3304d21d2d511336a751a30ac84264e0e3.png" />
+<img alt="../_images/a94827f29f020cd234d65291ff28ef3fa70d765155e3f24cdba225a2d19c5e27.png" src="../_images/a94827f29f020cd234d65291ff28ef3fa70d765155e3f24cdba225a2d19c5e27.png" />
 </div>
 </div>
 </section>
@@ -1483,7 +1466,7 @@ $<span class="math notranslate nohighlight">\(A^{-1} = U^{-1} L^{-1} P^T\)</span
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/94cf1ca4af1dc615ccc44bf69a5701b769007e5c10a08219c8c7f3194ec7aca5.png" src="../_images/94cf1ca4af1dc615ccc44bf69a5701b769007e5c10a08219c8c7f3194ec7aca5.png" />
+<img alt="../_images/ad1c169171eb7a043a18a10e9189fac58f68fe0960d262b86bd9b47e423f9841.png" src="../_images/ad1c169171eb7a043a18a10e9189fac58f68fe0960d262b86bd9b47e423f9841.png" />
 </div>
 </details>
 </div>
@@ -1539,6 +1522,28 @@ $<span class="math notranslate nohighlight">\(A^{-1} = U^{-1} L^{-1} P^T\)</span
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">50</span><span class="p">],</span> <span class="n">line</span> <span class="mi">19</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="n">tsvd</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t1</span><span class="o">-</span><span class="n">t0</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">18</span> <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>    
+<span class="ne">---&gt; </span><span class="mi">19</span> <span class="n">Lam</span><span class="p">,</span> <span class="n">U</span> <span class="o">=</span> <span class="n">la</span><span class="o">.</span><span class="n">eigh</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">20</span> <span class="n">t1</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">21</span> <span class="n">teigh</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t1</span><span class="o">-</span><span class="n">t0</span><span class="p">)</span>
+
+<span class="nn">File ~/miniconda3/envs/pycourse_test/lib/python3.11/site-packages/scipy/linalg/_decomp.py:560,</span> in <span class="ni">eigh</span><span class="nt">(a, b, lower, eigvals_only, overwrite_a, overwrite_b, turbo, eigvals, type, check_finite, subset_by_index, subset_by_value, driver)</span>
+<span class="g g-Whitespace">    </span><span class="mi">557</span>         <span class="n">lwork_args</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;lwork&#39;</span><span class="p">:</span> <span class="n">lw</span><span class="p">}</span>
+<span class="g g-Whitespace">    </span><span class="mi">559</span>     <span class="n">drv_args</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;lower&#39;</span><span class="p">:</span> <span class="n">lower</span><span class="p">,</span> <span class="s1">&#39;compute_v&#39;</span><span class="p">:</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">_job</span> <span class="o">==</span> <span class="s2">&quot;N&quot;</span> <span class="k">else</span> <span class="mi">1</span><span class="p">})</span>
+<span class="ne">--&gt; </span><span class="mi">560</span>     <span class="n">w</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="o">*</span><span class="n">other_args</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">drv</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="n">a1</span><span class="p">,</span> <span class="o">**</span><span class="n">drv_args</span><span class="p">,</span> <span class="o">**</span><span class="n">lwork_args</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">562</span> <span class="k">else</span><span class="p">:</span>  <span class="c1"># Generalized problem</span>
+<span class="g g-Whitespace">    </span><span class="mi">563</span>     <span class="c1"># &#39;gvd&#39; doesn&#39;t have lwork query</span>
+<span class="g g-Whitespace">    </span><span class="mi">564</span>     <span class="k">if</span> <span class="n">driver</span> <span class="o">==</span> <span class="s2">&quot;gvd&quot;</span><span class="p">:</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
+</pre></div>
+</div>
+</div>
 </details>
 </div>
 <div class="cell tag_hide-cell docutils container">
@@ -1558,7 +1563,7 @@ $<span class="math notranslate nohighlight">\(A^{-1} = U^{-1} L^{-1} P^T\)</span
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/a15308dada36af629af6fc4b097637c41534d4c0f295cd5fa1901a449ac2550b.png" src="../_images/a15308dada36af629af6fc4b097637c41534d4c0f295cd5fa1901a449ac2550b.png" />
+<img alt="../_images/fad055a291c4d7f2407a92d9f2bc9bf9a1d44d4a4f75a38249c73f9dbc9c71d3.png" src="../_images/fad055a291c4d7f2407a92d9f2bc9bf9a1d44d4a4f75a38249c73f9dbc9c71d3.png" />
 </div>
 </details>
 </div>

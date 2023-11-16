@@ -162,6 +162,8 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../00_python/python.html">Python</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/conda.html">Installing Anaconda Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/jupyter.html">Installing and Using Jupyter Notebooks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../00_python/using_python.html">Using Python</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../00_python/basics.html">Basics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../00_python/bitsbytes.html">Bits, Bytes, and Numbers</a></li>
@@ -182,8 +184,20 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../01_analysis/average_case.html">Average Case Analysis</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../09_computing/computing.html">Computing</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../02_linear_algebra/linear_algebra.html">Linear Algebra</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02_linear_algebra/memory.html">Memory and Performance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02_linear_algebra/numpy_scipy_linalg.html">Dense Linear Algebra in NumPy and SciPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02_linear_algebra/blas_lapack.html">BLAS and LAPACK</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../04_functions/functions.html">Functions</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../04_functions/roots.html">Root Finding</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../09_computing/computing.html">Computing</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../09_computing/basic_bash.html">Basic Bash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09_computing/performance/ipython.html">Measuring Performance in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09_computing/performance/numpy_ufuncs.html">Vectorization, Numpy Universal Functions</a></li>
 </ul>
 </li>
 </ul>
@@ -547,7 +561,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/451b703dc60808ab78c1fdbc221482b9a042bc448c849bcb4b0fdedde745e92f.png" src="../_images/451b703dc60808ab78c1fdbc221482b9a042bc448c849bcb4b0fdedde745e92f.png" />
+<img alt="../_images/eb1319e40752b3168895fdd432b5e4b410673fe28475b6db03834a5fe90cf041.png" src="../_images/eb1319e40752b3168895fdd432b5e4b410673fe28475b6db03834a5fe90cf041.png" />
 </div>
 </div>
 <p>You can set a global random state using <code class="docutils literal notranslate"><span class="pre">np.random.seed</span></code> or by passing in a <code class="docutils literal notranslate"><span class="pre">random_state</span></code> argument to <code class="docutils literal notranslate"><span class="pre">rvs</span></code></p>
@@ -648,7 +662,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/7fb2e9f91dbef1e552b52174551e725cae8593e145cf26199486c3069891d5ae.png" src="../_images/7fb2e9f91dbef1e552b52174551e725cae8593e145cf26199486c3069891d5ae.png" />
+<img alt="../_images/6bc35786be8d2391ac03e26255fd042e3d192d848dc94523ebccf4d9368af0bd.png" src="../_images/6bc35786be8d2391ac03e26255fd042e3d192d848dc94523ebccf4d9368af0bd.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -744,7 +758,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/849bc68e9a0e59bd6e1256972ba6de27c790971f285199166df2377387e4d7a1.png" src="../_images/849bc68e9a0e59bd6e1256972ba6de27c790971f285199166df2377387e4d7a1.png" />
+<img alt="../_images/9b4b2f7551bed9faa4a37cd2af59a679be4822f8b161acdd7aa5f605c80bebdf.png" src="../_images/9b4b2f7551bed9faa4a37cd2af59a679be4822f8b161acdd7aa5f605c80bebdf.png" />
 </div>
 </div>
 </section>
@@ -833,7 +847,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/dc6c111be63747a58a338ea4a76cbc5103e7df545e334e2be0dc3b3464ba9be0.png" src="../_images/dc6c111be63747a58a338ea4a76cbc5103e7df545e334e2be0dc3b3464ba9be0.png" />
+<img alt="../_images/28e94d85745112b7f0a0d750939b7987cfb06f7cf6d832ca93248674c901add2.png" src="../_images/28e94d85745112b7f0a0d750939b7987cfb06f7cf6d832ca93248674c901add2.png" />
 </div>
 </div>
 <p>A KDE works by creating a function that is the sum of Gaussians centered at each data point.  In Scipy this is implemented as an object which can be called like a function</p>
@@ -848,7 +862,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/4337beff33345b210e089ac9d0bf84fd810bd7b9cc374cb54d99806717ddd00e.png" src="../_images/4337beff33345b210e089ac9d0bf84fd810bd7b9cc374cb54d99806717ddd00e.png" />
+<img alt="../_images/ac080a8f8bb48447cfcf61a75c2c6c744918d53d029f49546d13a43717cb5baa.png" src="../_images/ac080a8f8bb48447cfcf61a75c2c6c744918d53d029f49546d13a43717cb5baa.png" />
 </div>
 </div>
 <p>We can change the bandwidth of the Gaussians used in the KDE using the <code class="docutils literal notranslate"><span class="pre">bw_method</span></code> parameter.  You can also pass a function that will set this algorithmically.  In the above plot, we see that the peak on the left is a bit smoother than we would expect for the Laplace distribution.  We can decrease the bandwidth parameter to make it look sharper:</p>
@@ -863,7 +877,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/fbae4c626c4d8748283fff07f7e59da1aaeba8900c36ce979502e60f24ee9924.png" src="../_images/fbae4c626c4d8748283fff07f7e59da1aaeba8900c36ce979502e60f24ee9924.png" />
+<img alt="../_images/a8034126131b7a69796f3d299676fc33c24551af64e2a857cf27d4ebfc920629.png" src="../_images/a8034126131b7a69796f3d299676fc33c24551af64e2a857cf27d4ebfc920629.png" />
 </div>
 </div>
 <p>If we set the bandwidth too small, then the KDE will look a bit rough.</p>
@@ -878,7 +892,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/df54b54f00e58739201062620ac39240053e17cd0a98c7fa665cf3ff88d23beb.png" src="../_images/df54b54f00e58739201062620ac39240053e17cd0a98c7fa665cf3ff88d23beb.png" />
+<img alt="../_images/c1c4147d3acb91ca775331bc1420bc46c2862216aadf768313c0b11c0c938c8b.png" src="../_images/c1c4147d3acb91ca775331bc1420bc46c2862216aadf768313c0b11c0c938c8b.png" />
 </div>
 </div>
 </section>

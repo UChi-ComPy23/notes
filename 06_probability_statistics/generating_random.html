@@ -160,6 +160,8 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../00_python/python.html">Python</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/conda.html">Installing Anaconda Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/jupyter.html">Installing and Using Jupyter Notebooks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../00_python/using_python.html">Using Python</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../00_python/basics.html">Basics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../00_python/bitsbytes.html">Bits, Bytes, and Numbers</a></li>
@@ -180,8 +182,20 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../01_analysis/average_case.html">Average Case Analysis</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../09_computing/computing.html">Computing</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../02_linear_algebra/linear_algebra.html">Linear Algebra</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02_linear_algebra/memory.html">Memory and Performance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02_linear_algebra/numpy_scipy_linalg.html">Dense Linear Algebra in NumPy and SciPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02_linear_algebra/blas_lapack.html">BLAS and LAPACK</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../04_functions/functions.html">Functions</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../04_functions/roots.html">Root Finding</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../09_computing/computing.html">Computing</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../09_computing/basic_bash.html">Basic Bash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09_computing/performance/ipython.html">Measuring Performance in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09_computing/performance/numpy_ufuncs.html">Vectorization, Numpy Universal Functions</a></li>
 </ul>
 </li>
 </ul>
@@ -467,7 +481,7 @@ Populating the interactive namespace from numpy and matplotlib
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6478816902530795
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6140531103177559
 </pre></div>
 </div>
 </div>
@@ -480,8 +494,8 @@ Populating the interactive namespace from numpy and matplotlib
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.45224933, 0.28146415],
-       [0.70047889, 0.84448688]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.04096939, 0.01407488],
+       [0.44438403, 0.35476623]])
 </pre></div>
 </div>
 </div>
@@ -497,7 +511,7 @@ Populating the interactive namespace from numpy and matplotlib
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-2.0697364867115966
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.9721750482534264
 </pre></div>
 </div>
 </div>
@@ -510,8 +524,8 @@ Populating the interactive namespace from numpy and matplotlib
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.90899578,  0.66155255],
-       [ 0.2115346 ,  0.0214529 ]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.96988769, -0.94842248],
+       [ 2.80751265, -0.25457429]])
 </pre></div>
 </div>
 </div>
@@ -527,7 +541,7 @@ Populating the interactive namespace from numpy and matplotlib
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9
 </pre></div>
 </div>
 </div>
@@ -540,8 +554,8 @@ Populating the interactive namespace from numpy and matplotlib
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[3, 8],
-       [0, 8]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0, 3],
+       [8, 7]])
 </pre></div>
 </div>
 </div>
@@ -573,7 +587,7 @@ Populating the interactive namespace from numpy and matplotlib
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 1, 0, 2, 5])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([2, 3, 1, 3, 2])
 </pre></div>
 </div>
 </div>

@@ -1,0 +1,832 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Monte Carlo Methods &#8212; Scientific Computing with Python</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '06_probability_statistics/monte_carlo';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../introduction.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Scientific Computing with Python</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../introduction.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../00_python/python.html">Python</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/conda.html">Installing Anaconda Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/jupyter.html">Installing and Using Jupyter Notebooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/using_python.html">Using Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/basics.html">Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/bitsbytes.html">Bits, Bytes, and Numbers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/basic_packages.html">Basic Containers and Packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/functions.html">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/classes.html">Object-Oriented Programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/modules.html">Modules and Packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/decorators.html">Decorators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/iterators.html">Iterators and Generators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/pyplot.html">Matlotlib &amp; PyPlot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/misc.html">Miscellaneous</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01_analysis/analysis.html">Analysis of Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01_analysis/asymptotic_notation.html">Asymptotic Notation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_analysis/recursion.html">Recursion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_analysis/convergence.html">Convergence of Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_analysis/average_case.html">Average Case Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../02_linear_algebra/linear_algebra.html">Linear Algebra</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02_linear_algebra/memory.html">Memory and Performance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02_linear_algebra/numpy_scipy_linalg.html">Dense Linear Algebra in NumPy and SciPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02_linear_algebra/blas_lapack.html">BLAS and LAPACK</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../04_functions/functions.html">Functions</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../04_functions/roots.html">Root Finding</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../09_computing/computing.html">Computing</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../09_computing/basic_bash.html">Basic Bash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09_computing/performance/ipython.html">Measuring Performance in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09_computing/performance/numpy_ufuncs.html">Vectorization, Numpy Universal Functions</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/UChi-ComPy23/notes/master?urlpath=tree/06_probability_statistics/monte_carlo.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/UChi-ComPy23/notes/blob/master/06_probability_statistics/monte_carlo.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/UChi-ComPy23/notes" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/UChi-ComPy23/notes/issues/new?title=Issue%20on%20page%20%2F06_probability_statistics/monte_carlo.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/06_probability_statistics/monte_carlo.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Monte Carlo Methods</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importance-sampling">Importance sampling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#markov-chain-monte-carlo-mcmc">Markov Chain Monte Carlo (MCMC)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metropolis-hastings">Metropolis-Hastings</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="monte-carlo-methods">
+<h1>Monte Carlo Methods<a class="headerlink" href="#monte-carlo-methods" title="Permalink to this heading">#</a></h1>
+<p>Monte carlo methods are a class of methods that use randomness to make it easier to solve deterministic problems. Specifally, we wish to compute integrals of the form
+$<span class="math notranslate nohighlight">\( \int f(x) p(x) dx\)</span><span class="math notranslate nohighlight">\(
+where \)</span>p$ is a probability density, i.e. a non-negative “function” that integrates to 1.</p>
+<p>The idea of Monte-Carlo, is to observe that, if <span class="math notranslate nohighlight">\(X\)</span> is a random variable distributed according to <span class="math notranslate nohighlight">\(p\)</span>, then
+$<span class="math notranslate nohighlight">\(
+\mathbb{E}[f(X)] = \int f(x) p(x)dx
+\)</span><span class="math notranslate nohighlight">\(
+We can then estimate the expectation using the law of large numbers. We suppose that \)</span>X_1,;X_2,;X_3,;\ldots<span class="math notranslate nohighlight">\( are all random variables distributed according to \)</span>p<span class="math notranslate nohighlight">\(. Then the law of large numbers gives that
+\)</span><span class="math notranslate nohighlight">\(
+\frac1n \sum_{i=1}^n f(X_i) \to \mathbb{E}[f(X_1)]=\int f(x)p(x)dx.
+\)</span>$</p>
+<p>A classical example of this, is to compute the area of the unit circle (<span class="math notranslate nohighlight">\(\pi\)</span>)
+$<span class="math notranslate nohighlight">\(
+\pi=\int_{D_1} 1 dx = \int_{[-1,1]\times[-1,1]} \chi_{D_1}(x) dx = 4 \mathbb{E[\chi_{D_1}(U_{[-1,1]\times[-1,1]})}],
+\)</span><span class="math notranslate nohighlight">\(
+where \)</span>\chi_{D_1}$ is the indicator function of the unit disk.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">scipy</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">;</span>
+
+<span class="n">xs</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">n</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">xs</span><span class="p">[</span><span class="mi">0</span><span class="p">,:],</span><span class="n">xs</span><span class="p">[</span><span class="mi">1</span><span class="p">,:])</span>
+
+<span class="n">ids</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">&lt;</span><span class="mi">1</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">xs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="n">ids</span><span class="p">],</span><span class="n">xs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="n">ids</span><span class="p">])</span>
+
+<span class="n">fn</span> <span class="o">=</span> <span class="mi">4</span><span class="o">*</span><span class="nb">sum</span><span class="p">(</span><span class="n">ids</span><span class="p">)</span><span class="o">/</span><span class="n">n</span>
+<span class="s1">&#39;estimate = </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
+<span class="s1">&#39;error = </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">fn</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;error = -0.05359265358979304&#39;
+</pre></div>
+</div>
+<img alt="../_images/61917b36045d8b1c4edc3171e8d3c6b63ff3e9c5b133211ced1cf7822945afd2.png" src="../_images/61917b36045d8b1c4edc3171e8d3c6b63ff3e9c5b133211ced1cf7822945afd2.png" />
+</div>
+</div>
+<p>Let’s look at how this converges with <span class="math notranslate nohighlight">\(n\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ns</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">100</span><span class="p">))</span>
+<span class="n">errs</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">ns</span><span class="p">:</span>
+    <span class="n">xs</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">n</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span>
+    <span class="n">ids</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">&lt;</span><span class="mi">1</span>
+    <span class="n">errs</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="mi">4</span><span class="o">*</span><span class="nb">sum</span><span class="p">(</span><span class="n">ids</span><span class="p">)</span><span class="o">/</span><span class="n">n</span><span class="p">)</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+    
+<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">ns</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">errs</span><span class="p">),</span><span class="s1">&#39;o-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">ns</span><span class="p">,</span><span class="mi">1</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">ns</span><span class="p">),</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;n&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Error&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/e8c79419fe55227b0b87993b4b5cdba6cf7841beee7ffd313fdea5f61c72736f.png" src="../_images/e8c79419fe55227b0b87993b4b5cdba6cf7841beee7ffd313fdea5f61c72736f.png" />
+</div>
+</div>
+<p>Let’s look at why the error is decaying like <span class="math notranslate nohighlight">\(\frac{1}{\sqrt{n}}\)</span>. Let’s let the estimator
+$<span class="math notranslate nohighlight">\(
+    \hat{f}_n = \frac1n \sum_n f(X_i).
+\)</span><span class="math notranslate nohighlight">\(
+The variance of \)</span>\hat{f}_n<span class="math notranslate nohighlight">\( is
+\)</span><span class="math notranslate nohighlight">\(
+    \mathbb{E}\left[(\hat{f}_n-\hat{E}[f(X)])^2\right] = \frac{1}{n^2} \mathbb{E}\left[\left(\sum_{i=1}^n f(X_i)-\mathbb{E}[\hat{f}(X)]\right)^2\right] = \frac{1}{n^2} \sum_{i,j} \mathbb{E}\left[\left(f(X_i)-\mathbb{E}[\hat{f}(X)]\right)\left(f(X_j)-\hat{E}[f(X)]\right)\right].
+\)</span><span class="math notranslate nohighlight">\(
+If we rearrange this a bit, we get
+\)</span><span class="math notranslate nohighlight">\(
+\mathbb{E}\left[(\hat{f}_n-\hat{E}[f(X)])^2\right] =\frac{1}{n^2} \left(\sum_{i} \mathbb{E}\left[\left(f(X_1)-\mathbb{E}[\hat{f}(X)]\right)^2\right] +\sum_{i\neq j} \text{Cov}(f(X_i),(X_j)) \right)
+\)</span><span class="math notranslate nohighlight">\(
+Since the \)</span>X_i<span class="math notranslate nohighlight">\('s are independent, \)</span>\text{Cov}(f(X_i),(X_j))=0<span class="math notranslate nohighlight">\( well \)</span>i\neq j<span class="math notranslate nohighlight">\(.
+\)</span><span class="math notranslate nohighlight">\(
+\mathbb{E}\left[(\hat{f}_n-\hat{E}[f(X)])^2\right] =\frac{1}{n} \mathbb{E}\left[\left(f(X_1)-\mathbb{E}[\hat{f}(X)]\right)^2\right].
+\)</span>$</p>
+<p>If we take square root
+$<span class="math notranslate nohighlight">\(
+\sqrt{\mathbb{E}\left[(\hat{f}_n-\hat{E}[f(X)])^2\right]} =\frac{1}{\sqrt{n}} \sqrt{\mathbb{E}\left[\left(f(X_1)-\mathbb{E}[\hat{f}(X)]\right)^2\right]},
+\)</span><span class="math notranslate nohighlight">\(
+we see that the average error will decay like \)</span>\frac{1}{\sqrt{n}}$.</p>
+<p>This one over square root <span class="math notranslate nohighlight">\(n\)</span> error is universal in Monte Carlo. It is both the advantage and the curse of Monte Carlo.</p>
+<p>Suppose we are trying to compute an integral in <span class="math notranslate nohighlight">\(d\)</span> dimensions using a <span class="math notranslate nohighlight">\(p\)</span>th order rule using <span class="math notranslate nohighlight">\(n\)</span> points. The error is
+$<span class="math notranslate nohighlight">\(
+O\left( \sqrt[d]{n}^{-p}\right) = O\left( n^{-p/d}\right),
+\)</span><span class="math notranslate nohighlight">\(
+which will be very slow when \)</span>d<span class="math notranslate nohighlight">\( is large. This will be a lot smaller than the error of Monte Carlo when \)</span>d&gt;2p<span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(
+O\left(n^{-1/2} \right).
+\)</span>$</p>
+<section id="importance-sampling">
+<h2>Importance sampling<a class="headerlink" href="#importance-sampling" title="Permalink to this heading">#</a></h2>
+<p>Suppose we want to compute the integral of a highly concentrated function
+$<span class="math notranslate nohighlight">\(
+\int_{-\infty}^\infty e^{-10^4x^2}   dx = \frac{\sqrt{\pi}}{10^4} 
+\)</span><span class="math notranslate nohighlight">\(
+We shall truncate to the interval \)</span>[-1,1]$, since the function is very small there.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">1e4</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>
+<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span><span class="n">f</span><span class="p">(</span><span class="n">xs</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+
+<span class="n">true_int</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span><span class="o">/</span><span class="mi">100</span>
+
+<span class="n">ns</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">20</span><span class="p">))</span>
+<span class="n">ntrial</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">errs</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">ns</span><span class="p">:</span>
+    <span class="n">errs_samp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">ntrial</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ntrial</span><span class="p">):</span>
+        <span class="n">xs</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span>
+        <span class="n">errs_samp</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="p">((</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">xs</span><span class="p">))</span><span class="o">/</span><span class="n">n</span><span class="p">)</span><span class="o">-</span><span class="n">true_int</span><span class="p">)</span><span class="o">/</span><span class="n">true_int</span>
+        
+    <span class="n">errs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">errs_samp</span><span class="p">))</span>
+    
+<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">ns</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">errs</span><span class="p">),</span><span class="s1">&#39;o-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">ns</span><span class="p">,</span><span class="mi">1</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">ns</span><span class="p">),</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;n&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Relative error&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/aae76723ab2d55c4e708b4b1cb0109aee0d1c1ffddb20264d61181c91ff0e832.png" src="../_images/aae76723ab2d55c4e708b4b1cb0109aee0d1c1ffddb20264d61181c91ff0e832.png" />
+<img alt="../_images/f81b8061308f2ed833778959da39fdb3b1506a831d855cc7194099ede54cf1a9.png" src="../_images/f81b8061308f2ed833778959da39fdb3b1506a831d855cc7194099ede54cf1a9.png" />
+</div>
+</div>
+<p>We can increase the accuracy, we should use Monte Carlo samples where <span class="math notranslate nohighlight">\(f\)</span> is large. If the samples <span class="math notranslate nohighlight">\(X_i\)</span> are drawn from the pobability distribution <span class="math notranslate nohighlight">\(p\)</span>, then we compensate for this by
+$<span class="math notranslate nohighlight">\(
+\int_{-\infty}^\infty f(x)dx = \int_{-\infty}^\infty \frac{f(x)}{p(x)} p(x)dx \approx \frac{1}{n} \sum_{i}\frac{f(x_i)}{p(x_i)} 
+\)</span>$</p>
+<p>We shall choose <span class="math notranslate nohighlight">\(p\)</span> to be the density for a normal distrubtion: <span class="math notranslate nohighlight">\(p(x) = \frac{1}{\sqrt{2\pi\sigma^2}} \exp(-\frac{x^2}{2\sigma^2})\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">sigma</span> <span class="ow">in</span> <span class="p">[</span><span class="mf">1e-2</span><span class="p">,</span><span class="mf">1e-1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]:</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="o">/</span><span class="mi">2</span><span class="o">/</span><span class="n">sigma</span><span class="o">/</span><span class="n">sigma</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">errs_import</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">ns</span><span class="p">:</span>
+        <span class="n">errs_samp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">ntrial</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ntrial</span><span class="p">):</span>
+            <span class="n">xs</span> <span class="o">=</span> <span class="n">sigma</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
+            <span class="n">est</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="o">/</span><span class="n">p</span><span class="p">(</span><span class="n">xs</span><span class="p">))</span> <span class="o">/</span> <span class="n">n</span>
+            <span class="n">errs_samp</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">est</span><span class="o">-</span><span class="n">true_int</span><span class="p">)</span><span class="o">/</span><span class="n">true_int</span>
+        <span class="n">errs_import</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">errs_samp</span><span class="p">))</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">ns</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">errs_import</span><span class="p">),</span><span class="s1">&#39;o-&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;sigma=</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sigma</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">ns</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">errs</span><span class="p">),</span><span class="s1">&#39;*--&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;uniform&#39;</span><span class="p">)</span>    
+<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">ns</span><span class="p">,</span><span class="mi">1</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">ns</span><span class="p">),</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;n&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Relative error&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/0a0369ef93129fa7af8814d7d08f69f06d4d389610290df8f593c70ddfed2e20.png" src="../_images/0a0369ef93129fa7af8814d7d08f69f06d4d389610290df8f593c70ddfed2e20.png" />
+</div>
+</div>
+<p>We see that concentrating the samples at the peak of the function significantly decreases the error. This method is called “importance sampling”.</p>
+</section>
+<section id="markov-chain-monte-carlo-mcmc">
+<h2>Markov Chain Monte Carlo (MCMC)<a class="headerlink" href="#markov-chain-monte-carlo-mcmc" title="Permalink to this heading">#</a></h2>
+<p>Sometimes we wish to compute
+$<span class="math notranslate nohighlight">\(
+\int f(x) p(x) dx
+\)</span><span class="math notranslate nohighlight">\(
+but we can't directly sample from \)</span>p<span class="math notranslate nohighlight">\(. The idea will be to choose our samples \)</span>X_i<span class="math notranslate nohighlight">\( to be samples from a Markov chain. i.e. \)</span>X_{i+1}<span class="math notranslate nohighlight">\( is randomly generated from \)</span>X_i<span class="math notranslate nohighlight">\(. If we run it long enough, then the \)</span>X_i$’s will be distributed according to the stationary distribution of the Markov chain.</p>
+<p>Our task is therefore to design a Markov chain whose stationary distribution is <span class="math notranslate nohighlight">\(p\)</span>.</p>
+<section id="metropolis-hastings">
+<h3>Metropolis-Hastings<a class="headerlink" href="#metropolis-hastings" title="Permalink to this heading">#</a></h3>
+<p>We shall generate a sample <span class="math notranslate nohighlight">\(Y_{i+1}\)</span> from <span class="math notranslate nohighlight">\(X_i\)</span>. i.e. <span class="math notranslate nohighlight">\(Y_{i+1}=X_i + \Delta_i\)</span>.</p>
+<p>Then we set <span class="math notranslate nohighlight">\(X_{i+1}=Y_{i+1}\)</span> with probability <span class="math notranslate nohighlight">\(\text{min}(p(Y_{i+1})/p(X_i),1)\)</span> and set <span class="math notranslate nohighlight">\(X_{i+1}=X_i\)</span> otherwise.</p>
+<p>You can check that the stationary probability is <span class="math notranslate nohighlight">\(p\)</span>.</p>
+<p>Note that we don’t need the value of <span class="math notranslate nohighlight">\(p\)</span>, we only need the ratio, so <span class="math notranslate nohighlight">\(p\)</span> need not be normalized.</p>
+<p>Let’s use this to compute
+$<span class="math notranslate nohighlight">\(
+\int_{-\infty}^\infty x^2 Z^{-1}e^{-V(x)} dx,
+\)</span><span class="math notranslate nohighlight">\(
+where \)</span>V(x)=x^2<span class="math notranslate nohighlight">\( and \)</span>Z=\int e^{-V(x)}<span class="math notranslate nohighlight">\(. The corresponding \)</span>p(x) = Z^{-1} e^{-V(x)}$.</p>
+<p>Note that the samples are no longer independent. The covariance between samples will lower the effective number of samples, but the estimator will still converge.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">MC_step</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">p</span><span class="p">):</span>
+    <span class="n">delta</span> <span class="o">=</span> <span class="mf">0.1</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">delta</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">()</span>
+    <span class="n">prob</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">p</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">/</span><span class="n">p</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">prob</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">y</span>
+    <span class="k">return</span> <span class="n">x</span>
+
+<span class="n">V</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">**</span><span class="mi">4</span><span class="o">-</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">p</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">V</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+<span class="n">nburn_in</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nburn_in</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">MC_step</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">p</span><span class="p">)</span>
+    
+<span class="n">nsample</span> <span class="o">=</span> <span class="mi">10000</span>
+<span class="n">xs</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nsample</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">MC_step</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">p</span><span class="p">)</span>
+    <span class="n">xs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+<span class="nb">sum</span><span class="p">(</span><span class="n">xs</span><span class="o">*</span><span class="n">xs</span><span class="p">)</span><span class="o">/</span><span class="n">nsample</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/93dc85c5ce1e7f316f7dd052534fa9b406c40af754dcb68e3267258d7ca05e59.png" src="../_images/93dc85c5ce1e7f316f7dd052534fa9b406c40af754dcb68e3267258d7ca05e59.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span><span class="mf">1.5</span><span class="p">,</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span><span class="n">p</span><span class="p">(</span><span class="n">xx</span><span class="p">),</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+<span class="n">kde</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">gaussian_kde</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span><span class="n">kde</span><span class="p">(</span><span class="n">xx</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7ff65c9be190&gt;]
+</pre></div>
+</div>
+<img alt="../_images/dcacd61ee01d4691d5d9921884395dd3a5bb01a3e57f46f52eda286358e7de87.png" src="../_images/dcacd61ee01d4691d5d9921884395dd3a5bb01a3e57f46f52eda286358e7de87.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Such</span> <span class="n">examples</span> <span class="n">occur</span> <span class="ow">in</span> <span class="n">statistical</span> <span class="n">physics</span><span class="o">.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+    <span class="n">Such</span> <span class="n">examples</span> <span class="n">occur</span> <span class="ow">in</span> <span class="n">statistical</span> <span class="n">physics</span><span class="o">.</span>
+         <span class="o">^</span>
+<span class="ne">SyntaxError</span>: invalid syntax
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "pycourse"
+        },
+        kernelOptions: {
+            name: "pycourse",
+            path: "./06_probability_statistics"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'pycourse'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importance-sampling">Importance sampling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#markov-chain-monte-carlo-mcmc">Markov Chain Monte Carlo (MCMC)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metropolis-hastings">Metropolis-Hastings</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Tristan Goodwill. Adapted from notes by Brad Nelson
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
