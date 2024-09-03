@@ -162,6 +162,8 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../00_python/python.html">Python</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/conda.html">Installing Anaconda Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/jupyter.html">Installing and Using Jupyter Notebooks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../00_python/using_python.html">Using Python</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../00_python/basics.html">Basics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../00_python/bitsbytes.html">Bits, Bytes, and Numbers</a></li>
@@ -182,8 +184,20 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../01_analysis/average_case.html">Average Case Analysis</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../09_computing/computing.html">Computing</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="linear_algebra.html">Linear Algebra</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="memory.html">Memory and Performance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numpy_scipy_linalg.html">Dense Linear Algebra in NumPy and SciPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="blas_lapack.html">BLAS and LAPACK</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../04_functions/functions.html">Functions</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../04_functions/roots.html">Root Finding</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../09_computing/computing.html">Computing</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../09_computing/basic_bash.html">Basic Bash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09_computing/performance/ipython.html">Measuring Performance in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09_computing/performance/numpy_ufuncs.html">Vectorization, Numpy Universal Functions</a></li>
 </ul>
 </li>
 </ul>
@@ -850,9 +864,9 @@ Every subsequent row is in the form <code class="docutils literal notranslate"><
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for CSR multiply: 0.0023632049560546875 sec.
-time for dense multiply: 0.0030388832092285156 sec.
-CSR is 1.2859160613397902x faster
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for CSR multiply: 0.0003948211669921875 sec.
+time for dense multiply: 0.002431154251098633 sec.
+CSR is 6.157608695652174x faster
 </pre></div>
 </div>
 </div>
@@ -911,20 +925,18 @@ CSR is 1.2859160613397902x faster
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>matvec:
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for CSC matvec: 8.700e-06 sec.
-time for CSR matvec: 7.700e-06 sec.
-time for LIL matvec: 1.422e-04 sec.
-time for COO matvec: 7.800e-06 sec.
-time for DOK matvec: 9.846e-04 sec.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for CSC matvec: 6.800e-06 sec.
+time for CSR matvec: 5.600e-06 sec.
+time for LIL matvec: 1.082e-04 sec.
+time for COO matvec: 5.900e-06 sec.
+time for DOK matvec: 7.501e-04 sec.
 
 matmat:
-time for CSC matmat: 1.822e-04 sec. 	&lt;class &#39;scipy.sparse._csc.csc_matrix&#39;&gt;
-time for CSR matmat: 2.195e-04 sec. 	&lt;class &#39;scipy.sparse._csr.csr_matrix&#39;&gt;
-time for LIL matmat: 5.855e-04 sec. 	&lt;class &#39;scipy.sparse._csr.csr_matrix&#39;&gt;
-time for COO matmat: 7.271e-04 sec. 	&lt;class &#39;scipy.sparse._csr.csr_matrix&#39;&gt;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for DOK matmat: 1.696e-03 sec. 	&lt;class &#39;scipy.sparse._csr.csr_matrix&#39;&gt;
+time for CSC matmat: 1.466e-04 sec. 	&lt;class &#39;scipy.sparse._csc.csc_matrix&#39;&gt;
+time for CSR matmat: 1.546e-04 sec. 	&lt;class &#39;scipy.sparse._csr.csr_matrix&#39;&gt;
+time for LIL matmat: 3.656e-04 sec. 	&lt;class &#39;scipy.sparse._csr.csr_matrix&#39;&gt;
+time for COO matmat: 3.427e-04 sec. 	&lt;class &#39;scipy.sparse._csr.csr_matrix&#39;&gt;
+time for DOK matmat: 1.127e-03 sec. 	&lt;class &#39;scipy.sparse._csr.csr_matrix&#39;&gt;
 </pre></div>
 </div>
 </div>
@@ -1012,13 +1024,13 @@ time for COO matmat: 7.271e-04 sec. 	&lt;class &#39;scipy.sparse._csr.csr_matrix
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>COO in CSC order
-time for matvec: 1.310e-05 sec.
+time for matvec: 7.500e-06 sec.
 
 COO in CSR order
-time for matvec: 9.900e-06 sec.
+time for matvec: 5.900e-06 sec.
 
 COO in random order
-time for matvec: 9.500e-06 sec.
+time for matvec: 5.600e-06 sec.
 </pre></div>
 </div>
 </div>
@@ -1094,7 +1106,7 @@ time for matvec: 9.500e-06 sec.
   <div class="footer-item">
     
 <p class="component-author">
-By Tristan Goodwill. Adapted from notes by Brad Nelson
+By Brad Nelson. Adapted by Tristan Goodwill.
 </p>
 
   </div>

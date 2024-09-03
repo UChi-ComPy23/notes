@@ -162,6 +162,8 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../00_python/python.html">Python</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/conda.html">Installing Anaconda Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/jupyter.html">Installing and Using Jupyter Notebooks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../00_python/using_python.html">Using Python</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../00_python/basics.html">Basics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../00_python/bitsbytes.html">Bits, Bytes, and Numbers</a></li>
@@ -182,8 +184,20 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../01_analysis/average_case.html">Average Case Analysis</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../09_computing/computing.html">Computing</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../02_linear_algebra/linear_algebra.html">Linear Algebra</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02_linear_algebra/memory.html">Memory and Performance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02_linear_algebra/numpy_scipy_linalg.html">Dense Linear Algebra in NumPy and SciPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02_linear_algebra/blas_lapack.html">BLAS and LAPACK</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="functions.html">Functions</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="roots.html">Root Finding</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../09_computing/computing.html">Computing</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../09_computing/basic_bash.html">Basic Bash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09_computing/performance/ipython.html">Measuring Performance in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09_computing/performance/numpy_ufuncs.html">Vectorization, Numpy Universal Functions</a></li>
 </ul>
 </li>
 </ul>
@@ -530,7 +544,7 @@ u(1) = b
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/db28909e9933c0a18a0bccdadd34f6e71a4976c3030f530a13b1ddf8352160c8.png" src="../_images/db28909e9933c0a18a0bccdadd34f6e71a4976c3030f530a13b1ddf8352160c8.png" />
+<img alt="../_images/3d47e334b87173a23f45c0f5b0cf9b949cdf2fe0bfce00f231773f26adf817b5.png" src="../_images/3d47e334b87173a23f45c0f5b0cf9b949cdf2fe0bfce00f231773f26adf817b5.png" />
 </div>
 </div>
 <p>we see the solution is a linear function from (0,5) to (1,1).  You can check that such a linear function solves the BVP mathematically.</p>
@@ -785,8 +799,8 @@ v[0] = a\qquad v[-1] = b
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/fd8a8346ca6e1f73b0dbff609228ac9ba95918759ac33af496c502f8e3828b98.png" src="../_images/fd8a8346ca6e1f73b0dbff609228ac9ba95918759ac33af496c502f8e3828b98.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;sympy.plotting.plot.Plot at 0x7f0ccb36a950&gt;
+<img alt="../_images/43648ffc764b7099e5268be0aa19c705715586251e6cf76f24f70297706f1e36.png" src="../_images/43648ffc764b7099e5268be0aa19c705715586251e6cf76f24f70297706f1e36.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;sympy.plotting.plot.Plot at 0x7f4c83bc2110&gt;
 </pre></div>
 </div>
 </div>
@@ -851,8 +865,8 @@ v[0] = a\qquad v[-1] = b
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/02ccb8836b99936e3f56404d25735076acd5eabfcb18339590e3f93d7369ddc5.png" src="../_images/02ccb8836b99936e3f56404d25735076acd5eabfcb18339590e3f93d7369ddc5.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;sympy.plotting.plot.Plot at 0x7f0cca426590&gt;
+<img alt="../_images/051697203981303561b28048a36f749f576a69657134c56ee66c967ad66559f3.png" src="../_images/051697203981303561b28048a36f749f576a69657134c56ee66c967ad66559f3.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;sympy.plotting.plot.Plot at 0x7f4c8395f490&gt;
 </pre></div>
 </div>
 </div>
@@ -1078,7 +1092,7 @@ Function evaluations 27, initial cost 5.3960e+03, final cost 5.3860e+01, first-o
   <div class="footer-item">
     
 <p class="component-author">
-By Tristan Goodwill. Adapted from notes by Brad Nelson
+By Brad Nelson. Adapted by Tristan Goodwill.
 </p>
 
   </div>

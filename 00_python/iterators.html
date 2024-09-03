@@ -162,6 +162,8 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="python.html">Python</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="conda.html">Installing Anaconda Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jupyter.html">Installing and Using Jupyter Notebooks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="using_python.html">Using Python</a></li>
 <li class="toctree-l2"><a class="reference internal" href="basics.html">Basics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="bitsbytes.html">Bits, Bytes, and Numbers</a></li>
@@ -182,8 +184,20 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../01_analysis/average_case.html">Average Case Analysis</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../09_computing/computing.html">Computing</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../02_linear_algebra/linear_algebra.html">Linear Algebra</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02_linear_algebra/memory.html">Memory and Performance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02_linear_algebra/numpy_scipy_linalg.html">Dense Linear Algebra in NumPy and SciPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02_linear_algebra/blas_lapack.html">BLAS and LAPACK</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../04_functions/functions.html">Functions</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../04_functions/roots.html">Root Finding</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../09_computing/computing.html">Computing</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../09_computing/basic_bash.html">Basic Bash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09_computing/performance/ipython.html">Measuring Performance in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09_computing/performance/numpy_ufuncs.html">Vectorization, Numpy Universal Functions</a></li>
 </ul>
 </li>
 </ul>
@@ -1258,22 +1272,27 @@ An object is an <strong>iterator</strong> if it implements the <code class="docu
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>102.32407112766288 inf
-330.64600869132954 228.32193756366667
-473.0308333418094 142.38482465047986
-564.1627875327475 91.13195419093813
-597.8354893582631 33.67270182551556
-607.5794518782072 9.743962519944148
-610.2526958831077 2.6732440049004254
-610.9871897345691 0.7344938514614796
-611.1913228800712 0.2041331455020554
-611.2487067898909 0.057383909819691326
-611.2649999885048 0.016293198613880122
-611.269667794122 0.004667805617259546
-611.2710164439696 0.0013486498476140696
-611.2714094079209 0.00039296395129895245
-611.2715249154551 0.00011550753413303028
-611.2715591860646 3.427060948979488e-05
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>91.65353860349349 inf
+264.39569700399113 172.74215840049766
+331.6639107292152 67.26821372522409
+368.28772596250286 36.623815233287644
+413.3976718417469 45.10994587924404
+484.7479524293232 71.35028058757632
+562.2652416355212 77.51728920619797
+611.8783070096393 49.61306537411815
+633.5529078330354 21.674600823396077
+641.4382055406876 7.885297707652171
+644.1195027473336 2.681297206646036
+645.012162607875 0.8926598605413574
+645.3077508031024 0.29558819522742397
+645.4055758031813 0.0978250000788421
+645.437974639844 0.03239883666276455
+645.4487147429135 0.010740103069451834
+645.4522779526445 0.0035632097310553945
+645.4534608841237 0.0011829314792066725
+645.4538538008304 0.00039291670668717416
+645.4539843618311 0.00013056100067387888
+645.4540277587727 4.339694157806662e-05
 </pre></div>
 </div>
 </div>
@@ -1292,9 +1311,10 @@ An object is an <strong>iterator</strong> if it implements the <code class="docu
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>611.2715694572025 1.0271137966810784e-05
-611.27157256951 3.1123074677452678e-06
-611.2715735238706 9.543606438455754e-07
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>645.4540421868085 1.4428035797209304e-05
+645.454046984525 4.797716542270791e-06
+645.4540485801232 1.5955981780280126e-06
+645.454049110837 5.307138053467497e-07
 </pre></div>
 </div>
 </div>
@@ -1327,44 +1347,38 @@ An object is an <strong>iterator</strong> if it implements the <code class="docu
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>94.48278772074572 inf
-235.6635662372682 141.18077851652248
-287.28641143767277 51.622845200404555
-321.1281517942819 33.84174035660914
-344.1476069530334 23.019455158751498
-359.99579121198906 15.848184258955655
-371.85638508879214 11.86059387680308
-382.7288983674778 10.872513278685688
-396.29209937271673 13.56320100523891
-417.7248994673508 21.432800094634047
-452.0923566303869 34.367457163036136
-497.46714694623074 45.374790315843825
-541.0921418705141 43.62499492428333
-571.4724597194341 30.380317848920072
-588.1624729578023 16.690013238368124
-596.165051514766 8.002578556963726
-599.7569624635322 3.5919109487662126
-601.3232650032129 1.5663025396806916
-601.9983163500469 0.6750513468340387
-602.2879905556332 0.289674205586266
-602.412126665355 0.12413610972180322
-602.4653129879096 0.053186322554552135
-602.4881050849528 0.022792097043293325
-602.4978750182356 0.009769933282768761
-602.5020640768553 0.004189058619658681
-602.5038606300134 0.0017965531581012328
-602.5046312541966 0.0007706241832465821
-602.5049618573596 0.00033060316297905956
-602.5051037041633 0.0001418468036717968
-602.5051645694684 6.0865305158586125e-05
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>99.0121738951512 inf
+265.67917789316414 166.66700399801294
+314.90946480059256 49.23028690742842
+336.75004510501526 21.8405803044227
+362.4605434157907 25.71049831077545
+411.99372643132097 49.533183015530255
+486.8135814069874 74.81985497566643
+552.3993200771835 65.58573867019606
+586.9473008072683 34.54798073008487
+600.5193815571838 13.572080749915472
+605.2751068811125 4.7557253239286865
+606.8931962730779 1.6180893919654409
+607.4446441957763 0.551447922698344
+607.6347540168648 0.1901098210885266
+607.7012112789654 0.06645726210058456
+607.7247647284495 0.023553449484097655
+607.7332199154426 0.008455186993160169
+607.7362907038118 0.0030707883692002724
+607.7374177947916 0.0011270909797076456
+607.7378354685817 0.00041767379013890604
+607.7379916195705 0.0001561509888006185
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>607.7380504785261 5.885895564006205e-05
 
 resuming iteration after decreasing tolerance
 
-602.5051906880637 2.6118595314983395e-05
-602.5052018967217 1.120865795201098e-05
-602.5052067070717 4.810349992112606e-06
-602.5052087715748 2.0645030645027873e-06
-602.5052096576442 8.860694151735515e-07
+607.7380728365575 2.2358031401381595e-05
+607.7380813921574 8.555599833925953e-06
+607.7380846893398 3.297182388450892e-06
+607.7380859687665 1.2794267831850448e-06
+607.7380864685549 4.997883706892026e-07
 </pre></div>
 </div>
 </div>
@@ -1467,7 +1481,7 @@ resuming iteration after decreasing tolerance
   <div class="footer-item">
     
 <p class="component-author">
-By Tristan Goodwill. Adapted from notes by Brad Nelson
+By Brad Nelson. Adapted by Tristan Goodwill.
 </p>
 
   </div>

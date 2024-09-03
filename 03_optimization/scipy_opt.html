@@ -162,6 +162,8 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../00_python/python.html">Python</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/conda.html">Installing Anaconda Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/jupyter.html">Installing and Using Jupyter Notebooks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../00_python/using_python.html">Using Python</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../00_python/basics.html">Basics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../00_python/bitsbytes.html">Bits, Bytes, and Numbers</a></li>
@@ -182,8 +184,20 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../01_analysis/average_case.html">Average Case Analysis</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../09_computing/computing.html">Computing</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../02_linear_algebra/linear_algebra.html">Linear Algebra</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02_linear_algebra/memory.html">Memory and Performance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02_linear_algebra/numpy_scipy_linalg.html">Dense Linear Algebra in NumPy and SciPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02_linear_algebra/blas_lapack.html">BLAS and LAPACK</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../04_functions/functions.html">Functions</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../04_functions/roots.html">Root Finding</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../09_computing/computing.html">Computing</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../09_computing/basic_bash.html">Basic Bash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09_computing/performance/ipython.html">Measuring Performance in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09_computing/performance/numpy_ufuncs.html">Vectorization, Numpy Universal Functions</a></li>
 </ul>
 </li>
 </ul>
@@ -604,14 +618,14 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  message: Optimization terminated successfully.
   success: True
    status: 0
-      fun: 1.3321066957292915e-12
-        x: [ 7.865e-01  1.881e-01]
-      nit: 4
-      jac: [-2.905e-06 -1.022e-06]
- hess_inv: [[ 3.883e-01 -3.038e-01]
-            [-3.038e-01  1.086e+00]]
-     nfev: 15
-     njev: 5
+      fun: 3.6140409350212163e-16
+        x: [ 7.301e-01  2.606e-01]
+      nit: 5
+      jac: [-2.377e-15  2.254e-15]
+ hess_inv: [[ 1.448e-01 -5.021e-03]
+            [-5.021e-03  1.530e-01]]
+     nfev: 21
+     njev: 7
 </pre></div>
 </div>
 </div>
@@ -626,9 +640,9 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.78654856 0.18810115]
-[0.78654939 0.18810138]
-8.598146310879729e-07
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.73008137 0.26056669]
+[0.73008138 0.26056669]
+1.0192650915964426e-08
 </pre></div>
 </div>
 </div>
@@ -651,7 +665,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0002388920788079759
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.5774711959220054e-05
 </pre></div>
 </div>
 </div>
@@ -675,7 +689,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.1309851728048119e-07
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.6292037522676566e-08
 </pre></div>
 </div>
 </div>
@@ -768,7 +782,7 @@ where <code class="docutils literal notranslate"><span class="pre">A</span> <spa
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> message: Optimization terminated successfully
  success: True
   status: 0
-     fun: -1.999999999999438
+     fun: -2.000000000005538
        x: [ 1.000e+00 -2.000e+00]
      nit: 4
      jac: [-2.000e+00  1.000e+00]
@@ -873,12 +887,12 @@ where <code class="docutils literal notranslate"><span class="pre">A</span> <spa
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> message: Optimization terminated successfully
  success: True
   status: 0
-     fun: -2.0000000334961303
-       x: [ 1.414e+00 -1.414e+00]
-     nit: 9
-     jac: [-1.414e+00  1.414e+00]
-    nfev: 24
-    njev: 8
+     fun: -2.0000000005711054
+       x: [-1.414e+00  1.414e+00]
+     nit: 12
+     jac: [ 1.414e+00 -1.414e+00]
+    nfev: 43
+    njev: 11
 </pre></div>
 </div>
 </div>
@@ -909,12 +923,12 @@ where <code class="docutils literal notranslate"><span class="pre">A</span> <spa
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> message: Optimization terminated successfully
  success: True
   status: 0
-     fun: -4.695518988506236
-       x: [-6.707e-01 -5.519e-01 -2.432e-01 -1.937e-01 -3.858e-01]
-     nit: 41
-     jac: [ 6.299e+00  5.183e+00  2.284e+00  1.819e+00  3.623e+00]
-    nfev: 254
-    njev: 41
+     fun: -5.298355703915112
+       x: [ 2.686e-01  2.067e-01 -3.055e-01  4.153e-01 -7.870e-01]
+     nit: 57
+     jac: [-2.848e+00 -2.191e+00  3.235e+00 -4.407e+00  8.336e+00]
+    nfev: 371
+    njev: 57
 </pre></div>
 </div>
 </div>
@@ -929,8 +943,8 @@ where <code class="docutils literal notranslate"><span class="pre">A</span> <spa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(4.695518832606727,
- array([-0.67073987, -0.55191919, -0.24315633, -0.19374698, -0.38578535]))
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(5.2983608517562075,
+ array([-0.26906152, -0.20651925,  0.30493873, -0.41645572,  0.7864685 ]))
 </pre></div>
 </div>
 </div>
@@ -943,8 +957,8 @@ where <code class="docutils literal notranslate"><span class="pre">A</span> <spa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>error in eigenvalue: -1.5589950841388145e-07
-error in eigenvector: 2.0000000166689946
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>error in eigenvalue: 5.14784109562072e-06
+error in eigenvector: 0.0014240320131961124
 </pre></div>
 </div>
 </div>
@@ -982,21 +996,21 @@ J_f[i,j] = \frac{\partial{f}_i}{\partial{x_j}}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 791 µs, sys: 10.1 ms, total: 10.9 ms
-Wall time: 9.86 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 3.9 ms, sys: 316 µs, total: 4.22 ms
+Wall time: 3.92 ms
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  message: Optimization terminated successfully.
   success: True
    status: 0
-      fun: -1.999999999998992
+      fun: -1.9999999999930531
         x: [ 3.142e+00 -1.571e+00]
-      nit: 5
-      jac: [ 9.835e-07 -1.028e-06]
- hess_inv: [[ 1.013e+00 -1.362e-02]
-            [-1.362e-02  1.015e+00]]
-     nfev: 27
-     njev: 9
+      nit: 9
+      jac: [-3.010e-06  2.176e-06]
+ hess_inv: [[ 1.022e+00 -3.197e-05]
+            [-3.197e-05  1.001e+00]]
+     nfev: 45
+     njev: 15
 </pre></div>
 </div>
 </div>
@@ -1009,21 +1023,21 @@ Wall time: 9.86 ms
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 7.28 ms, sys: 313 µs, total: 7.59 ms
-Wall time: 6.83 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 0 ns, sys: 3.34 ms, total: 3.34 ms
+Wall time: 3.03 ms
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  message: Optimization terminated successfully.
   success: True
    status: 0
-      fun: -1.9999999999989857
+      fun: -1.9999999999931064
         x: [ 3.142e+00 -1.571e+00]
-      nit: 5
-      jac: [ 9.706e-07 -1.043e-06]
- hess_inv: [[ 1.013e+00 -1.362e-02]
-            [-1.362e-02  1.015e+00]]
-     nfev: 9
-     njev: 9
+      nit: 9
+      jac: [-3.007e-06  2.179e-06]
+ hess_inv: [[ 1.022e+00 -3.203e-05]
+            [-3.203e-05  1.001e+00]]
+     nfev: 15
+     njev: 15
 </pre></div>
 </div>
 </div>
@@ -1049,8 +1063,8 @@ H[i,j] = \frac{\partial^2 f}{\partial x_i \partial x_j}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 0 ns, sys: 5.69 ms, total: 5.69 ms
-Wall time: 5.8 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 0 ns, sys: 2.99 ms, total: 2.99 ms
+Wall time: 4.19 ms
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/goodwill/miniconda3/envs/pycourse_test/lib/python3.11/site-packages/scipy/optimize/_minimize.py:565: RuntimeWarning: Method BFGS does not use Hessian information (hess).
@@ -1060,14 +1074,14 @@ Wall time: 5.8 ms
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  message: Optimization terminated successfully.
   success: True
    status: 0
-      fun: -1.9999999999989857
+      fun: -1.9999999999931064
         x: [ 3.142e+00 -1.571e+00]
-      nit: 5
-      jac: [ 9.706e-07 -1.043e-06]
- hess_inv: [[ 1.013e+00 -1.362e-02]
-            [-1.362e-02  1.015e+00]]
-     nfev: 9
-     njev: 9
+      nit: 9
+      jac: [-3.007e-06  2.179e-06]
+ hess_inv: [[ 1.022e+00 -3.203e-05]
+            [-3.203e-05  1.001e+00]]
+     nfev: 15
+     njev: 15
 </pre></div>
 </div>
 </div>
@@ -1084,8 +1098,8 @@ Wall time: 5.8 ms
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 10.2 ms, sys: 14 µs, total: 10.2 ms
-Wall time: 9.4 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 3.35 ms, sys: 0 ns, total: 3.35 ms
+Wall time: 3.05 ms
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> message: Optimization terminated successfully.
@@ -1094,9 +1108,9 @@ Wall time: 9.4 ms
      fun: -2.0
        x: [ 3.142e+00 -1.571e+00]
      nit: 6
-     jac: [ 2.205e-11  8.786e-12]
-    nfev: 10
-    njev: 10
+     jac: [ 8.095e-10  8.386e-10]
+    nfev: 11
+    njev: 11
     nhev: 6
 </pre></div>
 </div>
@@ -1109,7 +1123,7 @@ Wall time: 9.4 ms
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-3.08929145e-07,  3.31854297e-07])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 9.57261136e-07, -6.93316609e-07])
 </pre></div>
 </div>
 </div>
@@ -1167,21 +1181,21 @@ Wall time: 9.4 ms
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                    message: [&#39;requested number of basinhopping iterations completed successfully&#39;]
                     success: True
-                        fun: -1.9999999999999998
+                        fun: -1.9999999999999987
                           x: [ 3.142e+00 -1.571e+00]
                         nit: 100
       minimization_failures: 0
-                       nfev: 1260
-                       njev: 420
+                       nfev: 1254
+                       njev: 418
  lowest_optimization_result:  message: Optimization terminated successfully.
                               success: True
                                status: 0
-                                  fun: -1.9999999999999998
+                                  fun: -1.9999999999999987
                                     x: [ 3.142e+00 -1.571e+00]
                                   nit: 3
-                                  jac: [ 1.490e-08 -1.490e-08]
-                             hess_inv: [[ 9.998e-01  5.394e-03]
-                                        [ 5.394e-03  8.335e-01]]
+                                  jac: [ 5.960e-08  4.470e-08]
+                             hess_inv: [[ 1.000e+00 -2.729e-03]
+                                        [-2.729e-03  8.336e-01]]
                                  nfev: 12
                                  njev: 4
 </pre></div>
@@ -1197,29 +1211,29 @@ Wall time: 9.4 ms
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 9.88 ms, sys: 0 ns, total: 9.88 ms
-Wall time: 9.63 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 0 ns, sys: 7.12 ms, total: 7.12 ms
+Wall time: 6.41 ms
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                    message: [&#39;requested number of basinhopping iterations completed successfully&#39;]
                     success: True
-                        fun: 1.2144798903827483
-                          x: [ 8.048e+00 -1.571e+00]
+                        fun: -1.99999999999956
+                          x: [ 3.142e+00 -1.571e+00]
                         nit: 1
       minimization_failures: 0
-                       nfev: 48
-                       njev: 16
+                       nfev: 42
+                       njev: 14
  lowest_optimization_result:  message: Optimization terminated successfully.
                               success: True
                                status: 0
-                                  fun: 1.2144798903827483
-                                    x: [ 8.048e+00 -1.571e+00]
-                                  nit: 7
-                                  jac: [-7.451e-08 -1.177e-06]
-                             hess_inv: [[ 2.543e+00  1.070e-02]
-                                        [ 1.070e-02  8.780e-01]]
-                                 nfev: 27
-                                 njev: 9
+                                  fun: -1.99999999999956
+                                    x: [ 3.142e+00 -1.571e+00]
+                                  nit: 3
+                                  jac: [ 5.066e-07  9.090e-07]
+                             hess_inv: [[ 8.944e-01  8.015e-02]
+                                        [ 8.015e-02  9.392e-01]]
+                                 nfev: 12
+                                 njev: 4
 </pre></div>
 </div>
 </div>
@@ -1234,14 +1248,14 @@ Wall time: 9.63 ms
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 308 ms, sys: 9.83 ms, total: 318 ms
-Wall time: 318 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 132 ms, sys: 5.94 ms, total: 138 ms
+Wall time: 138 ms
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> message: [&#39;Maximum number of iteration reached&#39;]
  success: True
   status: 0
-     fun: -2.0
+     fun: -1.9999999999998104
        x: [ 3.142e+00 -1.571e+00]
      nit: 1000
     nfev: 4037
@@ -1307,8 +1321,8 @@ x_0 x_1 - x_1 - 5 = 0
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 398 µs, sys: 32 µs, total: 430 µs
-Wall time: 404 µs
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 139 µs, sys: 0 ns, total: 139 µs
+Wall time: 134 µs
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> message: The solution converged.
@@ -1354,8 +1368,8 @@ Wall time: 404 µs
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 3.03 ms, sys: 253 µs, total: 3.29 ms
-Wall time: 4.62 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 898 µs, sys: 78 µs, total: 976 µs
+Wall time: 2.4 ms
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> message: The relative error between two consecutive iterates is at most 0.000000
@@ -1418,9 +1432,7 @@ x_0 x_1 - x_1 = 5
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[6.50409711 0.9084142 ]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[6.38657705 0.89398092]
+[6.38657705 0.89398092]
 </pre></div>
 </div>
 </div>
@@ -1512,7 +1524,7 @@ x_0 x_1 - x_1 = 5
   <div class="footer-item">
     
 <p class="component-author">
-By Tristan Goodwill. Adapted from notes by Brad Nelson
+By Brad Nelson. Adapted by Tristan Goodwill.
 </p>
 
   </div>

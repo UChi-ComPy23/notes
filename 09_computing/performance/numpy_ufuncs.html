@@ -532,8 +532,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for naive add: 1.942e-01 sec
-time for numpy add: 2.670e-03 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for naive add: 1.924e-01 sec
+time for numpy add: 4.033e-03 sec
 </pre></div>
 </div>
 </div>
@@ -563,11 +563,9 @@ time for numpy add: 2.670e-03 sec
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for naive add: 2.306e-01 sec
-time for numpy add: 4.435e-03 sec
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for numpy add (vectorize): 2.026e-01 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for naive add: 1.984e-01 sec
+time for numpy add: 2.147e-03 sec
+time for numpy add (vectorize): 1.627e-01 sec
 </pre></div>
 </div>
 </div>
@@ -638,11 +636,11 @@ y_i = \sum_j A_{i,j} x_j
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for naive matvec: 1.814e-01 sec
-time for numpy matvec: 7.195e-03 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for naive matvec: 1.547e-01 sec
+time for numpy matvec: 5.649e-03 sec
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8.300452349640955e-13
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7.501200011387548e-13
 </pre></div>
 </div>
 </div>
@@ -682,7 +680,7 @@ time for numpy matvec: 7.195e-03 sec
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1094/852113555.py:3: NumbaDeprecationWarning: <span class=" -Color -Color-Bold">The &#39;nopython&#39; keyword argument was not supplied to the &#39;numba.jit&#39; decorator. The implicit default value for this argument is currently False, but it will be changed to True in Numba 0.59.0. See https://numba.readthedocs.io/en/stable/reference/deprecation.html#deprecation-of-object-mode-fall-back-behaviour-when-using-jit for details.</span>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1632/852113555.py:3: NumbaDeprecationWarning: <span class=" -Color -Color-Bold">The &#39;nopython&#39; keyword argument was not supplied to the &#39;numba.jit&#39; decorator. The implicit default value for this argument is currently False, but it will be changed to True in Numba 0.59.0. See https://numba.readthedocs.io/en/stable/reference/deprecation.html#deprecation-of-object-mode-fall-back-behaviour-when-using-jit for details.</span>
   @jit # this is the only thing we do different
 </pre></div>
 </div>
@@ -713,11 +711,11 @@ time for numpy matvec: 7.195e-03 sec
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for naive add: 2.303e-01 sec
-time for numpy add: 1.974e-03 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for naive add: 2.079e-01 sec
+time for numpy add: 2.242e-03 sec
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for numba add: 4.997e-01 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for numba add: 3.245e-01 sec
 </pre></div>
 </div>
 </div>
@@ -748,9 +746,9 @@ time for numpy add: 1.974e-03 sec
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for naive add: 2.469e-01 sec
-time for numpy add: 2.393e-03 sec
-time for numba add: 3.977e-03 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for naive add: 2.060e-01 sec
+time for numpy add: 2.482e-03 sec
+time for numba add: 2.032e-03 sec
 </pre></div>
 </div>
 </div>
@@ -806,13 +804,11 @@ time for numba add: 3.977e-03 sec
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for numba add: 3.876e-01 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for numba add: 4.561e-01 sec
+time for numpy add: 1.899e-01 sec
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for numpy add: 2.121e-01 sec
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for numba parallel add: 2.872e-01 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for numba parallel add: 2.664e-01 sec
 </pre></div>
 </div>
 </div>
@@ -877,11 +873,11 @@ time for numba add: 3.977e-03 sec
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for numba parallel matvec: 7.512e-03 sec
-time for numpy matvec: 7.721e-03 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for numba parallel matvec: 8.725e-03 sec
+time for numpy matvec: 8.683e-03 sec
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8.619700560424106e-12
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9.032072117815461e-12
 </pre></div>
 </div>
 </div>
@@ -922,8 +918,8 @@ time for numpy matvec: 7.721e-03 sec
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for numba add: 1.924e-01 sec
-time for numba add (vectorized): 1.191e-01 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for numba add: 2.383e-01 sec
+time for numba add (vectorized): 9.444e-02 sec
 </pre></div>
 </div>
 </div>
@@ -1237,7 +1233,7 @@ time for numba add (cuda): 5.494e-01 sec
   <div class="footer-item">
     
 <p class="component-author">
-By Tristan Goodwill. Adapted from notes by Brad Nelson
+By Brad Nelson. Adapted by Tristan Goodwill.
 </p>
 
   </div>

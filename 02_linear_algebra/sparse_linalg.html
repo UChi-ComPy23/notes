@@ -160,6 +160,8 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../00_python/python.html">Python</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/conda.html">Installing Anaconda Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/jupyter.html">Installing and Using Jupyter Notebooks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../00_python/using_python.html">Using Python</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../00_python/basics.html">Basics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../00_python/bitsbytes.html">Bits, Bytes, and Numbers</a></li>
@@ -180,8 +182,20 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../01_analysis/average_case.html">Average Case Analysis</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../09_computing/computing.html">Computing</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="linear_algebra.html">Linear Algebra</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="memory.html">Memory and Performance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numpy_scipy_linalg.html">Dense Linear Algebra in NumPy and SciPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="blas_lapack.html">BLAS and LAPACK</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../04_functions/functions.html">Functions</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../04_functions/roots.html">Root Finding</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../09_computing/computing.html">Computing</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../09_computing/basic_bash.html">Basic Bash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09_computing/performance/ipython.html">Measuring Performance in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09_computing/performance/numpy_ufuncs.html">Vectorization, Numpy Universal Functions</a></li>
 </ul>
 </li>
 </ul>
@@ -482,7 +496,7 @@ Populating the interactive namespace from numpy and matplotlib
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/db81079a045cf87b627926abcf43fcfe542350947bce5d9247da5ebbd0fe041b.png" src="../_images/db81079a045cf87b627926abcf43fcfe542350947bce5d9247da5ebbd0fe041b.png" />
+<img alt="../_images/0ac1955607f469accd88d77309ad215506e7d1d3b9f554a604f782d88400638b.png" src="../_images/0ac1955607f469accd88d77309ad215506e7d1d3b9f554a604f782d88400638b.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -494,7 +508,7 @@ Populating the interactive namespace from numpy and matplotlib
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;SuperLU at 0x7f8797046280&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;SuperLU at 0x7f82891a9590&gt;
 </pre></div>
 </div>
 </div>
@@ -511,7 +525,7 @@ Populating the interactive namespace from numpy and matplotlib
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.920555567747509e-16
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.450283813118312e-15
 </pre></div>
 </div>
 </div>
@@ -525,7 +539,7 @@ Populating the interactive namespace from numpy and matplotlib
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.920555567747509e-16
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.450283813118312e-15
 </pre></div>
 </div>
 </div>
@@ -551,7 +565,7 @@ Populating the interactive namespace from numpy and matplotlib
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.9317602286702826e-08
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.911146798828362e-09
 </pre></div>
 </div>
 </div>
@@ -574,8 +588,8 @@ Populating the interactive namespace from numpy and matplotlib
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GMRES in 0.007049560546875 sec.
-spsolve in 0.0010743141174316406 sec.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GMRES in 0.0010251998901367188 sec.
+spsolve in 0.0006659030914306641 sec.
 </pre></div>
 </div>
 </div>
@@ -602,7 +616,7 @@ spsolve in 0.0010743141174316406 sec.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;SuperLU at 0x7f87970464c0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;SuperLU at 0x7f82c3a5b120&gt;
 </pre></div>
 </div>
 </div>
@@ -620,8 +634,8 @@ spsolve in 0.0010743141174316406 sec.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.325392694650444e-16
-6.325392694650444e-16
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.784333918907264e-16
+5.784333918907264e-16
 </pre></div>
 </div>
 </div>
@@ -645,7 +659,7 @@ spsolve in 0.0010743141174316406 sec.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.6602228666573534e-15
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.9780984585280075e-15
 </pre></div>
 </div>
 </div>
@@ -667,10 +681,10 @@ spsolve in 0.0010743141174316406 sec.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GMRES in 9.595e-03 sec.
-8.725373972362713e-06
-preconditioned GMRES in 5.119e-03 sec.
-1.6602228666573534e-15
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GMRES in 2.804e-03 sec.
+1.3652878653316625e-05
+preconditioned GMRES in 8.438e-04 sec.
+1.9780984585280075e-15
 </pre></div>
 </div>
 </div>
@@ -716,14 +730,19 @@ Cell In[13], line 12
 ---&gt; 12     dtype=np.float   
      13 )
 
-File ~/miniconda3/envs/pycourse_test/lib/python3.11/site-packages/numpy/__init__.py:319, in __getattr__(attr)
-    314     warnings.warn(
-    315         f&quot;In the future `np.{attr}` will be defined as the &quot;
-    316         &quot;corresponding NumPy scalar.&quot;, FutureWarning, stacklevel=2)
-    318 if attr in __former_attrs__:
---&gt; 319     raise AttributeError(__former_attrs__[attr])
-    321 if attr == &#39;testing&#39;:
-    322     import numpy.testing as testing
+File ~/miniconda3/envs/pycourse_test/lib/python3.11/site-packages/numpy/__init__.py:305, in __getattr__(attr)
+    300     warnings.warn(
+    301         f&quot;In the future `np.{attr}` will be defined as the &quot;
+    302         &quot;corresponding NumPy scalar.&quot;, FutureWarning, stacklevel=2)
+    304 if attr in __former_attrs__:
+--&gt; 305     raise AttributeError(__former_attrs__[attr])
+    307 # Importing Tester requires importing all of UnitTest which is not a
+    308 # cheap import Since it is mainly used in test suits, we lazy import it
+    309 # here to save on the order of 10 ms of import time for most users
+    310 #
+    311 # The previous way Tester was imported also had a side effect of adding
+    312 # the full `numpy.testing` namespace
+    313 if attr == &#39;testing&#39;:
 
 AttributeError: module &#39;numpy&#39; has no attribute &#39;float&#39;.
 `np.float` was a deprecated alias for the builtin `float`. To avoid this error in existing code, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
@@ -1201,7 +1220,7 @@ For, example, use <code class="docutils literal notranslate"><span class="pre">m
   <div class="footer-item">
     
 <p class="component-author">
-By Tristan Goodwill. Adapted from notes by Brad Nelson
+By Brad Nelson. Adapted by Tristan Goodwill.
 </p>
 
   </div>

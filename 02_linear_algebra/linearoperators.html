@@ -162,6 +162,8 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../00_python/python.html">Python</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/conda.html">Installing Anaconda Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/jupyter.html">Installing and Using Jupyter Notebooks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../00_python/using_python.html">Using Python</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../00_python/basics.html">Basics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../00_python/bitsbytes.html">Bits, Bytes, and Numbers</a></li>
@@ -182,8 +184,20 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../01_analysis/average_case.html">Average Case Analysis</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../09_computing/computing.html">Computing</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="linear_algebra.html">Linear Algebra</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="memory.html">Memory and Performance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numpy_scipy_linalg.html">Dense Linear Algebra in NumPy and SciPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="blas_lapack.html">BLAS and LAPACK</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../04_functions/functions.html">Functions</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../04_functions/roots.html">Root Finding</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../09_computing/computing.html">Computing</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../09_computing/basic_bash.html">Basic Bash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09_computing/performance/ipython.html">Measuring Performance in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09_computing/performance/numpy_ufuncs.html">Vectorization, Numpy Universal Functions</a></li>
 </ul>
 </li>
 </ul>
@@ -502,9 +516,8 @@ $<span class="math notranslate nohighlight">\(T(\alpha v_1 + \beta v_2) = \alpha
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-11.59811109, -11.59811109, -11.59811109, -11.59811109,
-       -11.59811109, -11.59811109, -11.59811109, -11.59811109,
-       -11.59811109, -11.59811109])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-2.05634486, -2.05634486, -2.05634486, -2.05634486, -2.05634486,
+       -2.05634486, -2.05634486, -2.05634486, -2.05634486, -2.05634486])
 </pre></div>
 </div>
 </div>
@@ -516,7 +529,7 @@ $<span class="math notranslate nohighlight">\(T(\alpha v_1 + \beta v_2) = \alpha
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-11.59811108916414
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-2.0563448646523903
 </pre></div>
 </div>
 </div>
@@ -590,10 +603,10 @@ $<span class="math notranslate nohighlight">\(T(\alpha v_1 + \beta v_2) = \alpha
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for linear operator: 0.0005052089691162109 sec.
-time for dense: 0.01155400276184082 sec.
-LinearOperator speedup = 22.86974988201982 x
-6.740800259667266e-13
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time for linear operator: 0.00020122528076171875 sec.
+time for dense: 0.0075495243072509766 sec.
+LinearOperator speedup = 37.51777251184834 x
+2.2469334198890886e-13
 </pre></div>
 </div>
 </div>
@@ -615,7 +628,7 @@ LinearOperator speedup = 22.86974988201982 x
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.440892098500626e-16
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-8.881784197001252e-16
 </pre></div>
 </div>
 </div>
@@ -637,11 +650,11 @@ LinearOperator speedup = 22.86974988201982 x
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[2.72853027, 2.70854213],
-       [2.72853027, 2.70854213],
-       [2.72853027, 2.70854213],
-       [2.72853027, 2.70854213],
-       [2.72853027, 2.70854213]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[2.76851733, 2.88408424],
+       [2.76851733, 2.88408424],
+       [2.76851733, 2.88408424],
+       [2.76851733, 2.88408424],
+       [2.76851733, 2.88408424]])
 </pre></div>
 </div>
 </div>
@@ -653,7 +666,7 @@ LinearOperator speedup = 22.86974988201982 x
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([2.72853027, 2.70854213])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([2.76851733, 2.88408424])
 </pre></div>
 </div>
 </div>
@@ -699,14 +712,19 @@ Cell In[13], line 12
 ---&gt; 12     dtype=np.float   
      13 )
 
-File ~/miniconda3/envs/pycourse_test/lib/python3.11/site-packages/numpy/__init__.py:319, in __getattr__(attr)
-    314     warnings.warn(
-    315         f&quot;In the future `np.{attr}` will be defined as the &quot;
-    316         &quot;corresponding NumPy scalar.&quot;, FutureWarning, stacklevel=2)
-    318 if attr in __former_attrs__:
---&gt; 319     raise AttributeError(__former_attrs__[attr])
-    321 if attr == &#39;testing&#39;:
-    322     import numpy.testing as testing
+File ~/miniconda3/envs/pycourse_test/lib/python3.11/site-packages/numpy/__init__.py:305, in __getattr__(attr)
+    300     warnings.warn(
+    301         f&quot;In the future `np.{attr}` will be defined as the &quot;
+    302         &quot;corresponding NumPy scalar.&quot;, FutureWarning, stacklevel=2)
+    304 if attr in __former_attrs__:
+--&gt; 305     raise AttributeError(__former_attrs__[attr])
+    307 # Importing Tester requires importing all of UnitTest which is not a
+    308 # cheap import Since it is mainly used in test suits, we lazy import it
+    309 # here to save on the order of 10 ms of import time for most users
+    310 #
+    311 # The previous way Tester was imported also had a side effect of adding
+    312 # the full `numpy.testing` namespace
+    313 if attr == &#39;testing&#39;:
 
 AttributeError: module &#39;numpy&#39; has no attribute &#39;float&#39;.
 `np.float` was a deprecated alias for the builtin `float`. To avoid this error in existing code, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
@@ -986,7 +1004,7 @@ The aliases was originally deprecated in NumPy 1.20; for more details and guidan
   <div class="footer-item">
     
 <p class="component-author">
-By Tristan Goodwill. Adapted from notes by Brad Nelson
+By Brad Nelson. Adapted by Tristan Goodwill.
 </p>
 
   </div>

@@ -162,6 +162,8 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../00_python/python.html">Python</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/conda.html">Installing Anaconda Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/jupyter.html">Installing and Using Jupyter Notebooks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../00_python/using_python.html">Using Python</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../00_python/basics.html">Basics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../00_python/bitsbytes.html">Bits, Bytes, and Numbers</a></li>
@@ -182,8 +184,20 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../01_analysis/average_case.html">Average Case Analysis</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../09_computing/computing.html">Computing</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="linear_algebra.html">Linear Algebra</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="memory.html">Memory and Performance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numpy_scipy_linalg.html">Dense Linear Algebra in NumPy and SciPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="blas_lapack.html">BLAS and LAPACK</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../04_functions/functions.html">Functions</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../04_functions/roots.html">Root Finding</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../09_computing/computing.html">Computing</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../09_computing/basic_bash.html">Basic Bash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09_computing/performance/ipython.html">Measuring Performance in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09_computing/performance/numpy_ufuncs.html">Vectorization, Numpy Universal Functions</a></li>
 </ul>
 </li>
 </ul>
@@ -536,13 +550,13 @@ g(-2) &amp; g(-1) &amp; g(0) &amp; \dots\
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>standard solve
-CPU times: user 0 ns, sys: 7.33 ms, total: 7.33 ms
-Wall time: 13.4 ms
+CPU times: user 5.1 ms, sys: 588 µs, total: 5.69 ms
+Wall time: 12.6 ms
 
 toeplitz solve
-CPU times: user 0 ns, sys: 258 µs, total: 258 µs
-Wall time: 264 µs
-1.7878458871256935e-13
+CPU times: user 174 µs, sys: 20 µs, total: 194 µs
+Wall time: 197 µs
+2.0725139454929385e-11
 </pre></div>
 </div>
 </div>
@@ -567,13 +581,13 @@ Wall time: 264 µs
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>standard solve
-CPU times: user 2.17 ms, sys: 373 µs, total: 2.54 ms
-Wall time: 1.81 ms
+CPU times: user 1.91 ms, sys: 0 ns, total: 1.91 ms
+Wall time: 1.4 ms
 
 circulant solve
-CPU times: user 714 µs, sys: 122 µs, total: 836 µs
-Wall time: 899 µs
-9.08176276422719e-15
+CPU times: user 198 µs, sys: 0 ns, total: 198 µs
+Wall time: 201 µs
+6.362612181578137e-15
 </pre></div>
 </div>
 </div>
@@ -679,13 +693,13 @@ h = f \ast g \Leftrightarrow \hat{h} = \hat{f} \hat{g}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 100 µs, sys: 10 µs, total: 110 µs
-Wall time: 118 µs
-CPU times: user 332 µs, sys: 36 µs, total: 368 µs
-Wall time: 345 µs
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 36 µs, sys: 4 µs, total: 40 µs
+Wall time: 42.2 µs
+CPU times: user 170 µs, sys: 17 µs, total: 187 µs
+Wall time: 204 µs
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.071164967136152e-14
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.847755111236207e-14
 </pre></div>
 </div>
 </div>
@@ -723,13 +737,13 @@ Wall time: 345 µs
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 1.09 ms, sys: 127 µs, total: 1.22 ms
-Wall time: 1.06 ms
-CPU times: user 651 µs, sys: 76 µs, total: 727 µs
-Wall time: 709 µs
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 200 µs, sys: 21 µs, total: 221 µs
+Wall time: 213 µs
+CPU times: user 209 µs, sys: 22 µs, total: 231 µs
+Wall time: 376 µs
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.4624843327385019e-15
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9.13604987917838e-14
 </pre></div>
 </div>
 </div>
@@ -1076,7 +1090,7 @@ Wall time: 14.8 ms
   <div class="footer-item">
     
 <p class="component-author">
-By Tristan Goodwill. Adapted from notes by Brad Nelson
+By Brad Nelson. Adapted by Tristan Goodwill.
 </p>
 
   </div>

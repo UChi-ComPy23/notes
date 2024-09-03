@@ -162,6 +162,8 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../00_python/python.html">Python</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/conda.html">Installing Anaconda Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_python/jupyter.html">Installing and Using Jupyter Notebooks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../00_python/using_python.html">Using Python</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../00_python/basics.html">Basics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../00_python/bitsbytes.html">Bits, Bytes, and Numbers</a></li>
@@ -182,8 +184,20 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../01_analysis/average_case.html">Average Case Analysis</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../09_computing/computing.html">Computing</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../02_linear_algebra/linear_algebra.html">Linear Algebra</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02_linear_algebra/memory.html">Memory and Performance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02_linear_algebra/numpy_scipy_linalg.html">Dense Linear Algebra in NumPy and SciPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02_linear_algebra/blas_lapack.html">BLAS and LAPACK</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../04_functions/functions.html">Functions</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../04_functions/roots.html">Root Finding</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../09_computing/computing.html">Computing</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../09_computing/basic_bash.html">Basic Bash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09_computing/performance/ipython.html">Measuring Performance in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09_computing/performance/numpy_ufuncs.html">Vectorization, Numpy Universal Functions</a></li>
 </ul>
 </li>
 </ul>
@@ -482,7 +496,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/c585354c1f7437fa6f0be41ead933832a89fe710039d5476bb8ac67340450636.png" src="../_images/c585354c1f7437fa6f0be41ead933832a89fe710039d5476bb8ac67340450636.png" />
+<img alt="../_images/2ec238760dd0f5fc74adb44fb525dc42335bc1d1426627cace7920b944fa9729.png" src="../_images/2ec238760dd0f5fc74adb44fb525dc42335bc1d1426627cace7920b944fa9729.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -509,7 +523,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/862b031f1e5dcc315dfcb857b05b52c377976618cbf6ca6a2be3f646e800d63e.png" src="../_images/862b031f1e5dcc315dfcb857b05b52c377976618cbf6ca6a2be3f646e800d63e.png" />
+<img alt="../_images/a2fd485f71665fc5e457c8e5a05d669350935ef67e593e8d8092cc2c09b1e162.png" src="../_images/a2fd485f71665fc5e457c8e5a05d669350935ef67e593e8d8092cc2c09b1e162.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -535,7 +549,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/2a183d4d23ab8d7a65b532ee8b00dbb2c9df7172b04b9e51aeb51b4592844df5.png" src="../_images/2a183d4d23ab8d7a65b532ee8b00dbb2c9df7172b04b9e51aeb51b4592844df5.png" />
+<img alt="../_images/f2b56544c56f2b00126732bc8b8b852da964d9e178befe58edc12c8a5082142c.png" src="../_images/f2b56544c56f2b00126732bc8b8b852da964d9e178befe58edc12c8a5082142c.png" />
 </div>
 </div>
 <section id="exercise">
@@ -575,7 +589,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/5ec1aff055de2f13388d4bd599e60a75f54de3384000ad2f6785561f708d5fbf.png" src="../_images/5ec1aff055de2f13388d4bd599e60a75f54de3384000ad2f6785561f708d5fbf.png" />
+<img alt="../_images/8bf40f71ed8105c53050984873738a8fee936987fd6c16cee8cbd8e45c915941.png" src="../_images/8bf40f71ed8105c53050984873738a8fee936987fd6c16cee8cbd8e45c915941.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -589,7 +603,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/b1fb78bfc19f75d63f7228fa8def17e3cc03456595d9392dea1a4ac1f755d940.png" src="../_images/b1fb78bfc19f75d63f7228fa8def17e3cc03456595d9392dea1a4ac1f755d940.png" />
+<img alt="../_images/3e7e2dbc4483f0fecbd564df47c8234433ff7574097e28a940d34c93ef4874ec.png" src="../_images/3e7e2dbc4483f0fecbd564df47c8234433ff7574097e28a940d34c93ef4874ec.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">cKDTrees</span></code> have the same methods</p>
@@ -611,7 +625,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/5ec1aff055de2f13388d4bd599e60a75f54de3384000ad2f6785561f708d5fbf.png" src="../_images/5ec1aff055de2f13388d4bd599e60a75f54de3384000ad2f6785561f708d5fbf.png" />
+<img alt="../_images/8bf40f71ed8105c53050984873738a8fee936987fd6c16cee8cbd8e45c915941.png" src="../_images/8bf40f71ed8105c53050984873738a8fee936987fd6c16cee8cbd8e45c915941.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -625,7 +639,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/1f58fcb7722dea7d2f1be39faf5f13e56b63cfb71d03c40cc0dfc11ddf95db4d.png" src="../_images/1f58fcb7722dea7d2f1be39faf5f13e56b63cfb71d03c40cc0dfc11ddf95db4d.png" />
+<img alt="../_images/2ebe9510f31392f41704ced627247c26344c49cdcfbcb1a0495a83fbd1a5f707.png" src="../_images/2ebe9510f31392f41704ced627247c26344c49cdcfbcb1a0495a83fbd1a5f707.png" />
 </div>
 </div>
 <section id="performance-comparision">
@@ -670,11 +684,11 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>brute force: 0.002855062484741211 sec
-KDTree: 0.08727312088012695 sec
-  extra query: 0.00032830238342285156 sec
-cKDTree: 0.050009727478027344 sec
-  extra query: 0.0001342296600341797 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>brute force: 0.0015192031860351562 sec
+KDTree: 0.030165433883666992 sec
+  extra query: 0.00010848045349121094 sec
+cKDTree: 0.02585148811340332 sec
+  extra query: 9.942054748535156e-05 sec
 </pre></div>
 </div>
 </div>
@@ -844,7 +858,7 @@ cKDTree: 0.050009727478027344 sec
   <div class="footer-item">
     
 <p class="component-author">
-By Tristan Goodwill. Adapted from notes by Brad Nelson
+By Brad Nelson. Adapted by Tristan Goodwill.
 </p>
 
   </div>
